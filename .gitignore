@@ -26,3 +26,13 @@
 *.exe
 *.out
 *.app
+
+# pdf latex stuff
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.toc
+*.vrb
+*.snm
