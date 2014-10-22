@@ -32,7 +32,6 @@
 *.log
 *.nav
 *.out
-*.pdf
 *.toc
 *.vrb
 *.snm
