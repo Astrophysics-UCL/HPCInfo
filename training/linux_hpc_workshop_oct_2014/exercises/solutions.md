@@ -1,7 +1,7 @@
 ### In your home directory create a dirctory called `linux_hpc_workshop`
 
-  $ cd
-  $ mkdir linux_hpc_workshop
+    $ cd
+    $ mkdir linux_hpc_workshop
 
 ### Change directory to `linux_hpc_workshop`
 
