@@ -151,16 +151,17 @@
     $ rm -r to_be_compressed
     $ tar xvzf to_be_compressed.tar.gz
 
-### Use wget to download  files from `https::cftio.org/cfitio.tar.gz`
+### Use wget to download  files from `ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3370.tar.gz`
 
-    $ wget https::cftio.org/cfitio.tar.gz
+    $ wget ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3370.tar.gz
 
 ### What is the size of the item you just downloaded in MB
 
-    $ ls -lah cfitio.tar.gz
+    $ ls -lah cfitsio3370.tar.gz
 
 ### Find the number of occurrences of the phrase `table` is easy in all the files with extension `h`
 
+    $ cd cfitsio
     $ grep "table" *.h
 
 ### Remove all the fiels with extension `.h`
