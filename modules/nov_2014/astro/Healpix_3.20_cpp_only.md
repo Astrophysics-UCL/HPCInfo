@@ -1,6 +1,6 @@
 ## dependencies
 
-	[cfitsio3370.md](./cfitsio3370.md)
+[cfitsio3370.md](./cfitsio3370.md)
 
 ## binaries
 
