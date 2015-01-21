@@ -1,6 +1,10 @@
+## download
+
+[http://bazaar.canonical.com/en/](http://bazaar.canonical.com/en/)
+
 ## dependencies
 
-	../dev_tools/python_anaconda.md
+../dev_tools/python_anaconda.md
 
 ## binaries
 

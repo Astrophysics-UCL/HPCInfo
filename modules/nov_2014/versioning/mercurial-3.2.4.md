@@ -1,3 +1,7 @@
+## download
+
+[http://mercurial.selenic.com/](http://mercurial.selenic.com/)
+
 ## dependencies
 
 ## binaries

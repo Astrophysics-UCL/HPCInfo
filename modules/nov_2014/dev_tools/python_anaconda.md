@@ -1,3 +1,7 @@
+## download
+
+[https://store.continuum.io/cshop/anaconda/](https://store.continuum.io/cshop/anaconda/)
+
 ## dependencies
 
 ## binaries

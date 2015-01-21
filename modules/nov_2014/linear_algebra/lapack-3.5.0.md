@@ -1,3 +1,7 @@
+## download
+
+[http://www.netlib.org/lapack/](http://www.netlib.org/lapack/)
+
 ## dependencies
 
 ## binaries
