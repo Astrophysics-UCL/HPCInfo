@@ -4,4 +4,4 @@ ssh -YC username@zuserver.star.ucl.ac.uk
 # step 2 login to other machines from
 # zuserver
 
-ssh -YC username@splinter.star.ucl.ac.uk
+ssh -YC username@splinter-login.star.ucl.ac.uk
