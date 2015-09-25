@@ -1,1 +1,1 @@
-# [command] -[option[s]] -[argument]
+# [command] -[option[s]] [argument]
