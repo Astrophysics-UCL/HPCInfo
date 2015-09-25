@@ -35,5 +35,8 @@
 *.toc
 *.vrb
 *.snm
+*.synctex.gz
+*.bbl
+*.blg
 
 *~
