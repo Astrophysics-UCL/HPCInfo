@@ -1,4 +1,4 @@
-& # backgraound
+& # background
 ; # combine
 \ # next line
 | # combine
