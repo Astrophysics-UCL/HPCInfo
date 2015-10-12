@@ -72,6 +72,15 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Command shell}
+  \begin{itemize}
+    \item{You will be using a `command shell'.}
+    \item{This is a text-based environment in which you type commands and text output.}
+    \item{Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.}
+    \item{Various command shell programs in use: \textit{bash}, \textit{csh}, \textit{tcsh},...}
+   \end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Accessing machines from outside}
   \alert{You will need a \emph{username} and \emph{password}}
   \begin{block}{Steps:}
@@ -79,7 +88,32 @@
   \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{command structure}
+\begin{frame}{Directory structure}
+  \begin{itemize}
+    \item{Everything is organised around files (which may be program files i.e. instructions to be executed) or data files.}
+    \item{Files live in directories. There is a hierarchical tree structure of directories.}
+    \item{Sample file name: /share/splinter/ucapwhi/des/foo.txt}
+    \item{Note use of slash `/', not backslash `\textbackslash' as in Windows.}
+    \item{Case sensitivity: `Foo' and `foo' are different strings.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Special symbols for directories}
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{c l}
+      \\ [-2ex]
+      Symbol & Meaning \\ [.5ex]
+      \hline \\ [-2ex]
+      / & Top of the directory tree (the root directory) \\
+      . & Current directory \\
+      .. & Parent of the current directory \\
+      \textasciitilde & User's `home' directory
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Structure of commands}
   \begin{block}{structure}
     \lstinputlisting{command.sh}
   \end{block}
