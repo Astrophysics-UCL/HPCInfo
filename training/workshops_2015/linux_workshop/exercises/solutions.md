@@ -1,4 +1,5 @@
 Exercises I
+===========
 
 ### 1. Go to your home directory and create a directory called `linux_hpc_workshop`.
 
@@ -47,6 +48,7 @@ Exercises I
 
 
 Exercises II
+============
 
 ### 1. Find the location of your python installation.
 
@@ -94,6 +96,7 @@ Exercises II
 
 
 Exercises III
+=============
 
 ### 1. Find hostname,processor type,operating system version and write this info into a text file called `info.txt`.
 
