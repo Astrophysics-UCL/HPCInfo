@@ -32,8 +32,8 @@
 \title[Linux  Workshop] % (optional, use only with long paper titles)
 {Linux  Workshop}
 
-\author[Balan, Whiteway] % (optional, use only with lots of authors)
-{S.~T.~Balan, L.~Whiteway}
+\author[Balan, Whiteway, Wilson, Palmese] % (optional, use only with lots of authors)
+{S.~T.~Balan, L.~Whiteway, T.~Wilson, A.~Palmese }
 
 \institute[UCL]
 {
@@ -72,6 +72,19 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{More information}
+  \begin{block}{Astrophysics Wiki}
+    \url{https://wiki.ucl.ac.uk/display/PhysAstAstPhysGrp/Main+Page}
+    This Wiki is freely viewable and editable by all members of the department. Please use it to record information that you think will be useful to others (including your future self). Be bold!
+  \end{block}
+
+  \begin{block}{UCL Research Computing Platforms}
+    \url{https://wiki.rc.ucl.ac.uk/wiki/Main_Page}
+  \end{block}
+
+\end{frame}
+
+
 \begin{frame}{Command shell}
   \begin{itemize}
     \item{You will be using a `command shell'.}
@@ -81,16 +94,16 @@
    \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Accessing machines from outside}
+\begin{frame}[fragile]{Accessing machines remotely}
   \alert{You will need a \emph{username} and \emph{password}}
-  \begin{block}{Steps:}
+  \begin{block}{}
     \lstinputlisting{login.sh}
   \end{block}
 \end{frame}
 
 \begin{frame}{Directory structure}
   \begin{itemize}
-    \item{Everything is organised around files (which may be program files i.e. instructions to be executed) or data files.}
+    \item{Everything is organised around files (which may be data files or program files i.e. instructions to be executed).}
     \item{Files live in directories. There is a hierarchical tree structure of directories.}
     \item{Sample file name: /share/splinter/ucapwhi/des/foo.txt}
     \item{Note use of slash `/', not backslash `\textbackslash' as in Windows.}
@@ -114,7 +127,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Structure of commands}
-  \begin{block}{structure}
+  \begin{block}{Structure}
     \lstinputlisting{command.sh}
   \end{block}
   \begin{example}
@@ -252,24 +265,10 @@
     \item Delete the dirctory \texttt{to\_be\_compressed} and extract the files from \texttt{to\_be\_compressed.tar.gz}.
     \item Use \textit{wget} to download  files from \url{ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3370.tar.gz}.
     \item What is the size of the item you just downloaded in MB?
-    \item Find the number of occurrences of the phrase \texttt{table} is easy in all the files with extension \texttt{.h}.
+    \item Find the number of occurrences of the phrase \texttt{table} in all the files with extension \texttt{.h}.
     \item Remove all the files with extension \texttt{.h}.
     \item Copy the files with extension \texttt{.c} into a new directory \texttt{c\_files}.
   \end{enumerate}
-\end{frame}
-
-\begin{frame}{More information}
-  \begin{block}{Astrophysics Wiki}
-    \url{https://wiki.ucl.ac.uk/display/PhysAstAstPhysGrp/Main+Page}
-  \end{block}
-
-  \begin{block}{UCL Research Computing Platforms}
-    \url{https://wiki.rc.ucl.ac.uk/wiki/Main_Page}
-  \end{block}
-
-  \begin{block}{DiRAC}
-    \url{http://www.dirac.ac.uk}
-  \end{block}
 \end{frame}
 
 
