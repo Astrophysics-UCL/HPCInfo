@@ -48,37 +48,37 @@ Exercises I
 
 Exercises II
 
-### Find the location of your python installation.
+### 1. Find the location of your python installation.
 
     $ which python
 
-### Find the installation location(s) of `liblapack.a`.
+### 2. Find the installation location(s) of `liblapack.a`.
 
     $ locate lapack
 
-### Find whether an object `daxpy` is in `liblapack.a`.
+### 3. Find whether an object `daxpy` is in `liblapack.a`.
 
     $ nm /usr/lib/libclapack.a | grep "daxpy"
 
-### Find the value the environment variable `PATH` and `LD\_LIBRARY\_PATH`.
+### 4. Find the value the environment variable `PATH` and `LD\_LIBRARY\_PATH`.
 
     $ echo $PATH
     $ echo $LD_LIBRARY_PATH
 
-### Set the environment variable `MY_LINUX_HPC_VAR` to equal the absolute path to `linux_hpc_workshop`.
+### 5. Set the environment variable `MY_LINUX_HPC_VAR` to equal the absolute path to `linux_hpc_workshop`.
 
     $ cd linux_hpc_workshop
     $ export MY_LINUX_HPC_VAR=${PWD}
     $ setenv MY_LINUX_HPC_VAR ${PWD}
     $ echo ${MY_LINUX_HPC_VAR}
 
-### Add (i.e append) to the `PATH` the absolute path to `linux_hpc_workshop`.
+### 6. Add (i.e append) to the `PATH` the absolute path to `linux_hpc_workshop`.
 
     $ export ${PATH}=${PATH}:${PWD}
     $ setenv ${PATH} ${PATH}:${PWD}
     $ echo ${PATH}
 
-### Use the source command do the last two steps from source file.
+### 7. Use the source command do the last two steps from source file.
 
     $ touch my_source_file.sh
     ## now open my_source_file.sh using a text editor and add the line
@@ -87,7 +87,7 @@ Exercises II
     ## save the file and use source to source the file
     $ source my_source_file.sh
 
-### Use the man command to find the option of `ls` that shows the output in Kilobyte,Megabyte.
+### 8. Use the man command to find the option of `ls` that shows the output in Kilobyte,Megabyte.
 
     $ man ls
     ## the answer is ls -lh
