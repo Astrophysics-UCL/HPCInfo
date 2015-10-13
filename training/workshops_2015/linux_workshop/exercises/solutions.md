@@ -130,16 +130,20 @@ Exercises III
 ### 8. Find the size of the item you just downloaded in MB.
 
     $ ls -lah cfitsio3370.tar.gz
+	
+### 9. Extract all files from this downloaded archive file.
 
-### 9. Find the number of occurrences of the phrase `table` in all the files with extension `h`.
+    $ tar xvzf cfitsio3370.tar.gz
+
+### 10. In the extracted files, find the number of occurrences of the word `table` in all files with extension `h`.
 
     $ cd cfitsio
     $ grep "table" *.h
 
-### 10. Remove all the files with extension `.h`.
+### 11. Remove all the files with extension `.h`.
 
     $ rm *.h
 
-### 11. Copy the files with extension `.c` into a new directory `c_files`.
+### 12. Copy the files with extension `.c` into a new directory `c_files`.
 
     $ cp *.c c_files
