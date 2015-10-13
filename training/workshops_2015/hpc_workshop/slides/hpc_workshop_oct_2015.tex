@@ -25,7 +25,7 @@
 
 \lstset{style=customc}
 
-\usetheme{Warsaw}
+\usetheme{Dresden}
 
 
 \title[HPC Workshop] % (optional, use only with long paper titles)
@@ -40,9 +40,9 @@
   University College London
 }
 \date[HPC 2015]
-{October 2014}
+{22 October 2015}
 
-\subject{ HPC}
+\subject{HPC}
 
 \begin{document}
 
@@ -59,28 +59,9 @@
 
 \begin{frame}{What will you learn?}
   \begin{itemize}
-    \item Accessing Astrophysics group machines
-    \item Using linux console for your research
     \item Running your programs in HPC machines
   \end{itemize}
 \end{frame}
-
-\begin{frame}[fragile]{Accessing machines from outside}
-  \alert{You will need a \emph{username} and \emph{password}}
-  \begin{block}{steps}
-    \lstinputlisting{commands/login.sh}
-  \end{block}
-\end{frame}
-
-\begin{frame}[fragile]{command structure}
-  \begin{block}{structure}
-    \lstinputlisting{commands/command.sh}
-  \end{block}
-  \begin{example}
-    \lstinputlisting{commands/command_example.sh}
-  \end{example}
-\end{frame}
-
 
 
 \begin{frame}{HPC Facilities}
@@ -100,7 +81,7 @@
 \begin{frame}{\textsc{splinter} distributed}
   \begin{figure}
     \begin{center}
-      \shadowbox{\includegraphics[scale=0.4]{img/cluster.png}}
+      \shadowbox{\includegraphics[scale=0.4]{cluster.png}}
       \footnote{\url{http://www.rocksclusters.org/}}
     \end{center}
   \end{figure}
@@ -109,7 +90,7 @@
 \begin{frame}{\textsc{splinter} shared}
   \begin{figure}
     \begin{center}
-      \shadowbox{\includegraphics[scale=0.4]{img/fig03.png}}
+      \shadowbox{\includegraphics[scale=0.4]{fig03.png}}
       \footnote{\url{http://www.cs.rit.edu/}}
     \end{center}
   \end{figure}
@@ -132,12 +113,12 @@
   \begin{columns}
     \column{.3\textwidth}
     \begin{block}{commands}
-      \lstinputlisting{commands/job_submission.sh}
+      \lstinputlisting{job_submission.sh}
     \end{block}
 
     \column{0.7\textwidth}
     \begin{example}
-      \lstinputlisting{commands/sample_job_script.sh}
+      \lstinputlisting{sample_job_script.sh}
     \end{example}
   \end{columns}
 \end{frame}
