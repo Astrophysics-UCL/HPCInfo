@@ -135,10 +135,10 @@ Exercises III
 
     $ tar xvzf cfitsio3370.tar.gz
 
-### 10. In the extracted files, find the number of occurrences of the word `table` in all files with extension `h`.
+### 10. In the extracted files, find all occurrences of `ffopentest` in all files with extension `h`.
 
     $ cd cfitsio
-    $ grep "table" *.h
+    $ grep "ffopentest" *.h
 
 ### 11. Remove all the files with extension `.h`.
 
