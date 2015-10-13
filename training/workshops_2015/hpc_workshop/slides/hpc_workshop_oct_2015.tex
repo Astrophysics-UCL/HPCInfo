@@ -31,8 +31,8 @@
 \title[HPC Workshop] % (optional, use only with long paper titles)
 {HPC Workshop}
 
-\author[Balan,Whiteway] % (optional, use only with lots of authors)
-{S.~T.~Balan,L.~Whiteway}
+\author[Balan,Whiteway,Wilson,Palmese] % (optional, use only with lots of authors)
+{S.~T.~Balan, L.~Whiteway, T.~Wilson, A.~Palmese}
 
 \institute[UCL]
 {
@@ -50,12 +50,24 @@
 
 \section{Basics}
 
-\begin{frame}{How to access training materials?}
-  \begin{block}{url}
+\begin{frame}{Information on the Web}
+  \begin{block}{This presentation}
     \url{https://github.com/Astrophysics-UCL/HPCInfo/blob/master/training/workshops_2015/hpc_workshop/slides/hpc_workshop_oct_2015.pdf}
   \end{block}
-\end{frame}
 
+    \begin{block}{Splinter on the UCL Astrophysics Wiki}
+    \url{https://wiki.ucl.ac.uk/display/PhysAstAstPhysGrp/Splinter+User+Guide}
+  \end{block}
+
+  \begin{block}{UCL Research Computing Platforms}
+    \url{https://wiki.rc.ucl.ac.uk/wiki/Main_Page}
+  \end{block}
+
+  \begin{block}{DiRAC}
+    \url{http://www.dirac.ac.uk/}
+  \end{block}
+
+\end{frame}
 
 \begin{frame}{What will you learn?}
   \begin{itemize}
@@ -123,33 +135,18 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Exercises III}
+\begin{frame}{Exercises I}
   \fontsize{10pt}{8}\selectfont
   \begin{enumerate}
     \item Login to your HCP machine and find the path to your \texttt{HOME}
     directory and your quota
     \item Find the processor type and the version of your operating system
-    \item Request an interative \texttt{queue} and run the \texttt{hello\_world.exe}
+    \item Request an interative \texttt{queue} and run the program \texttt{hello\_world.exe}
     \item Sumbit \texttt{hello\_world.exe} using a job script, find its \texttt{jobid}, check the output log.
     \item Compile \texttt{big\_mem\_example}, submit it using a \texttt{job-script} and see how much menory it uses
     \item Compile \texttt{time\_pause\_example}, submit it using a \texttt{job-script} and kill this job using its \texttt{jobid}.
     \item In the previous example see what happens when you play with the time requested.
   \end{enumerate}
-\end{frame}
-
-
-\begin{frame}{More information}
-  \begin{block}{ap-wiki}
-    \url{http://www.ucl.ac.uk/star/GroupAWiki}
-  \end{block}
-
-  \begin{block}{UCL Research Computing Platforms}
-    \url{https://wiki.rc.ucl.ac.uk/wiki/Main_Page}
-  \end{block}
-
-  \begin{block}{DiRAC}
-    \url{http://www.dirac.ac.uk/}
-  \end{block}
 \end{frame}
 
 
