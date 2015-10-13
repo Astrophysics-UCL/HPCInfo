@@ -1,4 +1,4 @@
 locate file
 whereis file
-grep "bla" file
+grep "foo" file
 awk 'pattern' file
