@@ -42,3 +42,7 @@ Exercises III
 ### 10. In the extracted files, find all occurrences of `ffopentest` in all files with extension `h`.
 ### 11. Remove all the files with extension `.h`.
 ### 12. Copy the files with extension `.c` into a new directory `c_files`.
+
+Exercises IV
+=============
+
