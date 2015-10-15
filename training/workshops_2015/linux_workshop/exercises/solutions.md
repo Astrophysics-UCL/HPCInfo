@@ -76,8 +76,8 @@ Exercises II
 
 ### 6. Add (i.e append) to the `PATH` the absolute path to `linux_hpc_workshop`.
 
-    $ export ${PATH}=${PATH}:${PWD}
-    $ setenv ${PATH} ${PATH}:${PWD}
+    $ export PATH=${PATH}:${PWD}
+    $ setenv PATH ${PATH}:${PWD}
     $ echo ${PATH}
 
 ### 7. Use the source command do the last two steps from source file.
