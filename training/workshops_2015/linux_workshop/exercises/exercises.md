@@ -46,3 +46,6 @@ Exercises III
 Exercises IV
 =============
 
+### 1. Install the python package [cfitsio](https://github.com/esheldon/fitsio) to directory in your `$HOME`
+### 2. Download [cfitsio-c-version](http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html) and install it in `$HOME/usr/`
+

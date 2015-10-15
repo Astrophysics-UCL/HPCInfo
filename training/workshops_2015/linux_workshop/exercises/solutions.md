@@ -150,3 +150,23 @@ Exercises III
 ### 12. Copy the files with extension `.c` into a new directory `c_files`.
 
     $ cp *.c c_files
+
+Exercises IV
+=============
+
+### 1. Install the python package [fitsio](https://github.com/esheldon/fitsio) to directory in your `$HOME`
+
+    $ wget https://github.com/esheldon/fitsio/archive/v0.9.8rc1.tar.gz
+    $ tar xvzf fitsio-0.9.8rc1.tar.gz
+    $ cd fitsio-0.9.8rc1
+    $ python setup.py install --user
+
+### 2. Download [cfitsio-c-version](http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html) and install it in `$HOME/usr/`
+
+    $ wget ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3370.tar.gz
+    $ tar xvzf cfitsio3370.tar.gz
+    $ cd cfitsio
+    $ /configure --prefix=$HOME
+    $ make
+    $ make install
+
