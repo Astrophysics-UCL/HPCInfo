@@ -1,15 +1,17 @@
-#!/bin/bash
-#PBS -N hello_world_program
-#PBS -l nodes=1:ppn=4
-#PBS -l mem=2gb
+#!/bin/tcsh
+#PBS -q cores12
+#PBS -N a_name_for_your_hob
+#PBS -l nodes=1:ppn=6
+#PBS -l mem=32gb
+#PBS -l walltime=120:00:00
 #PBS -j oe
 #PBS -V
 
-# source the required scripts
-# this sets the PATH
-source /home/sbalan/binpaths.sh
-# this sets the LD_LIBRARY_PATHS
-source /home/sbalan/libpaths.sh
+# set some environment variables
+setenv OMP_NUM_THREADS 6
+
+# source paths if needed
+source /home/sbalan/libpaths.csh
 
 # run my program
 /home/sbalan/hello.exe
