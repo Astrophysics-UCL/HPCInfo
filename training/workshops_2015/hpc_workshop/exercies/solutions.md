@@ -58,4 +58,24 @@ Add the following `PBS` command to the script
     $ qstat
     $ checkjob job-id
 
+## 7. Add python module to your login script
+
+    $ cd ~
+    $ echo "module load dev_tools/nov2014/python-anaconda" >> .login
+
+## 8. Create a work directory in `/share/splinter/user_name/` and give access to everyone
+
+    $ cd /share/splinter/user_name
+    $ mkdir work_dir
+    $ chmod 777 work_dir
+
+## 9. Clone [https://github.com/Astrophysics-UCL/HPCInfo](https://github.com/Astrophysics-UCL/HPCInfo) using git
+
+In splinter we have an issue with using git. You will need to set a environment variable `GIT_SSL_NO_VERIFY` to `true`. Then it will work okay :) Below is an example.
+
+    $ module load versioning/nov2014/git-2.1.3
+    $ cd a_directory_you_like
+    $ setenv GIT_SSL_NO_VERIFY true
+    $ git clone https://github.com/Astrophysics-UCL/HPCInfo.git
+
 
