@@ -1,5 +1,5 @@
 # submit a job
-qsub jon_script
+qsub job_script
 # sumit an interative job
 qsub -I
 # check the status of a job

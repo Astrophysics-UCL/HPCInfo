@@ -121,12 +121,15 @@
 			\item this is your home directory
 			\item login scripts can be put here
 			\item 1GB quota
+			\item private
 		\end{itemize}
 	\end{block}
 	\begin{block}{\texttt{/share/splinter/user\_name}}
 		\begin{itemize}
+			\item create the directory if not already there
 			\item can be used as a workspace
 			\item no quota
+			\item public unless made private
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -135,13 +138,13 @@
 	\begin{block}{\texttt{/share/data1}}
 		\begin{itemize}
 			\item for storing large data
-			\item you can create a directory for your, .e.g, \texttt{/share/data1/user\_name}
+			\item you can create a directory for your, .e.g, \texttt{/share/data1/SKA}
 		\end{itemize}
 	\end{block}
 
 	\begin{block}{\texttt{/share/apps}}
 		\begin{itemize}
-			\item for install software
+			\item for installing software
 			\item module-files
 		\end{itemize}
 	\end{block}
@@ -194,6 +197,23 @@
 	\lstinputlisting{sample_job_script.sh}
 \end{frame}
 
+\begin{frame}{Jobscripts: things to remember}
+	\begin{itemize}
+		\item Submit the job to the right queue
+		\item Request the correct number of \texttt{nodes} and \texttt{ppn}
+		\item Specify the memory required
+		\item Always specify the walltime
+		\item If your program is not parallel, please use \texttt{nodes=1,ppn=1}
+		\item Use \texttt{-q compute} for single processor jobs
+		\item Use \texttt{qsub -I} for interative job
+		\item If using most of the resources, please send an email to the mailing list.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{More PBS commands}
+	\lstinputlisting{pbs_extra_commands.sh}
+\end{frame}
+
 \begin{frame}{Using \emph{Gaglia}}
 	\url{http://splinter.star.ucl.ac.uk/ganglia/}
 
@@ -204,6 +224,15 @@
 		\item can look into nodes
 	\end{itemize}
 \end{frame}
+
+\begin{frame}{Collaborative projects}
+	\begin{itemize}
+		\item collaboration between two splinter users
+		\item can share common data in \texttt{/share/data1/my\_collaboration}
+		\item give read/write permission to other users using \texttt{chmod}
+	\end{itemize}
+\end{frame}
+
 
 \begin{frame}{Best practices}
   \begin{itemize}
@@ -217,18 +246,8 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Exercises I}
-  \fontsize{10pt}{8}\selectfont
-  \begin{enumerate}
-    \item Login to your HCP machine and find the path to your \texttt{HOME}
-    directory and your quota
-    \item Find the processor type and the version of your operating system
-    \item Request an interative \texttt{queue} and run the program \texttt{hello\_world.exe}
-    \item Sumbit \texttt{hello\_world.exe} using a job script, find its \texttt{jobid}, check the output log.
-    \item Compile \texttt{big\_mem\_example}, submit it using a \texttt{job-script} and see how much menory it uses
-    \item Compile \texttt{time\_pause\_example}, submit it using a \texttt{job-script} and kill this job using its \texttt{jobid}.
-    \item In the previous example see what happens when you play with the time requested.
-  \end{enumerate}
+\begin{frame}{Exercises}
+	\url{https://github.com/Astrophysics-UCL/HPCInfo/blob/master/training/workshops_2015/hpc_workshop/exercies/exercises.md}
 \end{frame}
 
 
