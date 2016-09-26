@@ -1,4 +1,0 @@
-gnuplot
-R
-matlab
-IDL
