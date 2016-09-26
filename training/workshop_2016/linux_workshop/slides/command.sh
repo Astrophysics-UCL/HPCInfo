@@ -1,1 +1,0 @@
-# [command] -[option[s]] [argument]
