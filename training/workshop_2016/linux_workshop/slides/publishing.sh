@@ -1,3 +1,0 @@
-latex
-pdflatex
-bibtex
