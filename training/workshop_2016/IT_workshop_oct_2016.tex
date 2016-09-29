@@ -1,0 +1,588 @@
+% http://www.ctan.org/tex-archive/macros/latex/contrib/beamer/examples
+% http://latex.artikel-namsu.de/english/beamer-examples.html
+
+\documentclass{beamer}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{fancybox, graphicx}
+\usepackage{listings}
+
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  %frame=L,
+  xleftmargin=\parindent,
+  language=bash,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  deletekeywords={login}, % Needed to prevent spurious colouring of `login' where it appears in `splinter-login'.
+}
+
+\lstset{style=customc}
+
+\usetheme{Dresden}
+
+
+\title[IT Workshops] % (optional, use only with long paper titles)
+{IT  Workshops}
+
+\author[Whiteway, Wilson] % (optional, use only with lots of authors)
+{L.~Whiteway, T.~Wilson}
+
+\institute[UCL]
+{
+  Department of Physics and Astronomy\\
+  University College London
+}
+\date[IT 2016]
+{13 \& 20 October 2016}
+
+\subject{IT}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Linux Basics}
+
+\begin{frame}{Where to find this presentation}
+  \begin{block}{url}
+    \url{https://github.com/Astrophysics-UCL/HPCInfo/tree/master/training/workshop_2016}
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{What will you learn?}
+  \begin{itemize}
+    \item{13 October:}
+    \begin{itemize}
+      \item Accessing Astrophysics group machines
+      \item Using the Linux console for your research
+      \item Basics of Python
+    \end{itemize}
+    \item{20 October:}
+    \begin{itemize}
+    \item An intro to commonly used programs (LaTeX, DS9, IRAF)
+    \item Running your programs in HPC machines
+    \item HPC best practices
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Information on the Web}
+  \begin{block}{Astrophysics Wiki}
+    \url{https://wiki.ucl.ac.uk/display/PhysAstAstPhysGrp/Main+Page}
+    This Wiki is freely viewable and editable by all members of the department. Please use it to record information that you think will be useful to others (including your future self). Be bold!
+  \end{block}
+
+  \begin{block}{UCL Research Computing Platforms}
+    \url{https://wiki.rc.ucl.ac.uk/wiki/Main_Page}
+  \end{block}
+  
+  \begin{block}{Stack Overflow}
+    \url{http://stackoverflow.com/}
+  \end{block}
+  
+\end{frame}
+
+
+\begin{frame}{Command shell}
+  \begin{itemize}
+    \item{You will be using a `command shell'.}
+    \item{This is a text-based environment in which you type commands and text output.}
+    \item{Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.}
+    \item{Various command shell programs in use: \textit{bash}, \textit{csh}, \textit{tcsh},...}
+   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Accessing machines remotely}
+  \begin{block}{}
+    \alert{You will need a \emph{username} and \emph{password}}
+  \end{block}
+  \begin{block}{Step 1 - login to zuserver}
+     \texttt{ssh -YC username@zuserver.star.ucl.ac.uk}
+  \end{block}
+  \begin{block}{Step 2 - login to other machines from zuserver}  
+    \texttt{ssh -YC username@splinter.star.ucl.ac.uk}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Directory structure}
+  \begin{itemize}
+    \item{Everything is organised around files (which may be data files or program files i.e. instructions to be executed).}
+    \item{Files live in directories. There is a hierarchical tree structure of directories.}
+    \item{Sample file name: /share/splinter/ucapwhi/des/foo.txt}
+    \item{Note use of slash `/', not backslash `\textbackslash' as in Windows.}
+    \item{Case sensitivity: `Foo' and `foo' are different strings.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Special symbols for directories}
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{c l}
+      \\ [-2ex]
+      Symbol & Meaning \\ [.5ex]
+      \hline \\ [-2ex]
+      / & Top of the directory tree (the root directory) \\
+      . & Current directory \\
+      .. & Parent of the current directory \\
+      \textasciitilde & User's `home' directory
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}[fragile]{Structure of commands}
+  \begin{block}{Structure}
+    \texttt{[command] -[option(s)] [argument]}
+  \end{block}
+  \begin{Examples}
+     \texttt{ls -la \\
+     mkdir hello\_world \\
+     cp hello.cpp new\_hello.cpp} \\
+  \end{Examples}
+\end{frame}
+
+\begin{frame}[fragile]{Linux console cheat sheet I}
+  \begin{columns}
+    \column{.5\textwidth}
+    \begin{block}{navigation and help}
+      \texttt{ls -la} \\
+      \texttt{cd dir\_name} \\
+      \texttt{man command\_name} \\
+      \texttt{pwd} \\
+      \texttt{exit}
+    \end{block}
+    \begin{block}{copy or move}
+      \texttt{cp src dest} \\
+      \texttt{mv src dest} \\
+      \texttt{scp usr@host:file dest}
+    \end{block}
+
+    \column{.5\textwidth}
+    \begin{block}{create or delete}
+      \texttt{touch file.txt} \\ 
+      \texttt{mkdir dir\_name} \\ 
+      \texttt{rm -i file.txt}
+    \end{block}
+    \begin{block}{find and system info}
+      \texttt{whereis file} \\
+      \texttt{which} \\
+      \texttt{echo \$VAR\_NAME}
+    \end{block}
+    \begin{block}{file contents}
+      \texttt{cat file} \\
+      \texttt{more file} \\
+      \texttt{head file}
+    \end{block}    
+  \end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]{Linux console cheat sheet II}
+  \begin{columns}
+    \column{.5\textwidth}
+    \begin{block}{\& ; $|$ > <}
+      \texttt{\& (background)} \\
+      \texttt{; (combine)} \\
+      \texttt{\textbackslash$\,$ (next line)} \\
+      \texttt{| (combine)} \\
+      \texttt{* (wildcard)} \\
+      \texttt{> (output)} \\            
+      \texttt{< (input)}
+    \end{block}
+    \begin{block}{Text editors}
+      \texttt{emacs} \\
+      \texttt{vi} \\
+      \texttt{gedit}
+    \end{block}
+
+    \column{.5\textwidth}
+    \begin{block}{process management}
+      \texttt{kill} \\
+      \texttt{top} 
+    \end{block}    
+    \begin{block}{compressed files}
+      \texttt{gunzip} \\
+      \texttt{tar} 
+    \end{block}
+    \begin{block}{images}
+      \texttt{gthumb} \\
+      \texttt{ds9} 
+    \end{block}    
+    \begin{block}{publishing}
+      \texttt{latex} \\
+      \texttt{bibtex} 
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Linux console cheat sheet III}
+
+\url{http://www.computerhope.com/unix.htm}
+   
+\end{frame}
+
+\begin{frame}{Exercises I}
+  \fontsize{8pt}{8}\selectfont
+  \begin{enumerate}
+    \item Go to your home directory and create a directory called \texttt{linux\_hpc\_workshop}.
+    \item Change directory to \texttt{linux\_hpc\_workshop}.
+    \item Find the name of the present working directory.
+    \item Make a directory \texttt{level\_1/level\_2}, and move to \texttt{level\_1/level\_2} in one command.
+    \item Move back to the previous directory.
+    \item Remove the directory \texttt{level\_1} (and its contents).
+    \item In the current directory make a symbolic link to \texttt{usr/lib} called \texttt{my\_sybolic\_link}.
+    \item Create a file called \texttt{foo.txt} with contents ``This file contains the word foo''.
+    \item Add another line in \texttt{foo.txt} with contents ``This is the second line''.
+    \item Check to see if it worked.
+    \item Search for the phrase \emph{foo} in \texttt{foo.txt}.
+  \end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Exercises II}
+  \fontsize{8pt}{8}\selectfont
+  \begin{enumerate}
+    \item Find the location of your python installation.
+    \item Find the installation location(s) of \texttt{liblapack.a}.
+    \item Find whether an object \texttt{daxpy} is in \texttt{liblapack.a}.
+    \item Find the value the environment variable \texttt{PATH} and \texttt{LD\_LIBRARY\_PATH}.
+    \item Set the environment variable \texttt{MY\_LINUX\_HPC\_VAR} to equal the absolute path to \texttt{linux\_hpc\_workshop}.
+    \item Add (i.e append) to the \texttt{PATH} the absolute path to \texttt{linux\_hpc\_workshop}.
+    \item Use the \textit{source} command do the last two steps from source file.
+    \item Use the \textit{man} command to find the option of \texttt{ls} that shows the output in Kilobyte,Megabyte.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Exercises III}
+  \fontsize{8pt}{8}\selectfont
+  \begin{enumerate}
+    \item Find hostname, processor type and operating system version and write this info into a text file called \texttt{info.txt}.
+    \item List the people who are currently logged into the system.
+    \item Find the process that is taking most of the CPU at the moment.
+    \item Find the IDs of the processes that you are running.
+    \item Make a directory called \texttt{to\_be\_compressed}. Add the files \texttt{hello.cpp} and \texttt{hello.py} in this dir.
+    Then compress this directory using \textit{tar} and \textit{zip}.
+    \item Delete the directory \texttt{to\_be\_compressed} and extract the files from \texttt{to\_be\_compressed.tar.gz}.
+    \item Use \textit{wget} to download files from \url{ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3370.tar.gz}.
+    \item Find the size of the item you just downloaded in MB.
+    \item Extract all files from this downloaded archive file.
+    \item In the extracted files, find all occurrences of \texttt{ffopentest} in all the files with extension \texttt{.h}.
+    \item Remove all the files with extension \texttt{.h}.
+    \item Copy the files with extension \texttt{.c} into a new directory \texttt{c\_files}.
+  \end{enumerate}
+\end{frame}
+
+\section{Python Basics}
+
+\begin{frame}{Python}
+  \begin{block}{Vanilla Python}
+
+  \end{block}
+
+  \begin{block}{Numpy}
+      Talk about slicing somewhere...
+  \end{block}
+
+  \begin{block}{Scipy/Astropy}
+
+  \end{block}
+
+  \begin{block}{Matplotlib}
+ 
+  \end{block}
+\end{frame}
+
+\section{Common Programs}
+
+\begin{frame}{Common and Useful Programs}
+  \begin{block}{LaTeX}
+
+  \end{block}
+
+  \begin{block}{DS9}
+
+  \end{block}
+
+  \begin{block}{IRAF}
+
+  \end{block}
+\end{frame}
+
+\section{HPC Basics}
+
+\begin{frame}{Information on the Web}
+  \begin{block}{This presentation}
+    \url{https://github.com/Astrophysics-UCL/HPCInfo/}
+  \end{block}
+
+    \begin{block}{Splinter on the UCL Astrophysics Wiki}
+    \url{https://wiki.ucl.ac.uk/display/PhysAstAstPhysGrp/Splinter+User+Guide}
+  \end{block}
+
+  \begin{block}{UCL Research Computing Platforms}
+    \url{https://wiki.rc.ucl.ac.uk/wiki/Main_Page}
+  \end{block}
+
+  \begin{block}{DiRAC}
+    \url{http://www.dirac.ac.uk/}
+  \end{block}
+
+\end{frame}
+
+\begin{frame}{Mailing list}
+	\url{https://www.mailinglists.ucl.ac.uk/mailman/listinfo/splinter-users}
+	\bigskip
+	\begin{itemize}
+		\item please subscribe
+		\item post any issues regarding splinter
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Splinter specs}
+	\begin{itemize}
+		\item As of \today, \emph{Splinter} has 528, 4TB memory
+		\item 8 nodes, dual 6-core 2.8GHz, 48GB memory 
+		\item 20 nodes, dual 8-core 2.0GHz, 128GB memory
+		\item SMP node, 40 2.4GHz cores, 1TB memory
+		\item login node, dual 10-core, 2.4GHz 98GB memory
+		\item head-node, dual 8-core, 2.4GHz, 164GB memory
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{\textsc{splinter} distributed}
+  \begin{figure}
+    \begin{center}
+      \shadowbox{\includegraphics[scale=0.4]{cluster.png}}
+      \footnote{\url{http://www.rocksclusters.org/}}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{\textsc{splinter} shared}
+  \begin{figure}
+    \begin{center}
+      \shadowbox{\includegraphics[scale=0.4]{fig03.png}}
+      \footnote{\url{http://www.cs.rit.edu/}}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Workspaces I}
+	\begin{block}{\texttt{/home/user\_name}}
+		\begin{itemize}
+			\item this is your home directory
+			\item login scripts can be put here
+			\item 1GB quota
+			\item private
+		\end{itemize}
+	\end{block}
+	\begin{block}{\texttt{/share/splinter/user\_name}}
+		\begin{itemize}
+			\item create the directory if not already there
+			\item can be used as a workspace
+			\item no quota
+			\item public unless made private
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Workspaces II}
+	\begin{block}{\texttt{/share/data1}}
+		\begin{itemize}
+			\item for storing large data
+			\item you can create a directory for your, .e.g, \texttt{/share/data1/SKA}
+		\end{itemize}
+	\end{block}
+
+	\begin{block}{\texttt{/share/apps}}
+		\begin{itemize}
+			\item for installing software
+			\item module-files
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Login script}
+	\begin{itemize}
+		\item everytime you login this file will be executed
+		\item this file is in your \texttt{\$HOME}
+		\item it is called \texttt{.login}
+		\item you can load modules, envvars, etc.
+	\end{itemize}
+	\begin{Examples}
+		\begin{block}{Load my aliases}
+		    \texttt{source $\sim$/aliases.csh}
+                \end{block}
+                \begin{block}{Load python}
+                     \texttt{module load dev\_tools/nov2014/python-anaconda}
+                \end{block}
+	\end{Examples}
+\end{frame}
+
+\begin{frame}[fragile]{Modules}
+	\begin{itemize}
+		\item easy and flexible way use software
+		\item available to everyone in splinter
+	\end{itemize}
+	
+	\begin{Examples}
+	    \begin{columns}
+                \column{.5\textwidth}
+		\begin{block}{Print the available modules}
+			\texttt{module avail}
+		\end{block}
+		\begin{block}{Load a module}
+			\texttt{module load module\_name}
+		\end{block}
+		\begin{block}{List the loaded modules}
+			\texttt{module list}
+		\end{block}
+	
+	        \column{.5\textwidth}
+		\begin{block}{Unload a module}
+			\texttt{module unload module\_name}
+		\end{block}
+		\begin{block}{Unload all modules}
+			\texttt{module purge}
+		\end{block}		
+		\begin{block}{Help}
+			\texttt{module --help}
+		\end{block}	
+	    \end{columns}								
+	\end{Examples}
+\end{frame}
+
+\begin{frame}[fragile]{Submitting jobs}
+	\begin{itemize}
+		\item computing jobs should be submitted to the scheduler
+		\item you will have to write a job script
+		\item interactive job
+	\end{itemize}
+    \begin{Examples}
+	    \begin{columns}
+                \column{.5\textwidth}    
+		\begin{block}{Submit a job}
+			\texttt{qsub job\_script}
+		\end{block}
+		\begin{block}{Submit an interactive job}
+			\texttt{qsub -I}
+		\end{block}
+		\begin{block}{Check the status of a job}
+			\texttt{checkjob job\_id}
+		\end{block}
+
+	        \column{.5\textwidth}		
+		\begin{block}{List the status of all jobs}
+			\texttt{qstat}
+		\end{block}
+		\begin{block}{Show the queue}
+			\texttt{showq}
+		\end{block}		
+		\begin{block}{Delete a job}
+			\texttt{qdel job\_id}
+		\end{block}
+	    \end{columns}		
+    \end{Examples}
+\end{frame}
+
+\begin{frame}{Queues}
+	\begin{itemize}
+		\item \texttt{compute}
+		\item \texttt{cores16}
+		\item \texttt{cores12}
+		\item \texttt{smp}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Structure of a job script}
+	\texttt{\#!/bin/tcsh \\
+	\# PBS -q cores12 \\
+	\# PBS -N a\_name\_for\_your\_job \\
+	\# PBS -l nodes=1:ppn=6 \\
+	\# PBS -l mem=32gb \\
+	\# PBS -l walltime=120:00:00} \\
+	
+	\begin{block}{Set some environment variable}
+	    \texttt{setenv OMP\_NUM\_THREADS 6}
+        \end{block}
+	\begin{block}{Source paths if needed}
+	    \texttt{source /home/username/libpaths.csh}
+        \end{block}
+	\begin{block}{Run my program}
+	    \texttt{/home/username/hello\_world.exe}
+        \end{block}	
+\end{frame}
+
+\begin{frame}{Jobscripts: things to remember}
+	\begin{itemize}
+		\item Submit the job to the right queue
+		\item Request the correct number of \texttt{nodes} and \texttt{ppn}
+		\item Specify the memory required
+		\item Always specify the walltime
+		\item If your program is not parallel, please use \texttt{nodes=1,ppn=1}
+		\item Use \texttt{-q compute} for single processor jobs
+		\item Use \texttt{qsub -I} for interactive job
+		\item If using most of the resources, please send an email to the mailing list.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{More PBS commands}
+	\begin{block}{Specify output}
+	    \texttt{PBS -o path/to/file.out}
+        \end{block}
+	\begin{block}{Specify error output}
+	    \texttt{PBS -e path/to/file.err}
+        \end{block}
+	\begin{block}{Mail alert at (b)eginning, (e)nd, and (a)bortion of execution}
+	    \texttt{PBS -m bea}
+        \end{block}
+	\begin{block}{Send mail to the following address}
+	    \texttt{PBS -M your\_email\_id@ucl.ac.uk}
+        \end{block}                        
+\end{frame}
+
+\begin{frame}{Using \emph{Ganglia}}
+	\url{http://splinter.star.ucl.ac.uk/ganglia/}
+
+	\begin{itemize}
+		\item is tool for analysing splinter
+		\item can only be loaded from splinter (using firefox)
+		\item will give you load/memory information
+		\item can look into nodes
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Collaborative projects}
+	\begin{itemize}
+		\item collaboration between two splinter users
+		\item can share common data in \texttt{/share/data1/my\_collaboration}
+		\item give read/write permission to other users using \texttt{chmod}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Best practices}
+  \begin{itemize}
+    \item Choose the machines that are suited for your problem
+    \item Read the User Guide
+    \item Do not run your programs in the login node
+    \item Install common software locally if and only if absolutely necessary
+    \item Request optimum resources
+    \item Minimise data transfer between nodes,
+    \item \alert{Backup! Backup! Backup!}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Exercises}
+	\url{https://github.com/Astrophysics-UCL/HPCInfo/tree/master/training/workshop_2016/}
+\end{frame}
+
+\end{document}
