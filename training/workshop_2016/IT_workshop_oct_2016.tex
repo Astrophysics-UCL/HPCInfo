@@ -30,7 +30,7 @@
 
 
 \title[IT Workshops] % (optional, use only with long paper titles)
-{Introduction to IT for UCL Astrophysics}
+{Introduction to IT for UCL Astrophysicists}
 
 \author[Whiteway, Wilson] % (optional, use only with lots of authors)
 {L.~Whiteway, T.~Wilson}
@@ -63,7 +63,7 @@
     \item{Overall goals:}
     \begin{itemize}
       \item What software you might find useful
-      \item Where to get more information (UCL courses, WWW, etc.)
+      \item Where to get more information (UCL courses, web, etc.)
       \item UCL-specific information (e.g. login details)
       \item Some hands-on work
     \end{itemize}
@@ -84,11 +84,34 @@
 
 \begin{frame}{Computing Environment for Astrophysics}
   \begin{itemize}
-  \item Large datasets requiring sophisticate statistical analysis
-  \item ...
-  \item ...
+  \item Large datasets requiring substantial processing followed by sophisticated statistical analysis
+  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be performed simulataneously (`in parallel') across many processors.
+  \item Much useful software made freely available within the community. Software quality is usually high; documentation quality is more variable.
   \end{itemize}
 \end{frame}
+
+\begin{frame}{Local Computing Environment}
+  \begin{itemize}
+  \item You will probably have your own local machine:
+    \begin{itemize}
+    \item PC (Windows)
+    \item Mac
+    \item Linux
+    \end{itemize}
+  \item In addition there are shared HPC machines:
+    \begin{itemize}
+    \item splinter
+    \item Others? Legion?
+    \end{itemize}
+  \item Several work patterns are possible:
+    \begin{itemize}
+    \item Write and test a program on your local machine; use the local machine to remotely connect to splinter; upload the program to splinter and run it there;
+    \item Or do all your work locally (requires small data sets);
+    \item Or use the local machine to remotely connect to splinter and do all your work there.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 
 
 \begin{frame}{Information on the Web}
