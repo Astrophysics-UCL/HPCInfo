@@ -26,7 +26,8 @@
 
 \lstset{style=customc}
 
-\usetheme{Dresden}
+\usetheme{boxes}
+\usecolortheme{beaver}
 
 
 \title[IT Workshops] % (optional, use only with long paper titles)
@@ -85,8 +86,8 @@
 \begin{frame}{Computing Environment for Astrophysics}
   \begin{itemize}
   \item Large datasets requiring substantial processing followed by sophisticated statistical analysis
-  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be performed simulataneously (`in parallel') across many processors.
-  \item Much useful software made freely available within the community. Software quality is usually high; documentation quality is more variable.
+  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be run simulataneously (`in parallel') across many processors.
+  \item Much useful software is made freely available within the community. Software quality is usually high; documentation quality is more variable. As well, many users write their own software.
   \end{itemize}
 \end{frame}
 
@@ -98,9 +99,10 @@
     \item Mac
     \item Linux
     \end{itemize}
-  \item In addition there are shared HPC machines:
+  \item In addition there are shared Unix machines:
     \begin{itemize}
-    \item splinter
+    \item zuserver1 (general purpose; accessable from outside UCL)
+    \item splinter (HPC cluster)
     \item Others? Legion?
     \end{itemize}
   \item Several work patterns are possible:
@@ -111,6 +113,21 @@
     \end{itemize}
   \end{itemize}
 \end{frame}
+
+\begin{frame}{Remote Access to splinter}
+  \begin{itemize}
+  \item You will need a \textit{username} and \textit{password} for both zuserver1 and for splinter.
+  \item Step 1: logon to zuserver1:
+    \begin{itemize}
+    \item From Windows: Use PuTTY (\url{http://www.putty.org/}). On the 'Connection/SSH/X11' tab, click on 'enable X11 forwarding' and set 'X display location' to 'localhost:0'. On the Session tab, set the Host Name to zuserver1.star.ucl.ac.uk.
+    \item From Mac: ?? Find out what to do
+    \item From Linux: ?? Just do ssh?
+    \end{itemize}
+  \item Step 2: From zuserver1 you can logon to splinter: \\ ssh -YC username@splinter-login.star.ucl.ac.uk.
+  \item If you are connecting from a machine on the UCL network then in step 1 go straight to splinter-login.star.ucl.ac.uk and omit step 2.
+  \end{itemize}
+\end{frame}
+  
 
 
 
@@ -130,7 +147,7 @@
   
 \end{frame}
 
-\section{Linux}
+\section{Linux/Unix}
 
 \begin{frame}{Command shell}
   \begin{itemize}
@@ -139,18 +156,6 @@
     \item{Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.}
     \item{Various command shell programs in use: \textit{bash}, \textit{csh}, \textit{tcsh},...}
    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Accessing machines remotely}
-  \begin{block}{}
-    \alert{You will need a \emph{username} and \emph{password}}
-  \end{block}
-  \begin{block}{Step 1 - login to zuserver1}
-     \texttt{ssh -YC username@zuserver1.star.ucl.ac.uk}
-  \end{block}
-  \begin{block}{Step 2 - login to other machines from zuserver1}  
-    \texttt{ssh -YC username@splinter-login.star.ucl.ac.uk}
-  \end{block}
 \end{frame}
 
 \begin{frame}{Directory structure}
