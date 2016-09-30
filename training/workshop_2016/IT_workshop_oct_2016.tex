@@ -83,53 +83,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Computing Environment for Astrophysics}
-  \begin{itemize}
-  \item Large datasets requiring substantial processing followed by sophisticated statistical analysis
-  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be run simulataneously (`in parallel') across many processors.
-  \item Much useful software is made freely available within the community. Software quality is usually high; documentation quality is more variable. As well, many users write their own software.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Local Computing Environment}
-  \begin{itemize}
-  \item You will probably have your own local machine:
-    \begin{itemize}
-    \item PC (Windows)
-    \item Mac
-    \item Linux
-    \end{itemize}
-  \item In addition there are shared Unix machines:
-    \begin{itemize}
-    \item zuserver1 (general purpose; accessable from outside UCL)
-    \item splinter (HPC cluster)
-    \item Others? Legion?
-    \end{itemize}
-  \item Several work patterns are possible:
-    \begin{itemize}
-    \item Write and test a program on your local machine; use the local machine to remotely connect to splinter; upload the program to splinter and run it there;
-    \item Or do all your work locally (requires small data sets);
-    \item Or use the local machine to remotely connect to splinter and do all your work there.
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Remote Access to splinter}
-  \begin{itemize}
-  \item You will need a \textit{username} and \textit{password} for both zuserver1 and for splinter.
-  \item Step 1: logon to zuserver1:
-    \begin{itemize}
-    \item From Windows: Use PuTTY (\url{http://www.putty.org/}). On the 'Connection/SSH/X11' tab, click on 'enable X11 forwarding' and set 'X display location' to 'localhost:0'. On the Session tab, set the Host Name to zuserver1.star.ucl.ac.uk.
-    \item From Mac: ?? Find out what to do
-    \item From Linux: ?? Just do ssh?
-    \end{itemize}
-  \item Step 2: From zuserver1 you can logon to splinter: \\ ssh -YC username@splinter-login.star.ucl.ac.uk.
-  \item If you are connecting from a machine on the UCL network then in step 1 go straight to splinter-login.star.ucl.ac.uk and omit step 2.
-  \end{itemize}
-\end{frame}
-  
-
-
 
 \begin{frame}{Information on the Web}
   \begin{block}{Astrophysics Wiki}
@@ -147,12 +100,61 @@
   
 \end{frame}
 
-\section{Linux/Unix}
 
-\begin{frame}{Command shell}
+
+\begin{frame}{Computing Environment for Astrophysics}
   \begin{itemize}
-    \item{You will be using a `command shell'.}
-    \item{This is a text-based environment in which you type commands and text output.}
+  \item Large datasets requiring substantial processing followed by sophisticated statistical analysis
+  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be run simulataneously (`in parallel') across many processors.
+  \item Much useful software is made freely available within the community. Software quality is usually high; documentation quality is more variable. As well, many users write their own software.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Local Computing Environment}
+  \begin{itemize}
+  \item You will have your own local machine, which will have one of these operating systems:
+    \begin{itemize}
+    \item PC (Windows)
+    \item Mac
+    \item Linux
+    \end{itemize}
+  \item In addition there are shared Linux machines:
+    \begin{itemize}
+    \item zuserver1 (general purpose; accessable from outside UCL)
+    \item splinter (HPC cluster)
+    \item Others? Legion?
+    \end{itemize}
+  \item Several work patterns are possible:
+    \begin{itemize}
+    \item Write and test a program on your local machine; use the local machine to remotely connect to splinter; upload the program to splinter and run it there;
+    \item Or do all your work locally (requires small data sets);
+    \item Or use the local machine to remotely connect to splinter and do all your work there.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Remote Access to splinter}
+  \begin{itemize}
+  \item You will need a \textit{username} and \textit{password} for both zuserver1 and for splinter.
+  \item Step 1: Logon to zuserver1:
+    \begin{itemize}
+    \item From Windows: Use PuTTY (\url{http://www.putty.org/}). On the 'Connection/SSH/X11' tab, click on 'enable X11 forwarding' and set 'X display location' to 'localhost:0'. On the Session tab, set the Host Name to zuserver1.star.ucl.ac.uk.
+    \item From Mac: ?? Find out what to do
+    \item From Linux: ?? Just do ssh?
+    \end{itemize}
+  \item Step 2: From zuserver1 you can logon to splinter: \\ \texttt{ssh -YC username@splinter-login.star.ucl.ac.uk}.
+  \item If you are connecting from a machine on the UCL network then in step 1 go straight to splinter-login.star.ucl.ac.uk and omit step 2.
+  \item Say something about X Windows forwarding.
+  \end{itemize}
+\end{frame}
+
+
+\section{Linux}
+
+\begin{frame}{Command shell in Linux}
+  \begin{itemize}
+    \item{In Linux you will use a `command shell'.}
+    \item{This is a text-based environment in which you type commands and receive text output.}
     \item{Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.}
     \item{Various command shell programs in use: \textit{bash}, \textit{csh}, \textit{tcsh},...}
    \end{itemize}
@@ -183,7 +185,7 @@
   \end{table}
 \end{frame}
 
-\begin{frame}[fragile]{Structure of commands}
+\begin{frame}{Structure of commands}
   \begin{block}{Structure}
     \texttt{[command] -[option(s)] [argument]}
   \end{block}
@@ -194,7 +196,13 @@
   \end{Examples}
 \end{frame}
 
-\begin{frame}[fragile]{Linux console cheat sheet I}
+\begin{frame}{Linux command reference}
+There is a very useful summary of Linux commands at: \\
+\url{http://www.computerhope.com/unix.htm}
+\end{frame}
+
+
+\begin{frame}{Basic Linux commands I}
   \begin{columns}
     \column{.5\textwidth}
     \begin{block}{navigation and help}
@@ -230,7 +238,7 @@
 \end{frame}
 
 
-\begin{frame}[fragile]{Linux console cheat sheet II}
+\begin{frame}{Basic Linux commands II}
   \begin{columns}
     \column{.5\textwidth}
     \begin{block}{\& ; $|$ > <}
@@ -251,7 +259,8 @@
     \column{.5\textwidth}
     \begin{block}{process management}
       \texttt{kill} \\
-      \texttt{top} 
+      \texttt{top} \\
+      \texttt{nohup}
     \end{block}    
     \begin{block}{compressed files}
       \texttt{gunzip} \\
@@ -268,11 +277,6 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Linux console cheat sheet III}
-
-\url{http://www.computerhope.com/unix.htm}
-   
-\end{frame}
 
 \begin{frame}{Exercises I}
   \fontsize{8pt}{8}\selectfont
