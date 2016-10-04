@@ -7,6 +7,7 @@
 \usepackage{bm}
 \usepackage{fancybox, graphicx}
 \usepackage{listings}
+\usepackage{tikz} % Diagrams
 
 
 \lstdefinestyle{customc}{
@@ -133,9 +134,28 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Remote Access to splinter}
+\begin{frame}{Accessing splinter}
+\begin{figure}
+\begin{center}
+\begin{tikzpicture}[font=\ttfamily]
+\node (LM1) at (-2.5,5) [rectangle,draw] {local machine};
+\node (Z) at (-2.5,3) [rectangle,draw] {zuserver1};
+\node (S1) at (-2.5,1) [rectangle,draw] {splinter};
+\node (LM2) at (2.5,5) [rectangle,draw,align=center] {local machine \\ on UCL network};
+\node (S2) at (2.5,1) [rectangle,draw] {splinter};
+\node at (0,3) {or};
+\draw [->,thick] (LM1.south) -- (Z.north) node [midway,left] {PuTTY};
+\draw [->,thick] (Z.south) -- (S1.north) node [midway,left] {ssh};
+\draw [->,thick] (LM2.south) -- (S2.north) node [midway,right] {PuTTY};
+\end{tikzpicture}
+\end{center}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Accessing splinter}
   \begin{itemize}
-  \item You will need a \textit{username} and \textit{password} for both zuserver1 and for splinter.
+  \item You will need a \textit{username} and \textit{password} for splinter (and perhaps zuserver1).
   \item Step 1: Logon to zuserver1:
     \begin{itemize}
     \item From Windows: Use PuTTY (\url{http://www.putty.org/}). On the 'Connection/SSH/X11' tab, click on 'enable X11 forwarding' and set 'X display location' to 'localhost:0'. On the Session tab, set the Host Name to zuserver1.star.ucl.ac.uk.
@@ -353,7 +373,7 @@ There is a very useful summary of Linux commands at: \\
 
 \begin{frame}{Common and Useful Programs}
   \begin{block}{LaTeX}
-
+    Talk about Tikz in here
   \end{block}
 
   \begin{block}{DS9}
