@@ -405,13 +405,42 @@ There is a very useful summary of Linux commands at: \\
   \begin{block}{LaTeX}
     Talk about Tikz in here
   \end{block}
-
   \begin{block}{DS9}
-    Introduce and show various features including aligning, panning, colour sets, scaling (also using right click), blinking, regions and annotating (producing a finder chart?)
   \end{block}
-
   \begin{block}{IRAF}
-    Introduce modularity and how to get help (?) and edit parameter files (maybe do a quick aperture photometry demonstration?)
+  \end{block}
+\end{frame}
+
+\begin{frame}{DS9}
+  \begin{block}{Features}
+   \begin{itemize}
+    \item{Aligning with WCS (World Coordinate System)}
+    \item{Scaling image contrast}
+    \item{Funky colour sets (and inverse or negative)}
+    \item{Regions and annotating the image}
+    \item{Multiple frames; blinking and matching}    
+    \item{Contour plots}
+  \end{itemize}
+  \end{block}
+  \begin{block}{DS9 Website}
+    \url{http://ds9.si.edu/site/Home.html}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Image Reduction and Analysis Facility (IRAF)}
+  \begin{block}{Features}
+   \begin{itemize}
+    \item{Uses basic Linux commands to navigate around directories, copy/move files, run tasks in the background}
+    \item{A series of packages each containing various tasks}
+    \item{\texttt{?} to view all tasks in current package, \texttt{??} to view all tasks}
+    \item{Each tasks contains various editable parameter files}
+    \item{\texttt{lpar [parameter\_file\_name]} to view and \texttt{epar[parameter\_file\_name]} to edit a  parameter file}    
+    \item{\texttt{unlearn [parameter\_file\_name]} to set reset task parameters}
+   \end{itemize}
+  \end{block}
+  \begin{block}{IRAF Websites}
+    \url{http://iraf.noao.edu/}\\
+    \url{http://iraf.net/irafdocs/}
   \end{block}
 \end{frame}
 
