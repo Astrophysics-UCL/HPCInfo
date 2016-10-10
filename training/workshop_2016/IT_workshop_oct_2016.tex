@@ -8,7 +8,7 @@
 \usepackage{fancybox, graphicx}
 \usepackage{listings}
 \usepackage{tikz} % Diagrams
-
+\usepackage{color}
 
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
@@ -34,8 +34,7 @@
 \title[IT Workshops] % (optional, use only with long paper titles)
 {Introduction to IT for UCL Astrophysicists}
 
-\author[Whiteway, Wilson] % (optional, use only with lots of authors)
-{L.~Whiteway, T.~Wilson}
+\author{L.~Whiteway, T.~Wilson, E.~Edmondson, L.~Lucie-Smith}
 
 \institute[UCL]
 {
@@ -110,24 +109,26 @@
 \begin{frame}{Computing Environment for Astrophysics}
   \begin{itemize}
   \item Large datasets requiring substantial processing followed by sophisticated statistical analysis
-  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be run simulataneously (`in parallel') across many processors.
-  \item Much useful software is made freely available within the community. Software quality is usually high; documentation quality is more variable. As well, many users write their own software.
+  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be run simultaneously (`in parallel') across many processors.
+  \item Much useful software is made freely available within the community. Software quality is usually high; documentation quality is more variable.
+  \item Many users write their own software.
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Local Computing Environment}
-  \begin{block}{You will have your own local machine, which will have one of these operating systems:}
+  \begin{block}{You will have your own local machine, which might be:}
     \begin{itemize}
-    \item PC (Windows)
-    \item Mac
-    \item Linux
+      \item PC (Windows)
+      \item Mac
+      \item Linux
     \end{itemize}
   \end{block}
-  \begin{block}{In addition there are shared Linux machines:}
+  \begin{block}{Also there are shared Linux machines:}
     \begin{itemize}
-    \item zuserver1 (general purpose; accessable from outside UCL)
-    \item splinter (HPC cluster)
-    \item Others? Legion?
+      \item General purpose Astrophysics server available from outside UCL: \alert{\texttt{zuserver1}}
+      \item UCL Cosmology HPC cluster: \alert{\texttt{splinter}}
+      \item Other UCL HPC clusters: \alert{\texttt{Grace}}, \alert{\texttt{Legion}} and \alert{\texttt{Emerald}}
+      \item National HPC cluster: \alert{\texttt{DiRAC}}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -135,61 +136,100 @@
 \begin{frame}{Work patterns}
   \begin{block}{Several work patterns are possible:}
     \begin{itemize}
-    \item Write and test a program on your local machine; use the local machine to remotely connect to splinter; upload the program to splinter and run it there;
-    \item Or do all your work locally (requires small data sets);
-    \item Or use the local machine to remotely connect to splinter and do all your work there.
+      \item Write and test a program on your local machine; use the local machine to remotely connect to \texttt{splinter}; upload the program to \texttt{splinter} and run it there;
+      \item Or do all your work locally (requires small data sets);
+      \item Or use the local machine to remotely connect to \texttt{splinter} and do all your work there.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Remote connections}
+  \begin{block}{How to connect to a shared machine}
+    \begin{itemize}
+      \item Windows PC: use PuTTY;
+      \item Mac: go to the Terminal window and use \texttt{ssh};
+      \item Linux machine: go to [TODO: where?] and use \texttt{ssh}.
+    \end{itemize}
+  \end{block}
+  \begin{block}{Visibility}
+    If you are not on the UCL network then you cannot connect to \texttt{splinter} directly; instead you must go via \texttt{zuserver1}.
+  \end{block}
+\end{frame}
+
+
+\begin{frame}{Two methods for accessing splinter}
+  \begin{figure}
+    \begin{center}
+      \begin{tikzpicture}[font=\ttfamily]
+        \node at (-2.5, 6) {Option A:};
+        \node at (2.5, 6) {Option B:};
+        \node (LM1) at (-2.5,5) [rectangle,draw] {local machine};
+        \node (Z) at (-2.5,3) [rectangle,draw] {zuserver1};
+        \node (S1) at (-2.5,1) [rectangle,draw] {splinter};
+        \node (LM2) at (2.5,5) [rectangle,draw,align=center] {local machine \\ on UCL network};
+        \node (S2) at (2.5,1) [rectangle,draw] {splinter};
+        \node at (0,3) {or};
+        \draw [->,thick] (LM1.south) -- (Z.north) node [midway,left,align=center] {PuTTY \\ or ssh};
+        \draw [->,thick] (Z.south) -- (S1.north) node [midway,left] {ssh};
+        \draw [->,thick] (LM2.south) -- (S2.north) node [midway,right,align=center] {PuTTY \\ or ssh};
+      \end{tikzpicture}
+    \end{center}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Accessing remote machines}
+  \begin{block}{Credentials}
+    \begin{itemize}
+      \item You will need a \textit{username} and \textit{password} for \texttt{splinter} (and, if you are using Option A, for \texttt{zuserver1} as well).
+      \item If you do not have these already then we can give guest credentials to be used during this course.
+    \end{itemize}
+  \end{block}
+  \begin{block}{The full names of the servers are:}
+    \begin{itemize}
+      \item \texttt{zuserver1.star.ucl.ac.uk}
+      \item \texttt{splinter-login.star.ucl.ac.uk}
     \end{itemize}
   \end{block}
 \end{frame}
 
 
-\begin{frame}{Accessing splinter}
-\begin{figure}
-\begin{center}
-\begin{tikzpicture}[font=\ttfamily]
-\node (LM1) at (-2.5,5) [rectangle,draw] {local machine};
-\node (Z) at (-2.5,3) [rectangle,draw] {zuserver1};
-\node (S1) at (-2.5,1) [rectangle,draw] {splinter};
-\node (LM2) at (2.5,5) [rectangle,draw,align=center] {local machine \\ on UCL network};
-\node (S2) at (2.5,1) [rectangle,draw] {splinter};
-\node at (0,3) {or};
-\draw [->,thick] (LM1.south) -- (Z.north) node [midway,left] {PuTTY};
-\draw [->,thick] (Z.south) -- (S1.north) node [midway,left] {ssh};
-\draw [->,thick] (LM2.south) -- (S2.north) node [midway,right] {PuTTY};
-\end{tikzpicture}
-\end{center}
-\end{figure}
+\begin{frame}{Using PuTTY for remote connections from Windows}
+  \begin{itemize}
+    \item If you don't have PuTTY you can download it from \url{http://www.putty.org/}.
+    \item On the `Connection/SSH/X11' tab, click on `enable X11 forwarding' and set `X display location' to `localhost:0' - this is necessary for handling graphical output.
+    \item On the Session tab, set the Host Name as appropriate: \texttt{zuserver1.star.ucl.ac.uk} (Option A) or \texttt{splinter-login.star.ucl.ac.uk} (Option B).
+  \end{itemize}
 \end{frame}
 
-
-\begin{frame}{Accessing splinter}
+\begin{frame}{Using ssh for remote connections from Mac and Linux}
   \begin{itemize}
-  \item You will need a \textit{username} and \textit{password} for splinter (and perhaps zuserver1).
-  \item Step 1: Logon to zuserver1:
-    \begin{itemize}
-    \item From Windows: Use PuTTY (\url{http://www.putty.org/}). On the 'Connection/SSH/X11' tab, click on 'enable X11 forwarding' and set 'X display location' to 'localhost:0'. On the Session tab, set the Host Name to zuserver1.star.ucl.ac.uk.
-    \item From Mac: ?? Find out what to do
-    \item From Linux: ?? Just do ssh?
-    \end{itemize}
-  \item Step 2: From zuserver1 you can logon to splinter: \\ \texttt{ssh -YC username@splinter-login.star.ucl.ac.uk}.
-  \item If you are connecting from a machine on the UCL network then in step 1 go straight to splinter-login.star.ucl.ac.uk and omit step 2.
-  \item Say something about X Windows forwarding.
+    \item Syntax: \alert{\texttt{ssh -YC username@servername}}
+    \item The `Y' option is necessary for handling graphical output.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{X-Windows client}
+  \begin{itemize}
+    \item If the remote program that you are running produces graphical output, then you must have a program (an `X-Widows client') running on your local machine to display this graphical output.
+    \item On Windows you can use XMing (\url{https://sourceforge.net/projects/xming/}) or Exceed (available on the UCL Desktop).
+    \item On Mac you can use XQuartz.
+    \item On Linux you can use X11 (TODO: IS THIS CORRECT?)
   \end{itemize}
 \end{frame}
 
 
 \section{Linux}
 
-\begin{frame}{Command shell in Linux}
+\begin{frame}{Linux: Command shell}
   \begin{itemize}
     \item{In Linux you will use a `command shell'.}
     \item{This is a text-based environment in which you type commands and receive text output.}
     \item{Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.}
-    \item{Various command shell programs in use: \textit{bash}, \textit{csh}, \textit{tcsh},...}
+    \item{Various command shell programs are used: \texttt{bash}, \texttt{csh}, \texttt{tcsh}, etc. To see which one you are using, call \texttt{echo \$0}.}
    \end{itemize}
 \end{frame}
 
-\begin{frame}{Directory structure}
+\begin{frame}{Linux: Directory structure}
   \begin{itemize}
     \item{Everything is organised around files (which may be data files or program files i.e. instructions to be executed).}
     \item{Files live in directories. There is a hierarchical tree structure of directories.}
@@ -199,7 +239,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Special symbols for directories}
+\begin{frame}{Linux: Special symbols for directories}
   \begin{table}[ht]
     \centering
     \begin{tabular}{c l}
@@ -214,7 +254,7 @@
   \end{table}
 \end{frame}
 
-\begin{frame}{Structure of commands}
+\begin{frame}{Linux: Structure of commands}
   \begin{block}{Structure}
     \texttt{[command] -[option(s)] [argument]}
   \end{block}
@@ -225,20 +265,26 @@
   \end{Examples}
 \end{frame}
 
-\begin{frame}{Linux command reference}
+\begin{frame}{Linux: Environment variables}
+TODO
+\end{frame}
+
+
+\begin{frame}{Linux: command reference}
 There is a very useful summary of Linux commands at: \\
 \url{http://www.computerhope.com/unix.htm}
 \end{frame}
 
 
-\begin{frame}{Basic Linux commands I}
+\begin{frame}{Linux: Basic commands 1}
   \begin{columns}
     \column{.5\textwidth}
     \begin{block}{navigation and help}
+      \texttt{pwd} \\
       \texttt{ls -la} \\
       \texttt{cd dir\_name} \\
       \texttt{man command\_name} \\
-      \texttt{pwd} \\
+      \texttt{info command\_name} \\
       \texttt{exit}
     \end{block}
     \begin{block}{copy or move}
@@ -267,19 +313,19 @@ There is a very useful summary of Linux commands at: \\
 \end{frame}
 
 
-\begin{frame}{Basic Linux commands II}
+\begin{frame}{Linux: Basic commands 2}
   \begin{columns}
     \column{.5\textwidth}
-    \begin{block}{\& ; $|$ > <}
+    \begin{block}{special characters}
       \texttt{\& (background)} \\
       \texttt{; (combine)} \\
       \texttt{\textbackslash$\,$ (next line)} \\
-      \texttt{| (combine)} \\
       \texttt{* (wildcard)} \\
+      \texttt{| (pipe)} \\
       \texttt{> (output)} \\            
       \texttt{< (input)}
     \end{block}
-    \begin{block}{Text editors}
+    \begin{block}{text editors}
       \texttt{emacs} \\
       \texttt{vi} \\
       \texttt{gedit}
@@ -287,27 +333,25 @@ There is a very useful summary of Linux commands at: \\
 
     \column{.5\textwidth}
     \begin{block}{process management}
-      \texttt{kill} \\
-      \texttt{top} \\
-      \texttt{nohup}
+      \texttt{kill}, \texttt{top}, \texttt{nohup}
     \end{block}    
     \begin{block}{compressed files}
-      \texttt{gunzip} \\
-      \texttt{tar} 
+      \texttt{gunzip}, \texttt{tar} 
     \end{block}
     \begin{block}{images}
       \texttt{gthumb} \\
-      \texttt{ds9} 
+      \texttt{ds9} \\
+      \texttt{evince} \\
+      \texttt{eog}
     \end{block}    
     \begin{block}{publishing}
-      \texttt{latex} \\
-      \texttt{bibtex} 
+      \texttt{latex}, \texttt{bibtex} 
     \end{block}
   \end{columns}
 \end{frame}
 
 
-\begin{frame}{Exercises I}
+\begin{frame}{Linux: Exercises 1}
   \fontsize{8pt}{8}\selectfont
   \begin{enumerate}
     \item Go to your home directory and create a directory called \texttt{linux\_hpc\_workshop}.
@@ -325,7 +369,7 @@ There is a very useful summary of Linux commands at: \\
 \end{frame}
 
 
-\begin{frame}{Exercises II}
+\begin{frame}{Linux: Exercises 2}
   \fontsize{8pt}{8}\selectfont
   \begin{enumerate}
     \item Find the location of your python installation.
@@ -339,7 +383,7 @@ There is a very useful summary of Linux commands at: \\
   \end{enumerate}
 \end{frame}
 
-\begin{frame}{Exercises III}
+\begin{frame}{Linux: Exercises 3}
   \fontsize{8pt}{8}\selectfont
   \begin{enumerate}
     \item Find hostname, processor type and operating system version and write this info into a text file called \texttt{info.txt}.
@@ -358,6 +402,9 @@ There is a very useful summary of Linux commands at: \\
   \end{enumerate}
 \end{frame}
 
+<<<<<<< HEAD
+\section{Programming}
+=======
 \section{Python}
 
 \begin{frame}{Information on the Web}
@@ -383,8 +430,59 @@ There is a very useful summary of Linux commands at: \\
 
 \begin{frame}{Python}
   \begin{block}{Dictionaries}
+>>>>>>> aca9ab49e1d63361abd07e81a9775f881ab82805
 
+\begin{frame}{Programming: Languages}
+  \begin{block}{High-level languages - fast to code}
+    \begin{itemize}
+      \item Python
+      \item IDL
+      \item Matlib, Mathematica, R
+    \end{itemize}
+    \end{block}
+    \begin{block}{Low-level languages - fast to run}
+    \begin{itemize}
+      \item C, C++
+      \item Fortran
+      \item Assembler
+    \end{itemize}
   \end{block}
+<<<<<<< HEAD
+\end{frame}
+
+\begin{frame}{Python}
+  \begin{block}{Python has become popular:}
+    \begin{itemize}
+      \item Good trade-off between easy-of-use and performance
+      \item Many add-in libraries, so sophisticated programs can often be built easily [\url{https://xkcd.com/353/].}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Python Features and Aspects}
+  \begin{itemize}
+    \item Two slightly-incompatible versions: 2 and 3 (currently 2.7 and 3.5). We tend to use 2.7.
+    \item Can be used interactively or compiled.
+    \item Duck typing (type of variable is inferred at run-time)...
+    \item ... and hence generic programming (in which a function can take many different types of variables as inputs).
+    \item Object-orientation.
+    \item Exceptions (try, raise, except) for handling error conditions.
+    \item Automatic garbage collection (so no need to worry about memory management).
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Python for Astrophysicists}
+  \begin{block}{Use Python plus the following libraries:}
+    \begin{itemize}
+      \item Numpy: array processing for numbers and strings
+      \item Scipy: scientific library
+      \item Astropy: astronomical library
+      \item Matplotlib: plotting
+    \end{itemize}
+  \end{block}
+  \begin{block}{All of these libraries (plus many others) are available in one package called Anaconda \url{https://www.continuum.io/downloads}.}
+=======
   \begin{block}{Functions}
 
   \end{block}
@@ -399,6 +497,7 @@ There is a very useful summary of Linux commands at: \\
   \end{block}
   \begin{block}{Basic Statistics}
 
+>>>>>>> aca9ab49e1d63361abd07e81a9775f881ab82805
   \end{block}
   \begin{block}{Slicing}
 
@@ -452,8 +551,42 @@ There is a very useful summary of Linux commands at: \\
 
 \end{frame}
 
-\section{Common Programs}
+\begin{frame}{Numpy}
+  TODO. Don't forget to mention slicing.
+\end{frame}
 
+\begin{frame}{Matplotlib}
+  \begin{itemize}
+    \item Powerful plotting library. See \url{http://matplotlib.org/gallery.html} for range of examples.
+    \item Two interfaces: one similar to MATLAB (for interactive use; relies on global state), and one object-oriented. Typically the latter is to be prefered.
+    \item Read the introduction at \url{http://matplotlib.org/faq/usage_faq.html} as this clarifies many points of terminology and usage.
+  \end{itemize} 
+\end{frame}
+
+% Note that frame must be fragile if we are using lstlisting.
+\begin{frame}[fragile]{Matplotlib example}
+  \begin{lstlisting}
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+  
+    x = np.arange(0, 2*np.pi, 0.1)
+    y = np.sin(x)
+  
+    plt.figure()
+    plt.plot(x, y)
+    plt.show()
+  
+  \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{Example program}
+
+\end{frame}
+
+
+\section{Common Programs}
 \begin{frame}{Common and Useful Programs}
   \begin{block}{LaTeX}
     Talk about Tikz in here
@@ -499,7 +632,7 @@ There is a very useful summary of Linux commands at: \\
 
 \section{HPC}
 
-\begin{frame}{Information on the Web}
+\begin{frame}{HPC: Information on the Web}
   \begin{block}{This presentation}
     \url{https://github.com/Astrophysics-UCL/HPCInfo/}
   \end{block}
@@ -518,7 +651,7 @@ There is a very useful summary of Linux commands at: \\
 
 \end{frame}
 
-\begin{frame}{Mailing list}
+\begin{frame}{HPC: Mailing list}
 	\url{https://www.mailinglists.ucl.ac.uk/mailman/listinfo/splinter-users}
 	\bigskip
 	\begin{itemize}
@@ -527,9 +660,9 @@ There is a very useful summary of Linux commands at: \\
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Splinter specs}
+\begin{frame}{HPC: Splinter specs}
 	\begin{itemize}
-		\item As of \today, \emph{Splinter} has 528, 4TB memory
+		\item As of \today, \emph{splinter} has 528, 4TB memory
 		\item 8 nodes, dual 6-core 2.8GHz, 48GB memory 
 		\item 20 nodes, dual 8-core 2.0GHz, 128GB memory
 		\item SMP node, 40 2.4GHz cores, 1TB memory
@@ -538,7 +671,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{\textsc{splinter} distributed}
+\begin{frame}{HPC: \texttt{splinter} distributed}
   \begin{figure}
     \begin{center}
       \shadowbox{\includegraphics[scale=0.4]{cluster.png}}
@@ -547,7 +680,7 @@ There is a very useful summary of Linux commands at: \\
   \end{figure}
 \end{frame}
 
-\begin{frame}{\textsc{splinter} shared}
+\begin{frame}{HPC: \texttt{splinter} shared}
   \begin{figure}
     \begin{center}
       \shadowbox{\includegraphics[scale=0.4]{fig03.png}}
@@ -556,7 +689,7 @@ There is a very useful summary of Linux commands at: \\
   \end{figure}
 \end{frame}
 
-\begin{frame}{Workspaces I}
+\begin{frame}{HPC: Workspaces I}
 	\begin{block}{\texttt{/home/user\_name}}
 		\begin{itemize}
 			\item this is your home directory
@@ -575,7 +708,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{block}
 \end{frame}
 
-\begin{frame}{Workspaces II}
+\begin{frame}{HPC: Workspaces II}
 	\begin{block}{\texttt{/share/data1}}
 		\begin{itemize}
 			\item for storing large data
@@ -591,7 +724,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Login script}
+\begin{frame}{HPC: Login script}
 	\begin{itemize}
 		\item everytime you login this file will be executed
 		\item this file is in your \texttt{\$HOME}
@@ -608,7 +741,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{Examples}
 \end{frame}
 
-\begin{frame}[fragile]{Modules}
+\begin{frame}{HPC: Modules}
 	\begin{itemize}
 		\item easy and flexible way use software
 		\item available to everyone in splinter
@@ -641,7 +774,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{Examples}
 \end{frame}
 
-\begin{frame}[fragile]{Submitting jobs}
+\begin{frame}{HPC: Submitting jobs}
 	\begin{itemize}
 		\item computing jobs should be submitted to the scheduler
 		\item you will have to write a job script
@@ -674,7 +807,7 @@ There is a very useful summary of Linux commands at: \\
     \end{Examples}
 \end{frame}
 
-\begin{frame}{Queues}
+\begin{frame}{HPC: Queues}
 	\begin{itemize}
 		\item \texttt{compute}
 		\item \texttt{cores16}
@@ -683,7 +816,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Structure of a job script}
+\begin{frame}{HPC: Structure of a job script}
 	\texttt{\#!/bin/tcsh \\
 	\# PBS -q cores12 \\
 	\# PBS -N a\_name\_for\_your\_job \\
@@ -702,7 +835,7 @@ There is a very useful summary of Linux commands at: \\
         \end{block}	
 \end{frame}
 
-\begin{frame}{Jobscripts: things to remember}
+\begin{frame}{HPC: Jobscripts: things to remember}
 	\begin{itemize}
 		\item Submit the job to the right queue
 		\item Request the correct number of \texttt{nodes} and \texttt{ppn}
@@ -715,7 +848,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{More PBS commands}
+\begin{frame}{HPC: More PBS commands}
 	\begin{block}{Specify output}
 	    \texttt{PBS -o path/to/file.out}
         \end{block}
@@ -730,7 +863,7 @@ There is a very useful summary of Linux commands at: \\
         \end{block}                        
 \end{frame}
 
-\begin{frame}{Using \emph{Ganglia}}
+\begin{frame}{HPC: Using \emph{Ganglia}}
 	\url{http://splinter.star.ucl.ac.uk/ganglia/}
 
 	\begin{itemize}
@@ -741,7 +874,7 @@ There is a very useful summary of Linux commands at: \\
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Collaborative projects}
+\begin{frame}{HPC: Collaborative projects}
 	\begin{itemize}
 		\item collaboration between two splinter users
 		\item can share common data in \texttt{/share/data1/my\_collaboration}
@@ -750,7 +883,7 @@ There is a very useful summary of Linux commands at: \\
 \end{frame}
 
 
-\begin{frame}{Best practices}
+\begin{frame}{HPC: Best practices}
   \begin{itemize}
     \item Choose the machines that are suited for your problem
     \item Read the User Guide
@@ -762,7 +895,7 @@ There is a very useful summary of Linux commands at: \\
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Exercises}
+\begin{frame}{HPC: Exercises}
 	\url{https://github.com/Astrophysics-UCL/HPCInfo/tree/master/training/workshop_2016/}
 \end{frame}
 
