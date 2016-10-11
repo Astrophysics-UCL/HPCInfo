@@ -233,7 +233,7 @@
   \begin{itemize}
     \item{Everything is organised around files (which may be data files or program files i.e. instructions to be executed).}
     \item{Files live in directories. There is a hierarchical tree structure of directories.}
-    \item{Sample file name: /share/splinter/ucapwhi/des/foo.txt}
+    \item{Sample file name: \texttt{/share/splinter/ucapwhi/des/foo.txt}}
     \item{Note use of slash `/', not backslash `\textbackslash' as in Windows.}
     \item{Case sensitivity: `Foo' and `foo' are different strings.}
   \end{itemize}
@@ -258,8 +258,8 @@
 \begin{frame}{Linux: Environment variables}
   \begin{itemize}
     \item The operating system maintains a global namespace of `environment variables' to store configuration information.
-    \item Use \texttt{printenv} (in tcsh) or \texttt{set} (in bash) to see all environment variables; use \texttt{echo \$<variable\_name>} to see the value of one environment variable (e.g. \texttt{echo \$PATH}).
-    \item Use \texttt{setenv FOO my\_string} (in tcsh) or \texttt{export \$FOO=`my\_string'} (in bash) to set \texttt{FOO}.
+    \item Use \alert{\texttt{printenv}} (in tcsh) or \alert{\texttt{set}} (in bash) to see all environment variables; use \alert{\texttt{echo \$<variable\_name>}} to see the value of one environment variable (e.g. \alert{\texttt{echo \$PATH}}).
+    \item Use \alert{\texttt{setenv FOO my\_string}} (in tcsh) or \alert{\texttt{export \$FOO=`my\_string'}} (in bash) to set \texttt{FOO}.
     \item Variables \texttt{PATH} and \texttt{PYTHONPATH} are used frequently (to maintain lists of directories in which to search for executable programs and Python modules, respectively).
     \item Linux has no equivalent of the Windows Registry; configuration is done via the directory structure and the environment variables.
   \end{itemize}
@@ -470,7 +470,7 @@ There is a very useful summary of Linux commands at: \\
 \begin{frame}{Using Python on \texttt{splinter}}
   \begin{itemize}
     \item To initialize your \texttt{splinter} session so that it will use Python 2.7 and so that it can find all the necessary libraries, run: \\
-    \texttt{module~load~dev\_tools/oct2015/python-Anaconda-2-4.0.0}
+    \alert{\texttt{module~load~dev\_tools/oct2015/python-Anaconda-2-4.0.0}}
     \item This will set the necessary environment variables.
     \item We will explain in more detail later about the \texttt{module} command.
   \end{itemize}
@@ -479,7 +479,7 @@ There is a very useful summary of Linux commands at: \\
 % Note that frame must be fragile if we are using lstlisting.
 \begin{frame}[fragile]{Python: Interactive}
   \begin{itemize}
-    \item Begin an interactive Python session by calling \texttt{ipython}
+    \item Begin an interactive Python session by calling \alert{\texttt{ipython}}
     \item You can then type Python commands on successive lines, such as
   \end{itemize}
   \begin{lstlisting}
@@ -488,6 +488,21 @@ There is a very useful summary of Linux commands at: \\
         print a**2
         exit
   \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Python: Compiled}
+  \begin{itemize}
+
+  \item {Create a Python program by writing the code in a text file (say called my\_program.py).}
+  \item {Then execute it by calling \alert{\texttt{python~my\_program.py}}}
+  
+  \item {Even better:
+  \begin{itemize}
+   \item Put \alert{\texttt{\#!/usr/bin/env~python}} as the first line in my\_program.py
+   \item Then run \alert{\texttt{chmod +x~my\_program.py}}
+  \end{itemize}
+  Then you can execute the program via \alert{\texttt{./my\_program.py}}}
+  \end{itemize}
 \end{frame}
 
 
