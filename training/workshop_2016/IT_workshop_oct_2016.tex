@@ -266,9 +266,15 @@
 \end{frame}
 
 \begin{frame}{Linux: Environment variables}
+  \begin{itemize}
+    \item The operating system maintains a global namespace of `environment variables' to store configuration information.
+    \item Use \texttt{printenv} (in tcsh) or \texttt{set} (in bash) to see all environment variables; use \texttt{echo \$<variable\_name>} to see the value of one environment variable (e.g. \texttt{echo \$PATH}).
+    \item Use \texttt{setenv FOO my\_string} (in tcsh) or \texttt{export \$FOO=`my\_string'} (in bash) to set \texttt{FOO}.
+    \item Variables \texttt{PATH} and \texttt{PYTHONPATH} are used frequently (to maintain lists of directories in which to search for executable programs and Python modules, respectively).
+    \item Linux has no equivalent of the Windows Registry; configuration is done via the directory structure and the environment variables.
 
+  \end{itemize}
 
-TODO
 \end{frame}
 
 
