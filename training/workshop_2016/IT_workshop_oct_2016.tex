@@ -10,6 +10,7 @@
 \usepackage{tikz} % Diagrams
 \usepackage{color}
 
+\iffalse
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
   breaklines=true,
@@ -24,8 +25,11 @@
   stringstyle=\color{orange},
   deletekeywords={login}, % Needed to prevent spurious colouring of `login' where it appears in `splinter-login'.
 }
-
 \lstset{style=customc}
+\fi
+\lstset{language=Python}
+
+
 
 \usetheme{boxes}
 \usecolortheme{beaver}
@@ -493,7 +497,7 @@ There is a very useful summary of Linux commands at: \\
 \begin{frame}{Python: Compiled}
   \begin{itemize}
 
-  \item {Create a Python program by writing the code in a text file (say called my\_program.py).}
+  \item {Create a Python program by writing code in a text file (say called my\_program.py).}
   \item {Then execute it by calling \alert{\texttt{python~my\_program.py}}}
   
   \item {Even better:
@@ -503,6 +507,32 @@ There is a very useful summary of Linux commands at: \\
   \end{itemize}
   Then you can execute the program via \alert{\texttt{./my\_program.py}}}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Python: sample program}
+  \begin{lstlisting}
+  #!/usr/bin/env python
+  # Use the `#' to indicate a comment
+  
+  # Import library and give it a 
+  # short name for convenience
+  import numpy as np
+  
+  
+  a = np.arange(10) # The array 0, 1, ..., 9
+  b = f(a) # f is a subroutine defined below
+  print b
+  
+  def f(x): 
+      # The whitespace at the beginning
+      # of the next line is crucial.
+      return x**2 
+  
+  
+  
+  
+  \end{lstlisting}
+
 \end{frame}
 
 
