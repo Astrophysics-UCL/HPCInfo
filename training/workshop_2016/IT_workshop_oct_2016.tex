@@ -254,6 +254,19 @@
   \end{table}
 \end{frame}
 
+
+\begin{frame}{Linux: Environment variables}
+  \begin{itemize}
+    \item The operating system maintains a global namespace of `environment variables' to store configuration information.
+    \item Use \texttt{printenv} (in tcsh) or \texttt{set} (in bash) to see all environment variables; use \texttt{echo \$<variable\_name>} to see the value of one environment variable (e.g. \texttt{echo \$PATH}).
+    \item Use \texttt{setenv FOO my\_string} (in tcsh) or \texttt{export \$FOO=`my\_string'} (in bash) to set \texttt{FOO}.
+    \item Variables \texttt{PATH} and \texttt{PYTHONPATH} are used frequently (to maintain lists of directories in which to search for executable programs and Python modules, respectively).
+    \item Linux has no equivalent of the Windows Registry; configuration is done via the directory structure and the environment variables.
+  \end{itemize}
+\end{frame}
+
+
+
 \begin{frame}{Linux: Structure of commands}
   \begin{block}{Structure}
     \texttt{[command] -[option(s)] [argument]}
@@ -264,19 +277,6 @@
      cp hello.cpp new\_hello.cpp} \\
   \end{Examples}
 \end{frame}
-
-\begin{frame}{Linux: Environment variables}
-  \begin{itemize}
-    \item The operating system maintains a global namespace of `environment variables' to store configuration information.
-    \item Use \texttt{printenv} (in tcsh) or \texttt{set} (in bash) to see all environment variables; use \texttt{echo \$<variable\_name>} to see the value of one environment variable (e.g. \texttt{echo \$PATH}).
-    \item Use \texttt{setenv FOO my\_string} (in tcsh) or \texttt{export \$FOO=`my\_string'} (in bash) to set \texttt{FOO}.
-    \item Variables \texttt{PATH} and \texttt{PYTHONPATH} are used frequently (to maintain lists of directories in which to search for executable programs and Python modules, respectively).
-    \item Linux has no equivalent of the Windows Registry; configuration is done via the directory structure and the environment variables.
-
-  \end{itemize}
-
-\end{frame}
-
 
 \begin{frame}{Linux: command reference}
 There is a very useful summary of Linux commands at: \\
@@ -454,7 +454,7 @@ There is a very useful summary of Linux commands at: \\
 
 
 \begin{frame}{Python for Astrophysicists}
-  \begin{block}{Use Python plus the following libraries:}
+  \begin{block}{Use Python plus the following add-in libraries:}
     \begin{itemize}
       \item Numpy: array processing for numbers and strings
       \item Scipy: scientific library
@@ -462,9 +462,34 @@ There is a very useful summary of Linux commands at: \\
       \item Matplotlib: plotting
     \end{itemize}
   \end{block}
-  \begin{block}{All of these libraries (plus many others) are available in one package called Anaconda \url{https://www.continuum.io/downloads}.}
+  \begin{block}{All of these libraries (plus many others) are available in one package called Anaconda:}
+    \url{https://www.continuum.io/downloads}.
   \end{block}
 \end{frame}
+
+\begin{frame}{Using Python on \texttt{splinter}}
+  \begin{itemize}
+    \item To initialize your \texttt{splinter} session so that it will use Python 2.7 and so that it can find all the necessary libraries, run: \\
+    \texttt{module~load~dev\_tools/oct2015/python-Anaconda-2-4.0.0}
+    \item This will set the necessary environment variables.
+    \item We will explain in more detail later about the \texttt{module} command.
+  \end{itemize}
+\end{frame}
+
+% Note that frame must be fragile if we are using lstlisting.
+\begin{frame}[fragile]{Python: Interactive}
+  \begin{itemize}
+    \item Begin an interactive Python session by calling \texttt{ipython}
+    \item You can then type Python commands on successive lines, such as
+  \end{itemize}
+  \begin{lstlisting}
+        print 2+2
+        a = 7
+        print a**2
+        exit
+  \end{lstlisting}
+\end{frame}
+
 
 \begin{frame}{Python}
   \begin{block}{Dictionaries}
