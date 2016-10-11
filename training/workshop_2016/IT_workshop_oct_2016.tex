@@ -461,53 +461,67 @@ There is a very useful summary of Linux commands at: \\
 \end{frame}
 
 \begin{frame}{Python}
+  \fontsize{11pt}{11}\selectfont
   \begin{block}{Dictionaries}
-  
+  	Useful to do key-value mapping and can be created using \texttt{dict()} \\
+  	Can access keys using \texttt{dictionary.keys()} and values using \texttt{dictionary.values()} or \texttt{dictionary[key]}
   \end{block}
-  \begin{block}{Functions}
-
+  \begin{block}{Functions} 
+       \texttt{def function\_name(arg1, arg\_vol=1, *args, **kwargs):} \\
+       \texttt{arg\_vol=} is a voluntary argument, and if you don't want to specify the number of arguments use \texttt{*args} for a list of arguments and \texttt{**kwargs} for a dictionary, for example: \\
+       \texttt{function\_name(''HelloWorld'', *[1, 2, 3], **\{''foo'':''bar''\})}
   \end{block}
   \begin{block}{Classes}
-
+       Can create objects with functions, but must initialise the arguments \\
+       \texttt{class class\_name:} \\
+       \texttt{def \_\_init\_\_(self, arg):} \\
+       \texttt{self.argument = arg}
   \end{block}
 \end{frame}
 
 \begin{frame}{NumPy}
+  \fontsize{9pt}{9}\selectfont
   \begin{block}{NumPy Arrays}
-  TODO. Don't forget to mention slicing.
+      Can create NumPy arrays in many ways; \texttt{np.array([])}, \texttt{np.empty(())}, \texttt{np.zeros([])}, \texttt{np.ones([])}, \texttt{np.arange()}, \texttt{np.linspace()}, ...
   \end{block}
   \begin{block}{Basic Statistics}
+     \texttt{np.mean()}, \texttt{np.median()}, \texttt{np.min()}, \texttt{np.max()}, \texttt{np.std()}, \texttt{np.argmin()}, \texttt{np.argmax()}
   \end{block}
-  \begin{block}{Slicing}
-
-  \end{block}
+  \begin{block}{Shape Manipulation}
+    Can change arrays to be different shapes and size; \texttt{np.reshape()}, \texttt{np.flatten()}, \texttt{np.shape()}, array slicing (next slide...)
+  \end{block}    
   \begin{block}{Sorting}
-
+     Can use \texttt{np.sort()} to sort arrays along different axes, and \texttt{np.argsort()} to return the arguments of the sorted arrays
   \end{block}    
   \begin{block}{I/O}
-
+     Can use \texttt{np.loadtxt()} and \texttt{np.genfromtxt()} to get values from a data files. Can choose data type, delimiter, to skip header/footer/rows, to unpack the data into multiple variables, etc. 
   \end{block}     
-  matrices?, masked arrays?
 \end{frame}
 
-\begin{frame}{Scipy/Astropy}
-  \begin{block}{Constants}
+\begin{frame}{Array Slicing}
+    \texttt{a = np.arange(60).reshape(6,10)[:,0:6]} \\
+    \includegraphics[scale=0.45]{slicing.png}
+\end{frame}
 
+\begin{frame}{Scipy/Astropy/PyFITS/SymPy}
+  \fontsize{8pt}{8}\selectfont
+  \begin{block}{Constants and Conversions}
+     For example: \texttt{scipy.constants.c, scipy.constants.hbar, scipy.constants.lambda2nu(550*scipy.constants.nano)}
   \end{block}
   \begin{block}{More Stats}
-
+     Various stats tool using \texttt{scipy.stats}, such as calculating mean, variance, skew, and probability and cumulative density functions
   \end{block}
-  \begin{block}{Fitting}
-
+  \begin{block}{Optimising and Fitting}
+      Can use \texttt{scipy.optimize} to find minima (\texttt{.fmin\_bfgs}), find roots of a function (\texttt{.fsolve}), and fitting (\texttt{.curve\_fit})
   \end{block}  
   \begin{block}{PyFits}
-
+      Using \texttt{pyfits}, can import (\texttt{.open()}), read (\texttt{.info()}/\texttt{.header()}), and write (\texttt{.PrimaryHDU()} and \texttt{.writeto()}) FITS files 
   \end{block}  
   \begin{block}{World Coordinate Systems}
-
+      Can find the RA and Dec of pixels using \texttt{astropy.wcs.WCS} and convert RA and Dec to pixels using \texttt{astropy.wcs.wcs\_sky2pix()}
   \end{block}
   \begin{block}{Symbolic Calculus}
-    Differentiation, Integration, Linear Algebra, Series Expansion, Equation Simplifying using the \texttt{sympy} module
+    Differentiation, Integration, Linear Algebra, Series Expansion, and Equation Simplifying using \texttt{sympy}
   \end{block}
 \end{frame}
 
@@ -540,20 +554,21 @@ There is a very useful summary of Linux commands at: \\
   \end{itemize} 
 \end{frame}
 
-\begin{frame}{Matplotlib}
+\begin{frame}{Matplotlib Features}
+  \fontsize{11pt}{11}\selectfont
   \begin{block}{Different Plotting Styles}
-     Can edit marker style, colour, and edge colour, errorbar style and colour, and can annotate plots with text and arrows. \\
-     Can edit marker size and opaqueness, and can plot in polar and World Coordinate System coordinates (with the help of \texttt{astropy}).
+     Can edit marker style, colour, edge colour, size and opaqueness, errorbar style and colour, can annotate plots with text and arrows, and can include colour maps and bars. \\
+     Can plot in polar and World Coordinate System coordinates (with the help of \texttt{astropy}).
   \end{block}
   \begin{block}{Image Plotting}
      Can read and plot an image using \texttt{matplotlib.cbook} and \texttt{plt.imshow}
   \end{block}
   \begin{block}{Multiple Subplots}
-
+     Using \texttt{plt.subplot()} you can create multiple subplots, for example the following creates two side-by-side subplots that share x and y axes:\\
+     \texttt{plt.subplots\_adjust(hspace=0.5)} \\
+     \texttt{ax1 = plt.subplot(121)} \\
+     \texttt{ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)}
   \end{block}
-  \begin{block}{Contour?}
-
-  \end{block}  
 \end{frame}
 
 
@@ -610,6 +625,8 @@ There is a very useful summary of Linux commands at: \\
   \end{block}
   \begin{block}{IRAF}
   \end{block}
+  \begin{block}{SExtractor/SWrap}
+  \end{block}
 \end{frame}
 
 \begin{frame}{DS9}
@@ -645,8 +662,17 @@ There is a very useful summary of Linux commands at: \\
   \end{block}
 \end{frame}
 
-\begin{frame}{SExtractor}
-
+\begin{frame}{SExtractor/Swarp}
+  \begin{block}{Features}
+   \begin{itemize}
+    \item{\textit{''SExtractor is a program that builds a catalogue of objects from an astronomical image. Although it is particularly oriented towards reduction of large scale galaxy-survey data, it can perform reasonably well on moderately crowded star fields.''}}
+    \item{\textit{''SWarp is a program that resamples and co-adds together FITS images using any arbitrary astrometric projection defined in the WCS standard.''}}
+   \end{itemize}
+  \end{block}
+  \begin{block}{SExtractor \& SWarp Websites}
+    \url{http://www.astromatic.net/software/sextractor}\\
+    \url{http://www.astromatic.net/software/swarp}
+  \end{block}
 \end{frame}
 
 \begin{frame}{CosmoSIS}
