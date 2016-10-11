@@ -536,22 +536,29 @@ There is a very useful summary of Linux commands at: \\
 \end{frame}
 
 
-\begin{frame}{Python}
-  \fontsize{11pt}{11}\selectfont
+\begin{frame}[fragile]{Python}
+  \fontsize{10pt}{10}\selectfont
   \begin{block}{Dictionaries}
   	Useful to do key-value mapping and can be created using \texttt{dict()} \\
   	Can access keys using \texttt{dictionary.keys()} and values using \texttt{dictionary.values()} or \texttt{dictionary[key]}
   \end{block}
-  \begin{block}{Functions} 
-       \texttt{def function\_name(arg1, arg\_vol=1, *args, **kwargs):} \\
-       \texttt{arg\_vol=} is a voluntary argument, and if you don't want to specify the number of arguments use \texttt{*args} for a list of arguments and \texttt{**kwargs} for a dictionary, for example: \\
-       \texttt{function\_name(''HelloWorld'', *[1, 2, 3], **\{''foo'':''bar''\})}
+  \begin{block}{Functions}
+       \begin{lstlisting} 
+def function_name(arg1, arg_vol=1, *args, **kwargs):
+       \end{lstlisting}
+       \texttt{arg\_vol=} is a voluntary argument, and if you don't want to specify the number of arguments use \texttt{*args} for a list of arguments and \texttt{**kwargs} for a dictionary, for example:
+       \begin{lstlisting}
+function_name(``HelloWorld'', *[1, 2, 3], 
+    **{``foo'':''bar''})
+       \end{lstlisting}
   \end{block}
   \begin{block}{Classes}
-       Can create objects with functions, but must initialise the arguments \\
-       \texttt{class class\_name:} \\
-       \texttt{def \_\_init\_\_(self, arg):} \\
-       \texttt{self.argument = arg}
+       Can create objects with functions, but must initialise the arguments:
+       \begin{lstlisting}
+class class_name:
+    def __init__(self, arg):
+        self.argument = arg
+       \end{lstlisting} 
   \end{block}
 \end{frame}
 
@@ -630,7 +637,7 @@ There is a very useful summary of Linux commands at: \\
   \end{itemize} 
 \end{frame}
 
-\begin{frame}{Matplotlib Features}
+\begin{frame}[fragile]{Matplotlib Features}
   \fontsize{11pt}{11}\selectfont
   \begin{block}{Different Plotting Styles}
      Can edit marker style, colour, edge colour, size and opaqueness, errorbar style and colour, can annotate plots with text and arrows, and can include colour maps and bars. \\
@@ -641,9 +648,11 @@ There is a very useful summary of Linux commands at: \\
   \end{block}
   \begin{block}{Multiple Subplots}
      Using \texttt{plt.subplot()} you can create multiple subplots, for example the following creates two side-by-side subplots that share x and y axes:\\
-     \texttt{plt.subplots\_adjust(hspace=0.5)} \\
-     \texttt{ax1 = plt.subplot(121)} \\
-     \texttt{ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)}
+     \begin{lstlisting}
+plt.subplots_adjust(hspace=0.5)
+ax1 = plt.subplot(121)
+ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
+     \end{lstlisting}
   \end{block}
 \end{frame}
 
@@ -1022,6 +1031,52 @@ There is a very useful summary of Linux commands at: \\
 
 \begin{frame}{HPC: Exercises}
 	\url{https://github.com/Astrophysics-UCL/HPCInfo/tree/master/training/workshop_2016/}
+\end{frame}
+
+\begin{frame}[fragile]{Extra Slides - Python Examples}
+  \fontsize{10pt}{10}\selectfont
+  \begin{lstlisting}
+dc = dict(a=1, b=''Hello World'', c=(1, 2, 3))
+print dc.keys(), dc.values(), dc[''b'']
+
+def my_first_func(arg1, arg_vol=1, *args, **kwargs):
+    print arg1, arg_vol
+    for a in args:
+        print a
+    for key, value in kwargs.iteritems():
+        print key, value
+
+class my_first_class:
+    def __init__(self, arg):
+        self.argument = arg
+
+    def print_arg(self):
+        return self.argument
+
+instance = my_first_class(42)
+print instance.method()
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Extra Slides - NumPy Examples}
+  \fontsize{10pt}{10}\selectfont
+  \begin{lstlisting}
+
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Extra Slides - Scipy/Astropy/PyFITS/SymPy Examples}
+  \fontsize{10pt}{10}\selectfont
+  \begin{lstlisting}
+
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Extra Slides - Matplotlb Examples}
+  \fontsize{10pt}{10}\selectfont
+  \begin{lstlisting}
+
+  \end{lstlisting}
 \end{frame}
 
 \end{document}
