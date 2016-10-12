@@ -438,7 +438,7 @@ There is a very useful summary of Linux commands at: \\
 \begin{frame}{Python}
   \begin{block}{Python has become popular:}
     \begin{itemize}
-      \item Good trade-off between easy-of-use and performance
+      \item Good trade-off between ease-of-use and performance
       \item Many add-in libraries, so sophisticated programs can often be built easily [\url{https://xkcd.com/353/].}
     \end{itemize}
   \end{block}
@@ -498,14 +498,14 @@ There is a very useful summary of Linux commands at: \\
   \begin{itemize}
 
   \item {Create a Python program by writing code in a text file (say called my\_program.py).}
-  \item {Then execute it by calling \alert{\texttt{python~my\_program.py}}}
+  \item {Then execute the program by calling \alert{\texttt{python~my\_program.py}}}
   
   \item {Even better:
   \begin{itemize}
    \item Put \alert{\texttt{\#!/usr/bin/env~python}} as the first line in my\_program.py
-   \item Then run \alert{\texttt{chmod +x~my\_program.py}}
+   \item Run \alert{\texttt{chmod +x~my\_program.py}}
   \end{itemize}
-  Then you can execute the program via \alert{\texttt{./my\_program.py}}}
+  Then execute the program by calling \alert{\texttt{./my\_program.py}}}
   \end{itemize}
 \end{frame}
 
@@ -637,6 +637,25 @@ class class_name:
   \end{itemize} 
 \end{frame}
 
+
+
+% Note that frame must be fragile if we are using lstlisting.
+\begin{frame}[fragile]{Matplotlib example}
+  \begin{lstlisting}
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+  
+    x = np.arange(0, 2*np.pi, 0.1)
+    y = np.sin(x)
+  
+    plt.figure()
+    plt.scatter(x, y) # Or plt.plot...
+    plt.show()
+  
+  \end{lstlisting}
+\end{frame}
+
 \begin{frame}[fragile]{Matplotlib Features}
   \fontsize{11pt}{11}\selectfont
   \begin{block}{Different Plotting Styles}
@@ -657,25 +676,21 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \end{frame}
 
 
-% Note that frame must be fragile if we are using lstlisting.
-\begin{frame}[fragile]{Matplotlib example}
-  \begin{lstlisting}
+\begin{frame}{Matplotlib exercise}
 
-    import numpy as np
-    import matplotlib.pyplot as plt
-  
-    x = np.arange(0, 2*np.pi, 0.1)
-    y = np.sin(x)
-  
-    plt.figure()
-    plt.plot(x, y)
-    plt.show()
-  
-  \end{lstlisting}
-\end{frame}
+  \begin{itemize}
 
-
-\begin{frame}{Example program}
+  \item Use the SDSS data file (compressed FITS format) \texttt{/share/splinter/ucapwhi/Linux\_training/demo.fits.gz}.
+  
+  \item Use the pyfits library (\texttt{import astropy.io.fits as pyfits}) to manipulate file columns as numpy arrays.
+  
+  \item Use the \texttt{open} command to get a handle to the file (\texttt{h = pyfits.open(...)}). Then get e.g. the \texttt{Foo} column via \texttt{x = h[1].data.field[`Foo']}.
+  
+  \item Create a scatter plot of r-band absolute magnitude (\texttt{`rMAG'}) versus distance (\texttt{`Dist'}). Is the data set flux-limited or volume-limited?
+  
+  \item Make a map by scatter-plotting declination (\texttt{`DEdeg'}) versus right ascension (\texttt{`RAdeg'}). Use small dots. Why is the density lower at the top? Why should the plot really be flipped left/right?
+  
+  \end{itemize}
 
 \end{frame}
 
