@@ -1,14 +1,14 @@
 Linux Exercises
 ===============
 
-### 1. Go to your home directory and create a directory called `linux_hpc_workshop`.
+### 1. Go to your home directory and create a directory called `level_0`.
 
     $ cd ~
-    $ mkdir linux_hpc_workshop
+    $ mkdir level_0
 
-### 2. Change directory to `linux_hpc_workshop`.
+### 2. Change directory to `level_0`.
 
-    $ cd linux_hpc_workshop
+    $ cd level_0
 
 ### 3. Find the name of the present working directory.
 
@@ -16,7 +16,7 @@ Linux Exercises
 
 ### 4. Make a directory `level_1`, and move to it.
 
-    $ mkdir -p level_1
+    $ mkdir level_1
     $ cd level_1
 
 ### 5. Create a file called `foo.txt` with contents `This file contains the word bar`.
@@ -31,7 +31,7 @@ Linux Exercises
 
     $ more foo.txt
 
-### 8. Search for the phrase bar in `foo.txt`.
+### 8. Search for the word bar in `foo.txt`.
 
     $ grep "bar" foo.txt
 
@@ -44,28 +44,27 @@ Linux Exercises
 
     $ which python
 
-### 11. Find the value the environment variable `PATH` and `LD\_LIBRARY\_PATH`.
+### 11. Find the values of the environment variables `PATH` and `LD\_LIBRARY\_PATH`.
 
     $ echo $PATH
     $ echo $LD_LIBRARY_PATH
 
-### 12. Set the environment variable `MY_LINUX_HPC_VAR` to equal the absolute path to `linux_hpc_workshop`.
+### 12. Set the environment variable `MY_VAR` to equal the absolute path to `level_0`, and test that it has worked OK.
 
-    $ setenv MY_LINUX_HPC_VAR $PWD
-    $ echo $MY_LINUX_HPC_VAR
+    $ setenv MY_VAR $PWD
+    $ echo $MY_VAR
 
-### 13. Add (i.e append) to the `PATH` the absolute path to `linux_hpc_workshop`.
+### 13. Add (i.e append) to the `PATH` the absolute path to `level_0`, and test that it has worked OK.
 
-    $ export PATH=${PATH}:${PWD}
     $ setenv PATH ${PATH}:${PWD}
-    $ echo ${PATH}
+    $ echo $PATH
 
-### 14. Use the man command to find the option of `ls` that shows the output in Kilobyte,Megabyte.
+### 14. Use the man command to find the option of `ls` that shows file sizes in human readable format.
 
     $ man ls
     ## the answer is ls -lh
 
-### 15. Find hostname,processor type,operating system version and write this info into a text file called `info.txt`.
+### 15. Find the hostname, processor type & operating system version and write this info into a text file called `info.txt`.
 
     $ uname -a > info.txt
 
@@ -73,7 +72,7 @@ Linux Exercises
 
     # who
 
-### 17. Find the process that is taking most of the CPU at the moment.
+### 17. Find the process that is using the most CPU at the moment.
 
     # top
 
