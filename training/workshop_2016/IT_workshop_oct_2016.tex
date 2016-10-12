@@ -89,6 +89,9 @@
     \item HPC best practices
     \end{itemize}
   \end{block}
+  
+  \begin{block}{A further session on 27 October will cover machine learning using Python.}
+  \end{block}
 
 \end{frame}
 
@@ -363,54 +366,26 @@ There is a very useful summary of Linux commands at: \\
 \end{frame}
 
 
-\begin{frame}{Linux: Exercises 1}
-  \fontsize{8pt}{8}\selectfont
+\begin{frame}[allowframebreaks,t]{Linux: Exercises}
   \begin{enumerate}
     \item Go to your home directory and create a directory called \texttt{linux\_hpc\_workshop}.
     \item Change directory to \texttt{linux\_hpc\_workshop}.
     \item Find the name of the present working directory.
-    \item Make a directory \texttt{level\_1/level\_2}, and move to \texttt{level\_1/level\_2} in one command.
-    \item Move back to the previous directory.
-    \item Remove the directory \texttt{level\_1} (and its contents).
-    \item In the current directory make a symbolic link to \texttt{usr/lib} called \texttt{my\_sybolic\_link}.
-    \item Create a file called \texttt{foo.txt} with contents ``This file contains the word foo''.
+    \item Make a directory \texttt{level\_1}, and move to it.
+    \item Create a file called \texttt{foo.txt} with contents ``This file contains the word bar''.
     \item Add another line in \texttt{foo.txt} with contents ``This is the second line''.
-    \item Check to see if it worked.
-    \item Search for the phrase \emph{foo} in \texttt{foo.txt}.
-  \end{enumerate}
-\end{frame}
-
-
-\begin{frame}{Linux: Exercises 2}
-  \fontsize{8pt}{8}\selectfont
-  \begin{enumerate}
+    \item Print the contents of \texttt{foo.txt} to the screen.
+    \item Search for the word \emph{bar} in \texttt{foo.txt}.
+    \item Go up one level, then remove the directory \texttt{level\_1} (and its contents).
     \item Find the location of your python installation.
-    \item Find the installation location(s) of \texttt{liblapack.a}.
-    \item Find whether an object \texttt{daxpy} is in \texttt{liblapack.a}.
     \item Find the value the environment variable \texttt{PATH} and \texttt{LD\_LIBRARY\_PATH}.
     \item Set the environment variable \texttt{MY\_LINUX\_HPC\_VAR} to equal the absolute path to \texttt{linux\_hpc\_workshop}.
     \item Add (i.e append) to the \texttt{PATH} the absolute path to \texttt{linux\_hpc\_workshop}.
-    \item Use the \textit{source} command do the last two steps from source file.
     \item Use the \textit{man} command to find the option of \texttt{ls} that shows the output in Kilobyte,Megabyte.
-  \end{enumerate}
-\end{frame}
-
-\begin{frame}{Linux: Exercises 3}
-  \fontsize{8pt}{8}\selectfont
-  \begin{enumerate}
     \item Find hostname, processor type and operating system version and write this info into a text file called \texttt{info.txt}.
     \item List the people who are currently logged into the system.
-    \item Find the process that is taking most of the CPU at the moment.
+    \item Find which process is using most of the CPU at the moment.
     \item Find the IDs of the processes that you are running.
-    \item Make a directory called \texttt{to\_be\_compressed}. Add the files \texttt{hello.cpp} and \texttt{hello.py} in this dir.
-    Then compress this directory using \textit{tar} and \textit{zip}.
-    \item Delete the directory \texttt{to\_be\_compressed} and extract the files from \texttt{to\_be\_compressed.tar.gz}.
-    \item Use \textit{wget} to download files from \url{ftp://heasarc.gsfc.nasa.gov/software/fitsio/c/cfitsio3370.tar.gz}.
-    \item Find the size of the item you just downloaded in MB.
-    \item Extract all files from this downloaded archive file.
-    \item In the extracted files, find all occurrences of \texttt{ffopentest} in all the files with extension \texttt{.h}.
-    \item Remove all the files with extension \texttt{.h}.
-    \item Copy the files with extension \texttt{.c} into a new directory \texttt{c\_files}.
   \end{enumerate}
 \end{frame}
 
