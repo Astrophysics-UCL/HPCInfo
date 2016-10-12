@@ -1,3 +1,6 @@
+Linux Exercises
+===============
+
 ### 1. Go to your home directory and create a directory called `linux_hpc_workshop`.
 
     $ cd ~
@@ -79,7 +82,28 @@
   # ps -U your_user_name
 
 
+Matplotlib exercise
+===================
 
+
+
+	import numpy as np
+	import astropy.io.fits as pyfits
+	import matplotlib.pyplot as plt
+
+	h = pyfits.open("/share/splinter/ucapwhi/Linux_training/demo.fits.gz")
+
+	plt.scatter(h[1].data.field("rMAG"), h[1].data.field("Dist"))
+	plt.show()
+
+
+	plt.scatter(h[1].data.field("RAdeg"), h[1].data.field("DEdeg"), s=1)
+	plt.show()
+
+
+First plot: Dimmer objects are to the right. The straight top and right edges show that a larger data set has been filtered by distance and absolute magnitude, to give a sample that is complete (all objects of at least a certain brightness within a certain distance).
+
+Second plot: The lower density at the top is just a projection effect - the RA/DEC projection doesn't properly represent area on the celestial sphere. Also, RA on the sky increases from right to left.
 
 
 
