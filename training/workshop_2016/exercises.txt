@@ -1,0 +1,86 @@
+### 1. Go to your home directory and create a directory called `linux_hpc_workshop`.
+
+    $ cd ~
+    $ mkdir linux_hpc_workshop
+
+### 2. Change directory to `linux_hpc_workshop`.
+
+    $ cd linux_hpc_workshop
+
+### 3. Find the name of the present working directory.
+
+    $ pwd
+
+### 4. Make a directory `level_1`, and move to it.
+
+    $ mkdir -p level_1
+    $ cd level_1
+
+### 5. Create a file called `foo.txt` with contents `This file contains the word bar`.
+
+    $ echo "This file contains the word bar" > foo.txt
+
+### 6. Add another line in `foo.txt` with contents `This is the second line`.
+
+    $ echo "This is the second line" >> foo.txt
+
+### 7. Print the contents of foo.txt to the screen.
+
+    $ more foo.txt
+
+### 8. Search for the phrase bar in `foo.txt`.
+
+    $ grep "bar" foo.txt
+
+### 9. Go up one level, then remove the directory `level_1` (and its contents).
+
+    $ cd ..
+    $ rm -r level_1
+
+### 10. Find the location of your python installation.
+
+    $ which python
+
+### 11. Find the value the environment variable `PATH` and `LD\_LIBRARY\_PATH`.
+
+    $ echo $PATH
+    $ echo $LD_LIBRARY_PATH
+
+### 12. Set the environment variable `MY_LINUX_HPC_VAR` to equal the absolute path to `linux_hpc_workshop`.
+
+    $ setenv MY_LINUX_HPC_VAR $PWD
+    $ echo $MY_LINUX_HPC_VAR
+
+### 13. Add (i.e append) to the `PATH` the absolute path to `linux_hpc_workshop`.
+
+    $ export PATH=${PATH}:${PWD}
+    $ setenv PATH ${PATH}:${PWD}
+    $ echo ${PATH}
+
+### 14. Use the man command to find the option of `ls` that shows the output in Kilobyte,Megabyte.
+
+    $ man ls
+    ## the answer is ls -lh
+
+### 15. Find hostname,processor type,operating system version and write this info into a text file called `info.txt`.
+
+    $ uname -a > info.txt
+
+### 16. List the people who are logged into the system.
+
+    # who
+
+### 17. Find the process that is taking most of the CPU at the moment.
+
+    # top
+
+### 18. Find the IDs of the processes that you are running.
+
+  # ps -U your_user_name
+
+
+
+
+
+
+
