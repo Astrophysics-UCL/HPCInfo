@@ -51,12 +51,14 @@ Linux Exercises
 
 ### 12. Set the environment variable `MY_VAR` to equal the absolute path to `level_0`, and test that it has worked OK.
 
-    $ setenv MY_VAR $PWD (tcsh) or ... (bash)
+    $ setenv MY_VAR $PWD (tcsh) or
+    $ export $MYVAR=$PWD (bash)
     $ echo $MY_VAR
 
 ### 13. Add (i.e append) to the `PATH` the absolute path to `level_0`, and test that it has worked OK.
 
-    $ setenv PATH ${PATH}:${PWD} (tcsh) or ... (bash)
+    $ setenv PATH ${PATH}:$PWD (tcsh) or
+    $ export PATH=${PATH}:$PWD (bash)
     $ echo $PATH
 
 ### 14. Use the man command to find the option of `ls` that shows file sizes in human readable format.
