@@ -10,25 +10,7 @@
 \usepackage{tikz} % Diagrams
 \usepackage{color}
 
-\iffalse
-\lstdefinestyle{customc}{
-  belowcaptionskip=1\baselineskip,
-  breaklines=true,
-  %frame=L,
-  xleftmargin=\parindent,
-  language=bash,
-  showstringspaces=false,
-  basicstyle=\footnotesize\ttfamily,
-  keywordstyle=\bfseries\color{green!40!black},
-  commentstyle=\itshape\color{purple!40!black},
-  identifierstyle=\color{blue},
-  stringstyle=\color{orange},
-  deletekeywords={login}, % Needed to prevent spurious colouring of `login' where it appears in `splinter-login'.
-}
-\lstset{style=customc}
-\fi
-\lstset{language=Python}
-
+\lstset{language=Python} % Format listings as appropriate for Python. Inexplicably we get problems if the language is set as part of the \begin{lstlisting} command.
 
 
 \usetheme{boxes}
@@ -619,13 +601,14 @@ class class_name:
     \item Powerful plotting library. See \url{http://matplotlib.org/gallery.html} for range of examples.
     \item Two interfaces: one similar to MATLAB (for interactive use; relies on global state), and one object-oriented. Typically the latter is to be preferred.
     \item Read the introduction at \url{http://matplotlib.org/faq/usage_faq.html} as this clarifies many points of terminology and usage.
+    \item Alas the documentation could be better. StackOverflow clarifies many of the more subtle points.
   \end{itemize} 
 \end{frame}
 
 
 
 % Note that frame must be fragile if we are using lstlisting.
-\begin{frame}[fragile]{Matplotlib example}
+\begin{frame}[fragile]{Matplotlib Example}
   \begin{lstlisting}
 
     import numpy as np
@@ -644,11 +627,13 @@ class class_name:
 \begin{frame}[fragile]{Matplotlib Features}
   \fontsize{11pt}{11}\selectfont
   \begin{block}{Different Plotting Styles}
-     Can edit marker style, colour, edge colour, size and opaqueness, errorbar style and colour, can annotate plots with text and arrows, and can include colour maps and bars. \\
+     Can edit marker style, colour, edge colour, size and opaqueness, errorbar style and colour. \\
+     Can annotate plots with text and arrows. \\
+     Can include colour maps and bars (see next slide). \\
      Can plot in polar and World Coordinate System coordinates (with the help of \texttt{astropy}).
   \end{block}
   \begin{block}{Image Plotting}
-     Can read and plot an image using \texttt{matplotlib.cbook} and \texttt{plt.imshow}
+     Can read and plot an image using \texttt{matplotlib.cbook} and \texttt{plt.imshow}. Beware of orientation!
   \end{block}
   \begin{block}{Multiple Subplots}
      Using \texttt{plt.subplot()} you can create multiple subplots, for example the following creates two side-by-side subplots that share x and y axes:\\
@@ -660,8 +645,19 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
   \end{block}
 \end{frame}
 
+\begin{frame}{Matplotlib Colormaps}
+  \begin{itemize}
+    \item Plotting mutiple-dimensional data is hard. You can use colour to indicate one of the data dimensions e.g. a contour map with colour shading for elevation above and below sea level.
+    \item This requires a mapping (a `colormap') that associates a colour with each data value.
+    \item The Matplotlib default way of doing this is `rainbow': map data values to wavelength (between `red' and `blue'). This is simple, elegant, physically well-motivated...
+    \item ... but suboptimal in practice (because human perception of colour is complicated and involves non-linearities).
+    \item Don't use the default colormap; instead, explicitly specify an alternative (there are many to choose from or you can define your own). See also http://www.research.ibm.com/people/l/lloydt/color/color.HTM.
+  \end{itemize}
 
-\begin{frame}{Matplotlib exercise}
+\end{frame}
+
+
+\begin{frame}{Matplotlib Exercise}
 
   \begin{itemize}
 
@@ -680,7 +676,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \end{frame}
 
 
-\begin{frame}{Matplotlib exercise - \texttt{BONUS ROUND}}
+\begin{frame}{Matplotlib Exercise - \texttt{BONUS ROUND}}
 
     \begin{block}{Plot RA versus Dec as an all-sky projection.}
         \fontsize{8pt}{8}\selectfont
