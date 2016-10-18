@@ -688,7 +688,6 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 
 
 \begin{frame}{Source control system}
-
   \begin{itemize}
     \item A source control system is a repository for successive versions of documents (e.g. source code for computer programs).
     \item Versions can be compared and old versions restored if needed (e.g. to undo recent bad changes).
@@ -697,29 +696,68 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
   \end{itemize}
 \end{frame}
     
-\begin{frame}{Git}    
-  TODO: Describe Git, draw Git diagram
+\begin{frame}{Git}
+  \begin{itemize}
+    \item We often use the source control system `Git'.
+    \item Git has a steep learning curve (see \url{https://xkcd.com/1597/}) but is very powerful.
+    \item It uses a `distributed' model (as opposed to a `client/server' model used e.g. by SVN).
+    \item The `master' branch lives `upstairs' (somewhere on the Internet). You can clone this `downstairs' i.e. to your local machine.
+    \item To make changes: `fork' to create an upstairs branch of master; clone this downstairs; edit downstairs; commit these changes upstairs into the branch; submit a pull request asking the owner of master to merge the branch into master.
+  \end{itemize}
 \end{frame}
 
+\begin{frame}{Git: Picture}
+  \begin{figure}
+    \begin{center}
+      \begin{tikzpicture}[font=\ttfamily]
+        \node (U) at (-5.5,5) {Upstairs};
+        \node (D) at (-5.5,1) {Downstairs};
+        \node (M) at (-2,5) [rectangle,draw] {master};
+        \node (CM) at (-2,1) [rectangle,draw] {clone of master};
+        \node (B) at (3,5) [rectangle,draw,align=center] {branch};
+        \node (CB) at (3,1) [rectangle,draw] {clone of branch};
+        \draw [transform canvas={yshift=3pt},->,thick] (M.east) -- (B.west) node [midway,above,align=center] {fork};
+        \draw [transform canvas={yshift=-3pt},->,thick] (B.west) -- (M.east) node [midway,below,align=center] {pull};
+        \draw [transform canvas={xshift=-3pt},->,thick] (M.south) -- (CM.north) node [midway,left,align=center] {clone};
+        \draw [transform canvas={xshift=3pt},->,thick] (CM.north) -- (M.south) node [midway,right,align=center] {push};
+        \draw [transform canvas={xshift=-3pt},->,thick] (B.south) -- (CB.north) node [midway,left,align=center] {clone};
+        \draw [transform canvas={xshift=3pt},->,thick] (CB.north) -- (B.south) node [midway,right,align=center] {push};
+      \end{tikzpicture}
+    \end{center}
+  \end{figure}
+\end{frame}
 
 \begin{frame}{GitHub and BitBucket}    
-  TODO: Describe Github and Bitbucket
+  \begin{itemize}
+  \item GitHub (\url{https://github.com}) and BitBucket (\url{https://bitbucket.org}) make available Internet-accessible storage space for source control repositories.
+  \item Both support Git (as well as other source control systems).
+  \item Both give Web Browser access to repositories.
+  \item Both allow you to install Git locally (command-line interface) and provide a user-friendly GUI interface to the local Git software.
+  \end{itemize}
 \end{frame}
-
-
 
 
 \section{Common Programs}
 \begin{frame}{Common and Useful Programs}
-  \begin{block}{LaTeX}
-    Talk about Tikz in here
-  \end{block}
-  \begin{block}{DS9}
-  \end{block}
-  \begin{block}{IRAF}
-  \end{block}
-  \begin{block}{SExtractor/SWarp}
-  \end{block}
+  \begin{itemize}
+  \item \LaTeX
+  \item DS9
+  \item IRAF
+  \item SExtractor/SWarp
+  \item CosmoSIS
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\LaTeX}
+  \begin{itemize}
+    \item \LaTeX is text processing software.
+    \item Not WYSIWYG. Source files are text files (which \LaTeX then compliles into pdf); as a result e.g. it is easy to merge two sets of changes.
+    \item Optimised for good display of mathematics.
+    \item Required for submissions to arXiv.
+    \item See \url{http://www.tug.org/texworks/}.
+    \item Use `beamer' to produce presentations (e.g. this one).
+    \item Use `tikz' to produce diagrams (as in this presentation).
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{DS9}
@@ -769,7 +807,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \end{frame}
 
 \begin{frame}{CosmoSIS}
-
+TODO
 \end{frame}
 
 \section{HPC}
