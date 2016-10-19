@@ -130,7 +130,7 @@ HPC Exercises
     $ qsub -I
     $ hostname
 
-## 2. Still in the interactive session, run `ipython` and run some python commands. Then exit ipython and the interactive session.
+## 2. Still in the interactive session, run `ipython` and run some Python commands. Then exit ipython and the interactive session.
 
     $ module load dev_tools/oct2015/python-Anaconda-2-4.0.0
     $ ipython
@@ -138,7 +138,7 @@ HPC Exercises
     $ $ exit
     $ exit
 
-## 3. Write a job script to run a `hello world` program in python and submit it to the queue.
+## 3. Write a job script to run a `hello world` program in Python and submit it to the queue.
 
 The script `my_job_script.csh` is:
 
@@ -173,7 +173,7 @@ Add the following `PBS` command to the script
     
     python -c "print 'hello'"
 
-## 5. Using the above example, check the job status using `qstat` and `checkjob`
+## 5. Using the above example, check the job status using `qstat` and `checkjob`.
 
     $ qstat
     $ checkjob job-id
