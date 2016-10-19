@@ -106,10 +106,24 @@ First plot: Dimmer objects are to the right. The straight top and right edges sh
 
 Second plot: The lower density at the top is just a projection effect - the RA/DEC projection doesn't properly represent area on the celestial sphere. Also, RA on the sky increases from right to left.
 
+BONUS EXERCISE
+
+        from astropy import units as u
+	from astropy.coordinates import SkyCoord
+	
+	c = SkyCoord(ra=h[1].data.field("RAdeg"), dec=h[1].data.field("DEdeg"), frame="icrs")
+	ra_rad = c.ra.wrap_at(180*u.deg).radian
+	dec_rad = c.dec.radian
+	
+	plt.subplot(111, projection="mollweide")
+	plt.grid(True)
+	plt.plot(ra_rad, dec_rad, "o", markersize=2)
+	plt.show()
+
+
 
 HPC Exercises
 =============
-
 ## 1. Login to `splinter` and find the path to your `$HOME` directory and your quota
 
     $ ssh -X user-name@splinter-login.star.ucl.ac.uk
