@@ -826,11 +826,12 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \section{HPC}
 
 \begin{frame}{HPC: Information on the Web}
-  \begin{block}{This presentation}
-    \url{https://github.com/Astrophysics-UCL/HPCInfo/}
+
+    \begin{block}{Introduction to Parallel Computing (Presentation)}
+    \url{https://wiki.ucl.ac.uk/display/PhysAstAstPhysGrp/Computing+and+Programming}
   \end{block}
 
-    \begin{block}{Splinter on the UCL Astrophysics Wiki}
+    \begin{block}{UCL Astrophysics Wiki information on \texttt{splinter}}
     \url{https://wiki.ucl.ac.uk/display/PhysAstAstPhysGrp/Splinter+User+Guide}
   \end{block}
 
@@ -844,7 +845,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 
 \end{frame}
 
-\begin{frame}{HPC: Mailing list}
+\begin{frame}{HPC: \texttt{splinter} mailing list}
 	\url{https://www.mailinglists.ucl.ac.uk/mailman/listinfo/splinter-users}
 	\bigskip
 	\begin{itemize}
@@ -853,16 +854,48 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{HPC: Splinter specs}
+\begin{frame}{HPC: Cluster structure}
+
+  A HPC cluster (such as \texttt{splinter}) consists of many nodes (= `boxes' = machines).
+  \begin{itemize}
+    \item One node is the `login' node; it hosts the command sessions that you get when you log in.
+    \item Another node is the `head'; it runs the software that controls how the cluster operates.
+    \item All the other nodes are `compute' nodes; they do the actual work.
+    \item The nodes can talk to each other via an Ethernet network.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}{HPC: Node structure}
+  Each node has:
+  \begin{itemize}
+    \item Several cores  (= processors). Each core can run computer code independently of each other.
+    \item Memory (RAM) that can be allocated to the cores. If necessary some memory can be used by several cores at once.
+    \item Its own file space.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{HPC: \texttt{splinter} nodes and cores}
+	Currently \texttt{splinter} has 29 nodes and 456 cores:
 	\begin{itemize}
-		\item As of \today, \emph{splinter} has 528, 4TB memory
-		\item 8 nodes, dual 6-core 2.8GHz, 48GB memory 
-		\item 20 nodes, dual 8-core 2.0GHz, 128GB memory
-		\item SMP node, 40 2.4GHz cores, 1TB memory
-		\item login node, dual 10-core, 2.4GHz 98GB memory
-		\item head-node, dual 8-core, 2.4GHz, 164GB memory
+		\item 8 nodes each with 12 cores and 48GB RAM
+		\item 20 nodes each with 16 cores and 128GB RAM
+		\item 1 node with 40 cores and 1TB RAM
 	\end{itemize}
 \end{frame}
+
+\begin{frame}{HPC: Program structure}
+  \begin{itemize}
+    \item A typical simple program runs code sequentially using just one core.
+    \item More complex programs run more quickly by running several `threads' of code in parallel on several cores within one node - one thread per core.
+    \item So the simple programs are `single-threaded' and the more complex are `multi-threaded'.
+    \item A multi-threaded program can run on just one core if necessary - the threads will execute one after another and the program will run more slowly.
+  \end{itemize}
+\end{frame}
+
+
+
 
 \begin{frame}{HPC: \texttt{splinter} distributed}
   \begin{figure}
