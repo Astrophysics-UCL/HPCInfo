@@ -683,7 +683,16 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
         \texttt{HINT}: Use astropy
     \end{block}
 
-\end{frame}  
+\end{frame}
+
+\begin{frame}{Jupyter}
+  Jupyter is a framework for creating interactive web pages in which source code (written in Python or other high-level language) appears together with the corresponding output (text or graphics). This is an excellent environment for demonstrating how your code works.
+\end{frame}
+
+\begin{frame}{UCL Software Carpentry Workshop}
+  UCL training course in programming skills. See \url{https://www.ucl.ac.uk/isd/services/research-it/training}.
+\end{frame}
+
 
 
 
@@ -800,8 +809,8 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{SExtractor/SWarp}
   \begin{block}{Features}
    \begin{itemize}
-    \item{\textit{''SExtractor is a program that builds a catalogue of objects from an astronomical image. Although it is particularly oriented towards reduction of large scale galaxy-survey data, it can perform reasonably well on moderately crowded star fields.''}}
-    \item{\textit{''SWarp is a program that resamples and co-adds together FITS images using any arbitrary astrometric projection defined in the WCS standard.''}}
+    \item{\textit{`SExtractor is a program that builds a catalogue of objects from an astronomical image. Although it is particularly oriented towards reduction of large scale galaxy-survey data, it can perform reasonably well on moderately crowded star fields.'}}
+    \item{\textit{`SWarp is a program that resamples and co-adds together FITS images using any arbitrary astrometric projection defined in the WCS standard.'}}
    \end{itemize}
   \end{block}
   \begin{block}{Websites}
@@ -813,7 +822,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{CosmoSIS}
   \begin{block}{Features}
     \begin{itemize}
-      \item TODO
+      \item \textit{`CosmoSIS is a cosmological parameter estimation code. It is a framework for structuring cosmological parameter estimation in a way that eases re-usability, debugging, verifiability, and code sharing in the form of calculation modules. It consolidates and connects together existing code for predicting cosmic observables, and makes mapping out experimental likelihoods with a range of different techniques much more accessible.'}
     \end{itemize}
   \end{block}
   \begin{block}{Websites}
@@ -822,6 +831,11 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
   \end{block}
 
 \end{frame}
+
+\begin{frame}{ASCL.net}
+There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) lists over 1000 astronomical programs that you can download.
+\end{frame}
+
 
 \section{HPC}
 
@@ -849,8 +863,8 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 	\url{https://www.mailinglists.ucl.ac.uk/mailman/listinfo/splinter-users}
 	\bigskip
 	\begin{itemize}
-		\item please subscribe
-		\item post any issues regarding splinter
+		\item Please subscribe
+		\item Post any issues regarding \texttt{splinter}
 	\end{itemize}
 \end{frame}
 
@@ -887,49 +901,71 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 
 \begin{frame}{HPC: Program structure}
   \begin{itemize}
-    \item A typical simple program runs code sequentially using just one core.
+    \item A simple program runs code sequentially using just one core.
     \item More complex programs run more quickly by running several `threads' of code in parallel on several cores within one node - one thread per core.
     \item So the simple programs are `single-threaded' and the more complex are `multi-threaded'.
     \item A multi-threaded program can run on just one core if necessary - the threads will execute one after another and the program will run more slowly.
   \end{itemize}
 \end{frame}
 
-
-
-
-\begin{frame}{HPC: \texttt{splinter} distributed}
-  \begin{figure}
-    \begin{center}
-      \shadowbox{\includegraphics[scale=0.4]{cluster.png}}
-      \footnote{\url{http://www.rocksclusters.org/}}
-    \end{center}
-  \end{figure}
+\begin{frame}{HPC: How to parallelize}
+  Method 1:
+  \begin{itemize}
+    \item Write a single-threaded program.
+    \item Run many copies of it at once; each uses one core.
+    \item Run time depends on total number of cores.
+    \item Single-threaded programs are easy to write and debug.
+    \item No fast way for the various running copies to talk to each other during processing. Therefore this method is useful only when the problem can be divided into independent chunks. Such problems are called `embarassingly parallel'.
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{HPC: \texttt{splinter} shared}
-  \begin{figure}
-    \begin{center}
-      \shadowbox{\includegraphics[scale=0.4]{fig03.png}}
-      \footnote{\url{http://www.cs.rit.edu/}}
-    \end{center}
-  \end{figure}
+\begin{frame}{HPC: How to parallelize}
+  Method 2:
+  \begin{itemize}
+    \item Write a multi-threaded program.
+    \item Run it on one node, using all the cores on that node.
+    \item Run time depends on maximum number of cores on one node.
+    \item Multi-threaded programs are hard to write and debug. Tools called `OpenMP' and `MPI' help.
+    \item The threads can share memory hence can talk to each other during processing; for certain problems this is crucial. Need to be careful that the threads don't conflict when updating shared memory.
+  \end{itemize}
 \end{frame}
+
+
+
+
+%\begin{frame}{HPC: \texttt{splinter} distributed}
+%  \begin{figure}
+%    \begin{center}
+%      \shadowbox{\includegraphics[scale=0.4]{cluster.png}}
+%      \footnote{\url{http://www.rocksclusters.org/}}
+%    \end{center}
+%  \end{figure}
+%\end{frame}
+
+%\begin{frame}{HPC: \texttt{splinter} shared}
+%  \begin{figure}
+%    \begin{center}
+%      \shadowbox{\includegraphics[scale=0.4]{fig03.png}}
+%      \footnote{\url{http://www.cs.rit.edu/}}
+%    \end{center}
+%  \end{figure}
+%\end{frame}
 
 \begin{frame}{HPC: Workspaces I}
 	\begin{block}{\texttt{/home/user\_name}}
 		\begin{itemize}
-			\item this is your home directory
-			\item login scripts can be put here
+			\item This is your home directory
+			\item Login scripts can be put here
 			\item 1GB quota
-			\item private
+			\item Private
 		\end{itemize}
 	\end{block}
 	\begin{block}{\texttt{/share/splinter/user\_name}}
 		\begin{itemize}
-			\item create the directory if not already there
-			\item can be used as a workspace
-			\item no quota
-			\item public unless made private
+			\item Create the directory if it is not already there
+			\item Can be used as a workspace
+			\item No quota
+			\item Public unless made private
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -937,40 +973,39 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{HPC: Workspaces II}
 	\begin{block}{\texttt{/share/data1}}
 		\begin{itemize}
-			\item for storing large data
-			\item you can create a directory for your, .e.g, \texttt{/share/data1/SKA}
+			\item For storing large data
+			\item You can create a directory for your, .e.g, \texttt{/share/data1/SKA}
 		\end{itemize}
 	\end{block}
 
 	\begin{block}{\texttt{/share/apps}}
 		\begin{itemize}
-			\item for installing software
-			\item module-files
+			\item For installing software
+			\item Module files
 		\end{itemize}
 	\end{block}
 \end{frame}
 
 \begin{frame}{HPC: Login script}
-	\begin{itemize}
-		\item everytime you login this file will be executed
-		\item this file is in your \texttt{\$HOME}
-		\item it is called \texttt{.login}
-		\item you can load modules, envvars, etc.
-	\end{itemize}
-	\begin{Examples}
-		\begin{block}{Load my aliases}
-		    \texttt{source $\sim$/aliases.csh}
-                \end{block}
-                \begin{block}{Load python}
-                     \texttt{module load dev\_tools/nov2014/python-anaconda}
-                \end{block}
-	\end{Examples}
+  \begin{itemize}
+    \item There is a file called \texttt{.login} in your \texttt{\$HOME} directory
+    \item Everytime you login this file will be executed
+    \item You can load modules, envvars, etc.
+  \end{itemize}
+  \begin{Examples}
+    \begin{block}{Load my aliases}
+      \texttt{source $\sim$/aliases.csh}
+    \end{block}
+    \begin{block}{Load python}
+      \texttt{module load dev\_tools/oct2015/python-Anaconda-2-4.0.0}
+    \end{block}
+  \end{Examples}
 \end{frame}
 
 \begin{frame}{HPC: Modules}
 	\begin{itemize}
-		\item easy and flexible way use software
-		\item available to everyone in splinter
+		\item A module file sets environment variables required to run a program. This makes it easy e.g. to switch between different versions of a program.
+		\item Available to everyone in \texttt{splinter}
 	\end{itemize}
 	
 	\begin{Examples}
@@ -1002,9 +1037,10 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 
 \begin{frame}{HPC: Submitting jobs}
 	\begin{itemize}
-		\item computing jobs should be submitted to the scheduler
-		\item you will have to write a job script
-		\item interactive job
+		\item Computing jobs should be submitted to the scheduler.
+		\item To do this you will need to write a `job script'.
+		\item Alternatively you can start an interactive session on a compute node.
+		\item Don't run heavy programs on the login node!
 	\end{itemize}
     \begin{Examples}
 	    \begin{columns}
@@ -1012,7 +1048,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 		\begin{block}{Submit a job}
 			\texttt{qsub job\_script}
 		\end{block}
-		\begin{block}{Submit an interactive job}
+		\begin{block}{Start an interactive session}
 			\texttt{qsub -I}
 		\end{block}
 		\begin{block}{Check the status of a job}
@@ -1034,11 +1070,12 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \end{frame}
 
 \begin{frame}{HPC: Queues}
+  When submitting a job you can specify a queue (= subset of nodes) to ensure that your job is processed only on nodes with sufficient resources. Available queues are:
 	\begin{itemize}
-		\item \texttt{compute}
-		\item \texttt{cores16}
-		\item \texttt{cores12}
-		\item \texttt{smp}
+		\item \texttt{compute} (all nodes)
+		\item \texttt{cores16} (all 16 core nodes)
+		\item \texttt{cores12} (all 12 core nodes)
+		\item \texttt{smp} (all 40 core nodes (there's only one))
 	\end{itemize}
 \end{frame}
 
@@ -1050,42 +1087,42 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 	\# PBS -l mem=32gb \\
 	\# PBS -l walltime=120:00:00} \\
 	
-	\begin{block}{Set some environment variable}
+	\begin{block}{\# Set environment variables if needed}
 	    \texttt{setenv OMP\_NUM\_THREADS 6}
         \end{block}
-	\begin{block}{Source paths if needed}
-	    \texttt{source /home/username/libpaths.csh}
+	\begin{block}{\# Load module files if needed}
+	    \texttt{module load dev\_tools/oct2015/python-Anaconda-2-4.0.0}
         \end{block}
-	\begin{block}{Run my program}
+	\begin{block}{\# Run the program}
 	    \texttt{/home/username/hello\_world.exe}
         \end{block}	
 \end{frame}
 
 \begin{frame}{HPC: Jobscripts: things to remember}
 	\begin{itemize}
-		\item Submit the job to the right queue
-		\item Request the correct number of \texttt{nodes} and \texttt{ppn}
+		\item Choose the correct queue
+		\item Choose the correct number of \texttt{nodes} and \texttt{ppn}
 		\item Specify the memory required
 		\item Always specify the walltime
 		\item If your program is not parallel, please use \texttt{nodes=1,ppn=1}
-		\item Use \texttt{-q compute} for single processor jobs
-		\item Use \texttt{qsub -I} for interactive job
+		\item Use the \texttt{compute} queue for single processor jobs
+		\item Use \texttt{qsub -I} for an interactive session
 		\item If using most of the resources, please send an email to the mailing list.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{HPC: More PBS commands}
 	\begin{block}{Specify output}
-	    \texttt{PBS -o path/to/file.out}
+	    \texttt{\# PBS -o path/to/file.out}
         \end{block}
 	\begin{block}{Specify error output}
-	    \texttt{PBS -e path/to/file.err}
+	    \texttt{\# PBS -e path/to/file.err}
         \end{block}
 	\begin{block}{Mail alert at (b)eginning, (e)nd, and (a)bortion of execution}
-	    \texttt{PBS -m bea}
+	    \texttt{\# PBS -m bea}
         \end{block}
 	\begin{block}{Send mail to the following address}
-	    \texttt{PBS -M your\_email\_id@ucl.ac.uk}
+	    \texttt{\# PBS -M your\_email\_id@ucl.ac.uk}
         \end{block}                        
 \end{frame}
 
@@ -1093,8 +1130,8 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 	\url{http://splinter.star.ucl.ac.uk/ganglia/}
 
 	\begin{itemize}
-		\item is tool for analysing splinter
-		\item can only be loaded from splinter (using firefox)
+		\item is tool for analysing \texttt{splinter}
+		\item can only be loaded from \texttt{splinter} (using firefox)
 		\item will give you load/memory information
 		\item can look into nodes
 	\end{itemize}
@@ -1102,22 +1139,21 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 
 \begin{frame}{HPC: Collaborative projects}
 	\begin{itemize}
-		\item collaboration between two splinter users
-		\item can share common data in \texttt{/share/data1/my\_collaboration}
-		\item give read/write permission to other users using \texttt{chmod}
+		\item For collaborations between two splinter users you can share common data in \texttt{/share/data1/my\_collaboration}
+		\item Give read/write permission to other users using \texttt{chmod}
 	\end{itemize}
 \end{frame}
 
 
 \begin{frame}{HPC: Best practices}
   \begin{itemize}
-    \item Choose the machines that are suited for your problem
+    \item Choose the compute nodes that are suited for your problem
     \item Read the User Guide
     \item Do not run your programs in the login node
     \item Install common software locally if and only if absolutely necessary
     \item Request optimum resources
-    \item Minimise data transfer between nodes,
-    \item \alert{Backup! Backup! Backup!}
+    \item Minimise data transfer between nodes
+    \item Backup anything that you would hate to lose
   \end{itemize}
 \end{frame}
 
