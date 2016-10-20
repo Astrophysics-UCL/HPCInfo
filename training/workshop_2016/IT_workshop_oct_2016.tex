@@ -665,11 +665,11 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
   
   \item Use the pyfits library (\texttt{import astropy.io.fits as pyfits}) to manipulate file columns as numpy arrays.
   
-  \item Use the \texttt{open} command to get a handle to the file (\texttt{h = pyfits.open(...)}). Then get e.g. the \texttt{Foo} column via \texttt{x = h[1].data.field[`Foo']}.
+  \item Use the \texttt{open} command to get a handle to the file (\texttt{h = pyfits.open(...)}). Then get e.g. the \texttt{Dist} column via \texttt{x = h[1].data.field(`Dist')}.
   
-  \item Create a scatter plot of r-band absolute magnitude (\texttt{`rMAG'}) versus distance (\texttt{`Dist'}). Do you think that this data set is a subset of a larger data set?
+  \item Create a scatter plot of distance (\texttt{`Dist'}) as a function of r-band absolute magnitude (\texttt{`rMAG'}). Do you think that this data set is a subset of a larger data set?
   
-  \item Make a map by scatter-plotting declination (\texttt{`DEdeg'}) versus right ascension (\texttt{`RAdeg'}). Use small dots. Why is the density lower at the top? Why should the plot really be flipped left/right?
+  \item Make a map by scatter-plotting declination (\texttt{`DEdeg'}) as a function of right ascension (\texttt{`RAdeg'}). Use small dots. Why is the density lower at the top? Why should the plot really be flipped left/right?
   
   \end{itemize}
 
@@ -678,8 +678,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 
 \begin{frame}{Matplotlib Exercise - \texttt{BONUS ROUND}}
 
-    \begin{block}{Plot RA versus Dec as an all-sky projection.}
-        \fontsize{8pt}{8}\selectfont
+    \begin{block}{Plot Dec versus RA using an equal area all-sky projection.}
         \texttt{HINT}: Use astropy
     \end{block}
 
@@ -761,7 +760,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
   \begin{block}{Features}
     \begin{itemize}
       \item \LaTeX is text processing software.
-      \item Not WYSIWYG. Source files are text files (which \LaTeX then compliles into pdf); as a result e.g. it is easy to merge two sets of changes.
+      \item Not WYSIWYG. Source files are text files (which \LaTeX then compiles into pdf); as a result e.g. it is easy to merge two sets of changes.
       \item Optimised for good display of mathematics.
       \item Required for submissions to arXiv.
       \item Use `beamer' to produce presentations (e.g. this one).
@@ -872,7 +871,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
 
   A HPC cluster (such as \texttt{splinter}) consists of many nodes (= `boxes' = machines).
   \begin{itemize}
-    \item One node is the `login' node; it hosts the command sessions that you get when you log in.
+    \item One node is the `login' node; it hosts the command session that you get when you log in.
     \item Another node is the `head'; it runs the software that controls how the cluster operates.
     \item All the other nodes are `compute' nodes; they do the actual work.
     \item The nodes can talk to each other via an Ethernet network.
@@ -915,7 +914,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
     \item Run many copies of it at once; each uses one core.
     \item Run time depends on total number of cores.
     \item Single-threaded programs are easy to write and debug.
-    \item No fast way for the various running copies to talk to each other during processing. Therefore this method is useful only when the problem can be divided into independent chunks. Such problems are called `embarassingly parallel'.
+    \item No fast way for the various running copies to talk to each other during processing. Therefore this method is useful only when the problem can be divided into independent chunks. Such problems are called `embarrassingly parallel'.
   \end{itemize}
 \end{frame}
 
@@ -989,7 +988,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
 \begin{frame}{HPC: Login script}
   \begin{itemize}
     \item There is a file called \texttt{.login} in your \texttt{\$HOME} directory
-    \item Everytime you login this file will be executed
+    \item Every time you login this file will be executed
     \item You can load modules, envvars, etc.
   \end{itemize}
   \begin{Examples}
