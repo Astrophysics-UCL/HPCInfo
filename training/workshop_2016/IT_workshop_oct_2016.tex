@@ -915,6 +915,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
     \item Run time depends on total number of cores.
     \item Single-threaded programs are easy to write and debug.
     \item No fast way for the various running copies to talk to each other during processing. Therefore this method is useful only when the problem can be divided into independent chunks. Such problems are called `embarrassingly parallel'.
+    \item Each to submit many jobs at once using a `Job Array' - see \texttt{splinter} user guide.
   \end{itemize}
 \end{frame}
 
@@ -928,9 +929,6 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
     \item The threads can share memory hence can talk to each other during processing; for certain problems this is crucial. Need to be careful that the threads don't conflict when updating shared memory.
   \end{itemize}
 \end{frame}
-
-
-
 
 %\begin{frame}{HPC: \texttt{splinter} distributed}
 %  \begin{figure}
