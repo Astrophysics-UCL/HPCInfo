@@ -20,10 +20,11 @@
 \title[IT Workshops] % (optional, use only with long paper titles)
 {Introduction to IT for UCL Astrophysicists}
 
-\author{L.~Whiteway, T.~Wilson, W.~Jennings, E.~Edmondson, L.~Lucie-Smith}
+\author{L.~Whiteway, E.~Edmondson, L.~Lucie-Smith}
 
 \institute[UCL]
 {
+  Astrophysics Group\\
   Department of Physics and Astronomy\\
   University College London
 }
@@ -40,11 +41,9 @@
 
 \begin{frame}{Where to find this presentation}
   \begin{block}{}
-    Goto \url{https://tinyurl.com/y8lyyg5r}
-  \end{block}
-  \begin{block}{}
-    The third character is a lower-case `el'.
-    Then click on `Download'.
+    Find the presentation at \alert{\url{https://tinyurl.com/y8lyyg5r}}.\\
+    Note that the third character is a lower-case `el'. \\
+    On this page click on `Download' to get a copy of the presentation.
   \end{block}
 \end{frame}
 
@@ -414,7 +413,7 @@ There is a very useful summary of Linux commands at: \\
 
 \begin{frame}{Python Features and Aspects}
   \begin{itemize}
-    \item Two slightly-incompatible versions: 2 and 3 (currently 2.7 and 3.5). We tend to use 2.7.
+    \item Two slightly-incompatible versions: 2 and 3 (currently 2.7 and 3.6). Still lots of users of 2; better to use 3 if you can.
     \item Can be used interactively or compiled.
     \item Duck typing (type of variable is inferred at run-time)...
     \item ... and hence generic programming (in which a function can take many different types of variables as inputs).
@@ -441,8 +440,8 @@ There is a very useful summary of Linux commands at: \\
 
 \begin{frame}{Using Python on \texttt{splinter}}
   \begin{itemize}
-    \item To initialize your \texttt{splinter} session so that it will use Python 2.7 and so that it can find all the necessary libraries, run: \\
-    \alert{\texttt{module~load~dev\_tools/oct2015/python-Anaconda-2-4.0.0}}
+    \item To initialize your \texttt{splinter} session so that it will use Python 3 and so that it can find all the necessary libraries, run: \\
+    \alert{\texttt{module~load~dev\_tools/oct2016/python-Anaconda-3-4.2.0}}
     \item This will set the necessary environment variables.
     \item We will explain in more detail later about the \texttt{module} command.
   \end{itemize}
@@ -686,7 +685,8 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \end{frame}
 
 \begin{frame}{Jupyter}
-  Jupyter is a framework for creating interactive web pages in which source code (written in Python or other high-level language) appears together with the corresponding output (text or graphics). This is an excellent environment for demonstrating how your code works.
+  Jupyter is a framework for creating interactive web pages in which source code (written in Python or other high-level language) appears together with the corresponding output (text or graphics). This is an excellent environment for demonstrating how your code works.\\
+  See \url{http://jupyter.org/}.
 \end{frame}
 
 \begin{frame}{UCL Software Carpentry Workshop}
@@ -708,40 +708,45 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{Git}
   \begin{itemize}
     \item We often use the source control system `Git'.
-    \item Git has a steep learning curve (see \url{https://xkcd.com/1597/}) but is very powerful.
-    \item It uses a `distributed' model (as opposed to a `client/server' model used e.g. by SVN).
-    \item The `master' branch lives `upstairs' (somewhere on the Internet). You can clone this `downstairs' i.e. to your local machine.
-    \item To make changes: `fork' to create an upstairs branch of master; clone this downstairs; edit downstairs; commit these changes upstairs into the branch; submit a pull request asking the owner of master to merge the branch into master.
+    \item Git is non-trivial to learn (see \url{https://xkcd.com/1597/}) but is very powerful. It is useful to have a clear idea of Git's internal workings before attempting to do even simple things.
+    \item Git uses a `distributed' model (as opposed to a `client/server' model used e.g. by SVN). All copies of a repository are `peers' (i.e. no one copy is special as far is Git is concerned).
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Git: Picture}
-  \begin{figure}
-    \begin{center}
-      \begin{tikzpicture}[font=\ttfamily]
-        \node (U) at (-5.5,5) {Upstairs};
-        \node (D) at (-5.5,1) {Downstairs};
-        \node (M) at (-2,5) [rectangle,draw] {master};
-        \node (CM) at (-2,1) [rectangle,draw] {clone of master};
-        \node (B) at (3,5) [rectangle,draw,align=center] {branch};
-        \node (CB) at (3,1) [rectangle,draw] {clone of branch};
-        \draw [transform canvas={yshift=3pt},->,thick] (M.east) -- (B.west) node [midway,above,align=center] {fork};
-        \draw [transform canvas={yshift=-3pt},->,thick] (B.west) -- (M.east) node [midway,below,align=center] {pull};
-        \draw [transform canvas={xshift=-3pt},->,thick] (M.south) -- (CM.north) node [midway,left,align=center] {clone};
-        \draw [transform canvas={xshift=3pt},->,thick] (CM.north) -- (M.south) node [midway,right,align=center] {push};
-        \draw [transform canvas={xshift=-3pt},->,thick] (B.south) -- (CB.north) node [midway,left,align=center] {clone};
-        \draw [transform canvas={xshift=3pt},->,thick] (CB.north) -- (B.south) node [midway,right,align=center] {push};
-      \end{tikzpicture}
-    \end{center}
-  \end{figure}
+\begin{frame}{Git workstyles}
+  \begin{itemize}
+    \item Git can be used in support of various work styles.
+    \item For most projects that you will encounter, it is sufficent to put a repository somewhere on the Internet and think of this as the  `official' copy. You can then `clone' this repository locally, make your changes, and then `push' this pack to the official repository. Your colleagues will be doing the same, and Git will handle the necessary merging.
+    \item On larger projects you begin by copying the official repository to a new `forked' copy (also on the Internet). You can then develop (as above) in this fork. Later you can ask for your forked copy be merged back into the official copy (`pull request'). This gives the offical owners more control over changes.
+  \end{itemize}
 \end{frame}
+
+%\begin{frame}{Git: Picture}
+%  \begin{figure}
+%    \begin{center}
+%      \begin{tikzpicture}[font=\ttfamily]
+%        \node (U) at (-5.5,5) {Upstairs};
+%        \node (D) at (-5.5,1) {Downstairs};
+%        \node (M) at (-2,5) [rectangle,draw] {master};
+%        \node (CM) at (-2,1) [rectangle,draw] {clone of master};
+%        \node (B) at (3,5) [rectangle,draw,align=center] {branch};
+%        \node (CB) at (3,1) [rectangle,draw] {clone of branch};
+%        \draw [transform canvas={yshift=3pt},->,thick] (M.east) -- (B.west) node [midway,above,align=center] {fork};
+%        \draw [transform canvas={yshift=-3pt},->,thick] (B.west) -- (M.east) node [midway,below,align=center] {pull};
+%        \draw [transform canvas={xshift=-3pt},->,thick] (M.south) -- (CM.north) node [midway,left,align=center] {clone};
+%        \draw [transform canvas={xshift=3pt},->,thick] (CM.north) -- (M.south) node [midway,right,align=center] {push};
+%        \draw [transform canvas={xshift=-3pt},->,thick] (B.south) -- (CB.north) node [midway,left,align=center] {clone};
+%        \draw [transform canvas={xshift=3pt},->,thick] (CB.north) -- (B.south) node [midway,right,align=center] {push};
+%      \end{tikzpicture}
+%    \end{center}
+%  \end{figure}
+%\end{frame}
 
 \begin{frame}{GitHub and BitBucket}    
   \begin{itemize}
-  \item GitHub (\url{https://github.com}) and BitBucket (\url{https://bitbucket.org}) make available Internet-accessible storage space for source control repositories.
-  \item Both support Git (as well as other source control systems).
+  \item GitHub (\url{https://github.com}) and BitBucket (\url{https://bitbucket.org}) make available Internet-accessible storage space for git repositories.
   \item Both give Web Browser access to repositories.
-  \item Both allow you to install Git locally (command-line interface) and provide a user-friendly GUI interface to the local Git software.
+  \item With both you can install Git locally (command-line interface) and both provide a user-friendly GUI interface to the local Git software.
   \end{itemize}
 \end{frame}
 
