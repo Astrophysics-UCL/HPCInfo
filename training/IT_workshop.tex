@@ -9,8 +9,9 @@
 \usepackage{listings}
 \usepackage{tikz} % Diagrams
 \usepackage{color}
+\usepackage{textcomp} % See https://tex.stackexchange.com/questions/145416/how-to-have-straight-single-quotes-in-lstlistings
 
-\lstset{language=Python} % Format listings as appropriate for Python. Inexplicably we get problems if the language is set as part of the \begin{lstlisting} command.
+\lstset{language=Python,upquote=true} % Format listings as appropriate for Python. Inexplicably we get problems if the language is set as part of the \begin{lstlisting} command.
 
 
 \usetheme{boxes}
@@ -51,30 +52,21 @@
 \begin{frame}{Overall goals of presentation}
   \begin{itemize}
     \item What software you might find useful
-    \item Where to get more information (UCL courses, web, etc.)
+    \item Pointers to where to get more information (UCL courses, web, etc.)
     \item UCL-specific information (e.g. login details)
-    \item Some hands-on work
+    \item Hands-on work
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Specific contents}
-
-  \begin{block}{Session 1:}
-    \begin{itemize}
-      \item Accessing Astrophysics group machines
-      \item Using the Linux console
-      \item Basics of Python
-    \end{itemize}
-  \end{block}
-  
-  \begin{block}{Session 2:}
-    \begin{itemize}
+  \begin{itemize}
+    \item Accessing Astrophysics group machines
+    \item Using the Linux console
+    \item Basics of Python
     \item Commonly used programs (LaTeX, DS9, IRAF,...)
     \item Using High-Performance Computing (HPC) machines
     \item HPC best practices
-    \end{itemize}
-  \end{block}
-
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Information on the Web}
@@ -476,6 +468,7 @@ There is a very useful summary of Linux commands at: \\
   \end{itemize}
 \end{frame}
 
+% Note that frame must be fragile if we are using lstlisting.
 \begin{frame}[fragile]{Python: sample program}
   \begin{lstlisting}
   #!/usr/bin/env python
@@ -486,7 +479,7 @@ There is a very useful summary of Linux commands at: \\
   import numpy as np
   
   
-  a = np.arange(10) # The array 0, 1, ..., 9
+  a = np.arange(10) # The array [0, 1, ..., 9]
   b = f(a) # f is a subroutine defined below
   print b
   
@@ -495,14 +488,12 @@ There is a very useful summary of Linux commands at: \\
       # of the next line is crucial.
       return x**2 
   
-  
-  
-  
   \end{lstlisting}
 
 \end{frame}
 
 
+% Note that frame must be fragile if we are using lstlisting.
 \begin{frame}[fragile]{Python}
   \fontsize{10pt}{10}\selectfont
   \begin{block}{Dictionaries}
@@ -511,12 +502,11 @@ There is a very useful summary of Linux commands at: \\
   \end{block}
   \begin{block}{Functions}
        \begin{lstlisting} 
-def function_name(arg1, arg_vol=1, *args, **kwargs):
+def function_name(arg1, arg_opt=1, *args, **kwargs):
        \end{lstlisting}
-       \texttt{arg\_vol=} is a voluntary argument, and if you don't want to specify the number of arguments use \texttt{*args} for a list of arguments and \texttt{**kwargs} for a dictionary, for example:
+       \texttt{arg\_opt} is an optional argument, and if you don't want to specify the number of arguments use \texttt{*args} for a list of arguments and \texttt{**kwargs} for a dictionary. Example:
        \begin{lstlisting}
-function_name(``HelloWorld'', *[1, 2, 3], 
-    **{``foo'':''bar''})
+function_name(100.0, *[1, 2, 3], **{`foo':`bar'})
        \end{lstlisting}
   \end{block}
   \begin{block}{Classes}
@@ -633,7 +623,7 @@ class class_name:
      Can plot in polar and World Coordinate System coordinates (with the help of \texttt{astropy}).
   \end{block}
   \begin{block}{Image Plotting}
-     Can read and plot an image using \texttt{matplotlib.cbook} and \texttt{plt.imshow}. Beware of orientation!
+     Can read and plot an image using \texttt{plt.imshow}. Beware of orientation!
   \end{block}
   \begin{block}{Multiple Subplots}
      Using \texttt{plt.subplot()} you can create multiple subplots, for example the following creates two side-by-side subplots that share x and y axes:\\
@@ -648,40 +638,34 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{Matplotlib Colormaps}
   \begin{itemize}
     \item Plotting mutiple-dimensional data is hard. You can use colour to indicate one of the data dimensions e.g. a contour map with colour shading for elevation above and below sea level.
-    \item This requires a mapping (a `colormap') that associates a colour with each data value.
-    \item The Matplotlib default way of doing this is `rainbow': map data values to wavelength (between `red' and `blue'). This is simple, elegant, physically well-motivated...
+    \item This requires a mapping (a `colormap') that associates a colour with each data value. The Matplotlib default way of doing this is `rainbow': map data values to wavelength (between `red' and `blue'). This is simple, elegant, physically well-motivated...
     \item ... but suboptimal in practice (because human perception of colour is complicated and involves non-linearities).
-    \item Don't use the default colormap; instead, explicitly specify an alternative (there are many to choose from or you can define your own). See also http://www.research.ibm.com/people/l/lloydt/color/color.HTM.
+    \item Don't use the default colormap; instead, explicitly specify an alternative (\url{https://matplotlib.org/examples/color/colormaps_reference.html}). See also \url{http://www.research.ibm.com/people/l/lloydt/color/color.HTM}.
   \end{itemize}
 
 \end{frame}
 
-
-\begin{frame}{Matplotlib Exercise}
+\begin{frame}[allowframebreaks,t]{Matplotlib: Exercises}
 
   \begin{itemize}
 
-  \item Use the SDSS data file (compressed FITS format) \texttt{/share/splinter/ucapwhi/Linux\_training/demo.fits.gz}.
+    \item Use the SDSS data file (compressed FITS format) \texttt{/share/splinter/ucapwhi/Linux\_training/demo.fits.gz}.
   
-  \item Use the pyfits library (\texttt{import astropy.io.fits as pyfits}) to manipulate file columns as numpy arrays.
+    \item Use the pyfits library (\texttt{import astropy.io.fits as pyfits}) to manipulate file columns as numpy arrays.
   
-  \item Use the \texttt{open} command to get a handle to the file (\texttt{h = pyfits.open(...)}). Then get e.g. the \texttt{Dist} column via \texttt{x = h[1].data.field(`Dist')}.
+    \item Use the \texttt{open} command to get a handle to the file (\texttt{h = pyfits.open(...)}). Then get e.g. the \texttt{Dist} column via \texttt{x = h[1].data.field(`Dist')}.
+    
+    \end{itemize}
+    
+    \begin{enumerate}
   
-  \item Create a scatter plot of distance (\texttt{`Dist'}) as a function of r-band absolute magnitude (\texttt{`rMAG'}). Do you think that this data set is a subset of a larger data set?
+    \item Create a scatter plot of distance (\texttt{`Dist'}) as a function of r-band absolute magnitude (\texttt{`rMAG'}). Do you think that this data set is a subset of a larger data set?
   
-  \item Make a map by scatter-plotting declination (\texttt{`DEdeg'}) as a function of right ascension (\texttt{`RAdeg'}). Use small dots. Why is the density lower at the top? Why should the plot really be flipped left/right?
+    \item Make a map by scatter-plotting declination (\texttt{`DEdeg'}) as a function of right ascension (\texttt{`RAdeg'}). Use small dots. Why is the density lower at the top? Why should the plot really be flipped left/right?
   
-  \end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Matplotlib Exercise - \texttt{BONUS ROUND}}
-
-    \begin{block}{Plot Dec versus RA using an equal area all-sky projection.}
-        \texttt{HINT}: Use astropy
-    \end{block}
-
+    \item Use astropy to redo the last plot so that it uses an equal area all-sky projection such as `mollweide'.
+    
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}{Jupyter}
@@ -692,8 +676,6 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{UCL Software Carpentry Workshop}
   UCL training course in programming skills. See \url{https://www.ucl.ac.uk/isd/services/research-it/training}.
 \end{frame}
-
-
 
 
 \begin{frame}{Source control system}
@@ -921,7 +903,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
     \item Run time depends on total number of cores.
     \item Single-threaded programs are easy to write and debug.
     \item No fast way for the various running copies to talk to each other during processing. Therefore this method is useful only when the problem can be divided into independent chunks. Such problems are called `embarrassingly parallel'.
-    \item Each to submit many jobs at once using a `Job Array' - see \texttt{splinter} user guide.
+    \item Easy to submit many jobs at once using a `Job Array' - see \texttt{splinter} user guide.
   \end{itemize}
 \end{frame}
 

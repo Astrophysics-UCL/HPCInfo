@@ -1,114 +1,116 @@
 Linux Exercises
 ===============
 
-### 1. Go to your home directory and create a directory called `level_0`.
+1. Go to your home directory and create a directory called `level_0`.
 
     $ cd ~
     $ mkdir level_0
 
-### 2. Change directory to `level_0`.
+2. Change directory to `level_0`.
 
     $ cd level_0
 
-### 3. Find the name of the present working directory.
+3. Find the name of the present working directory.
 
     $ pwd
 
-### 4. Make a directory `level_1`, and move to it.
+4. Make a directory `level_1`, and move to it.
 
     $ mkdir level_1
     $ cd level_1
 
-### 5. Create a file called `foo.txt` with contents `This file contains the word bar`.
+5. Create a file called `foo.txt` with contents `This file contains the word bar`.
 
     $ echo "This file contains the word bar" > foo.txt
 
-### 6. Add another line in `foo.txt` with contents `This is the second line`.
+6. Add another line in `foo.txt` with contents `This is the second line`.
 
     $ echo "This is the second line" >> foo.txt
 
-### 7. Print the contents of foo.txt to the screen.
+7. Print the contents of foo.txt to the screen.
 
     $ more foo.txt
 
-### 8. Search for the word bar in `foo.txt`.
+8. Search for the word bar in `foo.txt`.
 
     $ grep "bar" foo.txt
 
-### 9. Go up one level, then remove the directory `level_1` (and its contents).
+9. Go up one level, then remove the directory `level_1` (and its contents).
 
     $ cd ..
     $ rm -r level_1
 
-### 10. Find the location of your python installation.
+10. Find the location of your python installation.
 
     $ which python
 
-### 11. Find the values of the environment variables `PATH` and `LD_LIBRARY_PATH`.
+11. Find the values of the environment variables `PATH` and `LD_LIBRARY_PATH`.
 
     $ echo $PATH
     $ echo $LD_LIBRARY_PATH
 
-### 12. Set the environment variable `MY_VAR` to equal the absolute path to `level_0`, and test that it has worked OK.
+12. Set the environment variable `MY_VAR` to equal the absolute path to `level_0`, and test that it has worked OK.
 
     $ setenv MY_VAR $PWD (tcsh) or
     $ export $MYVAR=$PWD (bash)
     $ echo $MY_VAR
 
-### 13. Add (i.e append) to the `PATH` the absolute path to `level_0`, and test that it has worked OK.
+13. Add (i.e append) to the `PATH` the absolute path to `level_0`, and test that it has worked OK.
 
     $ setenv PATH ${PATH}:$PWD (tcsh) or
     $ export PATH=${PATH}:$PWD (bash)
     $ echo $PATH
 
-### 14. Use the man command to find the option of `ls` that shows file sizes in human readable format.
+14. Use the man command to find the option of `ls` that shows file sizes in human readable format.
 
     $ man ls
     ## the answer is ls -lh
 
-### 15. Find the hostname, processor type & operating system version and write this info into a text file called `info.txt`.
+15. Find the hostname, processor type & operating system version and write this info into a text file called `info.txt`.
 
     $ uname -a > info.txt
 
-### 16. List the people who are logged into the system.
+16. List the people who are logged into the system.
 
-    # who
+    $ who
 
-### 17. Find the process that is using the most CPU at the moment.
+17. Find the process that is using the most CPU at the moment.
 
-    # top
+    $ top
 
-### 18. Find the IDs of the processes that you are running.
+18. Find the IDs of the processes that you are running.
 
-  # ps -U your_user_name
-
-
-Matplotlib exercise
-===================
+    $ ps -U your_user_name
 
 
+Matplotlib Exercises
+====================
+
+1.	Plot 1
 
 	import numpy as np
 	import astropy.io.fits as pyfits
 	import matplotlib.pyplot as plt
-
 	h = pyfits.open("/share/splinter/ucapwhi/Linux_training/demo.fits.gz")
-
 	plt.scatter(h[1].data.field("rMAG"), h[1].data.field("Dist"))
 	plt.show()
 
+	Dimmer objects are to the right. The straight top and right edges show that a larger data set has been filtered by distance and absolute magnitude, to give a sample that is complete (all objects of at least a certain brightness within a certain distance).
 
+2.	Plot 2
+
+	import numpy as np
+	import astropy.io.fits as pyfits
+	import matplotlib.pyplot as plt
+	h = pyfits.open("/share/splinter/ucapwhi/Linux_training/demo.fits.gz")
 	plt.scatter(h[1].data.field("RAdeg"), h[1].data.field("DEdeg"), s=1)
 	plt.show()
 
+	The lower density at the top is just a projection effect - the RA/DEC projection doesn't properly represent area on the celestial sphere. Also, RA on the sky increases from right to left.
 
-First plot: Dimmer objects are to the right. The straight top and right edges show that a larger data set has been filtered by distance and absolute magnitude, to give a sample that is complete (all objects of at least a certain brightness within a certain distance).
+3.	Plot 3
 
-Second plot: The lower density at the top is just a projection effect - the RA/DEC projection doesn't properly represent area on the celestial sphere. Also, RA on the sky increases from right to left.
-
-BONUS EXERCISE
-
-        from astropy import units as u
+    from astropy import units as u
 	from astropy.coordinates import SkyCoord
 	
 	c = SkyCoord(ra=h[1].data.field("RAdeg"), dec=h[1].data.field("DEdeg"), frame="icrs")
@@ -125,20 +127,20 @@ BONUS EXERCISE
 HPC Exercises
 =============
 
-## 1. Start an interactive session. Find which node you have been assigned.
+1. Start an interactive session. Find which node you have been assigned.
 
     $ qsub -I
     $ hostname
 
-## 2. Still in the interactive session, run `ipython` and run some Python commands. Then exit ipython and the interactive session.
+2. Still in the interactive session, run `ipython` and run some Python commands. Then exit ipython and the interactive session.
 
-    $ module load dev_tools/oct2015/python-Anaconda-2-4.0.0
+    $ module load dev_tools/oct2016/python-Anaconda-3-4.2.0
     $ ipython
     $ $ (various)
     $ $ exit
     $ exit
 
-## 3. Write a job script to run a `hello world` program in Python and submit it to the queue.
+3. Write a job script to run a `hello world` program in Python and submit it to the queue.
 
 The script `my_job_script.csh` is:
 
@@ -149,15 +151,15 @@ The script `my_job_script.csh` is:
     #PBS -l mem=1gb
     #PBS -l walltime=00:01:00
 
-    module load dev_tools/oct2015/python-Anaconda-2-4.0.0
+    module load dev_tools/oct2016/python-Anaconda-3-4.2.0
     
-    python -c "print 'hello'"
+    python -c "print('hello')"
 
 The submission command is:
 
     $ qsub my_job_script.csh
 
-## 4. Amend the job file so that the output goes to a file.
+4. Amend the job file so that the output goes to a file.
 
 Add the following `PBS` command to the script
 
@@ -169,11 +171,11 @@ Add the following `PBS` command to the script
     #PBS -l walltime=00:01:00
     #PBS -o /home/[user_name]/hello_world.out
 
-    module load dev_tools/oct2015/python-Anaconda-2-4.0.0
+    module load dev_tools/oct2016/python-Anaconda-3-4.2.0
     
     python -c "print 'hello'"
 
-## 5. Using the above example, check the job status using `qstat` and `checkjob`.
+5. Using the above example, check the job status using `qstat` and `checkjob`.
 
     $ qstat
     $ checkjob job-id
