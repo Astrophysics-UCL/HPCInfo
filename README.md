@@ -1,9 +1,7 @@
 # HPCInfo
 
-Information about the HPC facilities in the Astrophysics Group
+Astrophysics Group, Department of Physics and Astronomy, University College London
 
-## Training materials
+This repository contains source material for the IT training course given to new PhD students each October.
 
-1. [October 2014](training/linux_hpc_workshop_oct_2014/README.md)
-2. [October 2015](training/workshops_2015/README.md)
-3. [October 2016](training/workshop_2016)
+It is currently being maintained by Lorne Whiteway
