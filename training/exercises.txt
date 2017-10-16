@@ -52,7 +52,7 @@ Linux Exercises
 12. Set the environment variable `MY_VAR` to equal the absolute path to `level_0`, and test that it has worked OK.
 
     $ setenv MY_VAR $PWD (tcsh) or
-    $ export $MYVAR=$PWD (bash)
+    $ export $MY_VAR=$PWD (bash)
     $ echo $MY_VAR
 
 13. Add (i.e append) to the `PATH` the absolute path to `level_0`, and test that it has worked OK.
