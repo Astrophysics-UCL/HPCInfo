@@ -194,7 +194,7 @@
     \item If the remote program that you are running produces graphical output, then you must have a program (an `X-Windows client') running on your local machine to display this graphical output.
     \item On Windows you can use XMing (\url{https://sourceforge.net/projects/xming/}) or Exceed (available on the UCL Desktop).
     \item On Mac you can use XQuartz.
-    \item On Linux you can sit back and relax as the graphical interface is an X-server.
+    \item On Linux you don't need to do anything special - the graphical interface is already an X-server.
   \end{itemize}
 \end{frame}
 
@@ -230,19 +230,10 @@
       / & Top of the directory tree (the root directory) \\
       . & Current directory \\
       .. & Parent of the current directory \\
-      \textasciitilde & User's `home' directory
+      \textasciitilde & User's `home' directory \\ \\
+      (TAB) & (Perform autocomplete on directory and file names) \\
     \end{tabular}
   \end{table}
-
-    \begin{block}{}
-  
-    \end{block}
-    \begin{block}{}
-       Remember, \texttt{TAB} is your friend.
-    \end{block}
-
-
-
 \end{frame}
 
 
@@ -707,7 +698,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
   \begin{itemize}
     \item Git can be used in support of various work styles.
     \item For most projects that you will encounter, it is sufficent to put a repository somewhere on the Internet and think of this as the  `official' copy. You can then `clone' this repository locally, make your changes, and then `push' this pack to the official repository. Your colleagues will be doing the same, and Git will handle the necessary merging.
-    \item On larger projects you begin by copying the official repository to a new `forked' copy (also on the Internet). You can then develop (as above) in this fork. Later you can ask for your forked copy be merged back into the official copy (`pull request'). This gives the offical owners more control over changes.
+    \item On larger projects you begin by copying the official repository to a new `forked' copy (also on the Internet). You can then develop (as above) in this fork. Later you can ask for your forked copy be merged back into the official copy (`pull request'). This gives the official owners more control over changes.
   \end{itemize}
 \end{frame}
 
@@ -771,6 +762,7 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{DS9}
   \begin{block}{Features}
    \begin{itemize}
+    \item{Viewer for FITS and othjer files}
     \item{Aligning with WCS (World Coordinate System)}
     \item{Scaling image contrast}
     \item{Funky colour sets (and inverse or negative)}
@@ -787,12 +779,9 @@ ax2 = plt.subplot(122, sharex=ax1, sharey=ax1)
 \begin{frame}{Image Reduction and Analysis Facility (IRAF)}
   \begin{block}{Features}
    \begin{itemize}
-    \item{Uses basic Linux commands to navigate around directories, copy/move files, run tasks in the background}
-    \item{A series of packages each containing various tasks}
-    \item{\texttt{?} to view all tasks in current package, \texttt{??} to view all tasks}
-    \item{Each tasks contains various editable parameter files}
-    \item{\texttt{lpar [parameter\_file\_name]} to view and \texttt{epar[parameter\_file\_name]} to edit a  parameter file}    
-    \item{\texttt{unlearn [parameter\_file\_name]} to set reset task parameters}
+   \item{\textit{`IRAF is a collection of software geared towards the reduction of astronomical images in pixel array form ... from imaging array detectors such as CCDs.'}}
+   \item{\textit{`IRAF commands (known as tasks) are organized into package structures. Additional packages may be added to IRAF. There are many packages ... focusing on a particular branch of research or facility.'}}
+   \item{ Example package: STSDAS (for analysing Hubble Space Telescope data).}
    \end{itemize}
   \end{block}
   \begin{block}{Websites}
@@ -1042,7 +1031,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
 			\texttt{qsub job\_script}
 		\end{block}
 		\begin{block}{Start an interactive session}
-			\texttt{qsub -I}
+			\texttt{qsub -IX}
 		\end{block}
 		\begin{block}{Check the status of a job}
 			\texttt{checkjob job\_id}
@@ -1099,7 +1088,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
 		\item Always specify the walltime
 		\item If your program is not parallel, please use \texttt{nodes=1,ppn=1}
 		\item Use the \texttt{compute} queue for single processor jobs
-		\item Use \texttt{qsub -I} for an interactive session
+		\item Use \texttt{qsub -IX} for an interactive session
 		\item If using most of the resources, please send an email to the mailing list.
 	\end{itemize}
 \end{frame}

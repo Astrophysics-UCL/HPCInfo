@@ -110,17 +110,19 @@ Matplotlib Exercises
 
 3.	Plot 3
 
-    from astropy import units as u
-	from astropy.coordinates import SkyCoord
-	
-	c = SkyCoord(ra=h[1].data.field("RAdeg"), dec=h[1].data.field("DEdeg"), frame="icrs")
-	ra_rad = c.ra.wrap_at(180*u.deg).radian
-	dec_rad = c.dec.radian
-	
-	plt.subplot(111, projection="mollweide")
-	plt.grid(True)
-	plt.plot(ra_rad, dec_rad, "o", markersize=2)
+	# Adapted from http://www.astropy.org/astropy-tutorials/plot-catalog.html; see sections 14 and 15.
+
+	import astropy.coordinates as coord
+	from astropy import units as u
+
+	ra = coord.Angle(h[1].data.field("RAdeg")*u.degree)
+	ra = ra.wrap_at(180.0*u.degree)
+	dec = coord.Angle(h[1].data.field("DEdeg")*u.degree)
+	fig = plt.figure(figsize=(8,6))
+	ax = fig.add_subplot(111, projection="mollweide")
+	ax.scatter(ra.radian, dec.radian)
 	plt.show()
+
 
 
 
