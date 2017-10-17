@@ -131,7 +131,7 @@ HPC Exercises
 
 1. Start an interactive session. Find which node you have been assigned.
 
-    $ qsub -I
+    $ qsub -IX
     $ hostname
 
 2. Still in the interactive session, run `ipython` and run some Python commands. Then exit ipython and the interactive session.
