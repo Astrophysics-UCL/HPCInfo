@@ -979,7 +979,7 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
       \texttt{source $\sim$/aliases.csh}
     \end{block}
     \begin{block}{Load python}
-      \texttt{module load dev\_tools/oct2015/python-Anaconda-2-4.0.0}
+      \texttt{module load dev\_tools/oct2016/python-Anaconda-3-4.2.0}
     \end{block}
   \end{Examples}
 \end{frame}
@@ -1063,17 +1063,18 @@ There's more: the Astrophysics Source Code Library (\url{http://ascl.net/}) list
 
 \begin{frame}{HPC: Structure of a job script}
 	\texttt{\#!/bin/tcsh \\
-	\# PBS -q cores12 \\
-	\# PBS -N a\_name\_for\_your\_job \\
-	\# PBS -l nodes=1:ppn=6 \\
-	\# PBS -l mem=32gb \\
-	\# PBS -l walltime=120:00:00} \\
+	\#PBS -S /bin/tcsh \\
+	\#PBS -q cores12 \\
+	\#PBS -N a\_name\_for\_your\_job \\
+	\#PBS -l nodes=1:ppn=6 \\
+	\#PBS -l mem=32gb \\
+	\#PBS -l walltime=120:00:00} \\
 	
 	\begin{block}{\# Set environment variables if needed}
 	    \texttt{setenv OMP\_NUM\_THREADS 6}
         \end{block}
 	\begin{block}{\# Load module files if needed}
-	    \texttt{module load dev\_tools/oct2015/python-Anaconda-2-4.0.0}
+	    \texttt{module load dev\_tools/oct2016/python-Anaconda-3-4.2.0}
         \end{block}
 	\begin{block}{\# Run the program}
 	    \texttt{/home/username/hello\_world.exe}
