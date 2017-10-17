@@ -52,7 +52,7 @@ Linux Exercises
 12. Set the environment variable `MY_VAR` to equal the absolute path to `level_0`, and test that it has worked OK.
 
     $ setenv MY_VAR $PWD (tcsh) or
-    $ export $MYVAR=$PWD (bash)
+    $ export $MY_VAR=$PWD (bash)
     $ echo $MY_VAR
 
 13. Add (i.e append) to the `PATH` the absolute path to `level_0`, and test that it has worked OK.
@@ -164,18 +164,8 @@ The submission command is:
 4. Amend the job file so that the output goes to a file.
 
 Add the following `PBS` command to the script
-
-    #!/bin/tcsh
-    #PBS -q compute
-    #PBS -N hello_world
-    #PBS -l nodes=1:ppn=1
-    #PBS -l mem=1gb
-    #PBS -l walltime=00:01:00
+   
     #PBS -o /home/[user_name]/hello_world.out
-
-    module load dev_tools/oct2016/python-Anaconda-3-4.2.0
-    
-    python -c "print 'hello'"
 
 5. Using the above example, check the job status using `qstat` and `checkjob`.
 
