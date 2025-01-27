@@ -157,14 +157,16 @@
 \begin{frame}{Accessing remote machines}
   \begin{block}{Credentials}
     \begin{itemize}
-      \item You will need a \textit{username} and \textit{password} for \texttt{splinter} (and, if you are using Option A, for \texttt{zuserver1} as well).
-      \item If you do not have these already then we can give guest credentials to be used during this course.
+      \item You will need a \textit{username} and \textit{password} for any machine that you want to access.
+      \item Contact Edd Edmondson (e.edmondson@ucl.ac.uk) or John Deacon (j.deacon@ucl.ac.uk) to get these credentials.
     \end{itemize}
   \end{block}
   \begin{block}{The full names of the servers are:}
     \begin{itemize}
       \item \texttt{zuserver1.star.ucl.ac.uk}
+      \item \texttt{zuserver2.star.ucl.ac.uk}
       \item \texttt{splinter-login.star.ucl.ac.uk}
+      \item \texttt{hypatia-login.hpc.phys.ucl.ac.uk}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -174,7 +176,7 @@
   \begin{itemize}
     \item If you don't have PuTTY you can download it from \url{http://www.putty.org/}.
     \item On the `Connection/SSH/X11' tab, click on `enable X11 forwarding' and set `X display location' to `localhost:0' - this is necessary for handling graphical output.
-    \item On the Session tab, set the Host Name as appropriate: \texttt{zuserver1.star.ucl.ac.uk} (Option A) or \texttt{splinter-login.star.ucl.ac.uk} (Option B).
+    \item On the Session tab, set the Host Name as appropriate e.g. \texttt{zuserver1.star.ucl.ac.uk}.
   \end{itemize}
 \end{frame}
 
@@ -233,16 +235,20 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Environment variables}
+\begin{frame}{Linux: Environment variables (1)}
   \begin{itemize}
     \item The operating system maintains a global namespace of `environment variables' to store configuration information.
-    \item Use \alert{\texttt{printenv}} (in tcsh) or \alert{\texttt{set}} (in bash) to see all environment variables; use \alert{\texttt{echo \$<variable\_name>}} to see the value of one environment variable (e.g. \alert{\texttt{echo \$PATH}}).
-    \item Use \alert{\texttt{setenv FOO my\_string}} (in tcsh) or \alert{\texttt{export \$FOO=`my\_string'}} (in bash) to set \texttt{FOO}.
+    \item In bash: use  \alert{\texttt{set}} to see all environment variables; use \alert{\texttt{echo \$<variable\_name>}} to see the value of one environment variable (e.g. \alert{\texttt{echo \$PATH}}); use \alert{\texttt{export \$FOO=`my\_string'}} to set \texttt{FOO}.
+    \item Other shells use different commands for these tasks!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Linux: Environment variables (2)}
+  \begin{itemize}
     \item Variables \texttt{PATH} and \texttt{PYTHONPATH} are used frequently (to maintain lists of directories in which to search for executable programs and Python modules, respectively).
     \item Linux has no equivalent of the Windows Registry; configuration is done via the directory structure and the environment variables.
   \end{itemize}
 \end{frame}
-
 
 
 \begin{frame}{Linux: Structure of commands}
