@@ -95,9 +95,9 @@
   \end{block}
   \begin{block}{Also there are shared Linux machines:}
     \begin{itemize}
-      \item General purpose Astrophysics server available from outside UCL: \alert{\texttt{zuserver1}}
+      \item General purpose Astrophysics servers available from outside UCL: \alert{\texttt{zuserver1}} and \alert{\texttt{zuserver2}}
       \item UCL Cosmology HPC clusters: \alert{\texttt{splinter}} and \alert{\texttt{hypatia}}
-      \item Other UCL HPC clusters: \alert{\texttt{Myriad}}, \alert{\texttt{Kathleen}}, \alert{\texttt{Young}} and \alert{\texttt{Michael}}
+      \item Other UCL clusters: \alert{\texttt{Myriad}} and \alert{\texttt{Kathleen}}
       \item National clusters: \alert{\texttt{DiRAC}} (UK) and \alert{\texttt{NERSC}} (US)
     \end{itemize}
   \end{block}
@@ -106,9 +106,9 @@
 \begin{frame}{Work patterns}
   \begin{block}{Several work patterns are possible:}
     \begin{itemize}
-      \item Write and test a program on your local machine; use the local machine to remotely connect to \texttt{splinter}; upload the program to \texttt{splinter} and run it there;
+      \item Write and test a program on your local machine; use the local machine to remotely connect to a server; upload the program to the server and run it there;
       \item Or do all your work locally (requires small data sets);
-      \item Or use the local machine to remotely connect to \texttt{splinter} and do all your work there.
+      \item Or use the local machine to remotely connect to a server and do all your work there.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -116,36 +116,43 @@
 \begin{frame}{Remote connections}
   \begin{block}{How to connect to a shared machine}
     \begin{itemize}
-      \item Windows PC: use PuTTY;
+      \item Windows PC: use PuTTY (or MobaXterm, which uses PuTTY);
       \item Mac: go to the Terminal window and use \texttt{ssh};
       \item Linux machine: go to the Terminal window and use \texttt{ssh}.
     \end{itemize}
   \end{block}
-  \begin{block}{Visibility}
-    If you are not on the UCL network then you cannot connect to \texttt{splinter} directly; instead you must go via \texttt{zuserver1}.
+\end{frame}
+
+\begin{frame}{Visibility}
+  \begin{block}{}
+      \begin{itemize}
+    \item If you are not on the UCL network then to connect to Astro or UCL HPC servers you will need to set up a Virtual Private Environment. For details see \url{https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn}.
+    \item An alternative is to logon to \texttt{zuserver1} and from there logon to the server.
+      \end{itemize}
   \end{block}
 \end{frame}
 
 
-\begin{frame}{Two methods for accessing splinter}
-  \begin{figure}
-    \begin{center}
-      \begin{tikzpicture}[font=\ttfamily]
-        \node at (-2.5, 6) {Option A:};
-        \node at (2.5, 6) {Option B:};
-        \node (LM1) at (-2.5,5) [rectangle,draw] {local machine};
-        \node (Z) at (-2.5,3) [rectangle,draw] {zuserver1};
-        \node (S1) at (-2.5,1) [rectangle,draw] {splinter};
-        \node (LM2) at (2.5,5) [rectangle,draw,align=center] {local machine \\ on UCL network};
-        \node (S2) at (2.5,1) [rectangle,draw] {splinter};
-        \node at (0,3) {or};
-        \draw [->,thick] (LM1.south) -- (Z.north) node [midway,left,align=center] {PuTTY \\ or ssh};
-        \draw [->,thick] (Z.south) -- (S1.north) node [midway,left] {ssh};
-        \draw [->,thick] (LM2.south) -- (S2.north) node [midway,right,align=center] {PuTTY \\ or ssh};
-      \end{tikzpicture}
-    \end{center}
-  \end{figure}
-\end{frame}
+
+%\begin{frame}{Two methods for accessing splinter}
+%  \begin{figure}
+%    \begin{center}
+%      \begin{tikzpicture}[font=\ttfamily]
+%        \node at (-2.5, 6) {Option A:};
+%        \node at (2.5, 6) {Option B:};
+%        \node (LM1) at (-2.5,5) [rectangle,draw] {local machine};
+%        \node (Z) at (-2.5,3) [rectangle,draw] {zuserver1};
+%        \node (S1) at (-2.5,1) [rectangle,draw] {splinter};
+%        \node (LM2) at (2.5,5) [rectangle,draw,align=center] {local machine \\ on UCL network};
+%        \node (S2) at (2.5,1) [rectangle,draw] {splinter};
+%        \node at (0,3) {or};
+%        \draw [->,thick] (LM1.south) -- (Z.north) node [midway,left,align=center] {PuTTY \\ or ssh};
+%        \draw [->,thick] (Z.south) -- (S1.north) node [midway,left] {ssh};
+%        \draw [->,thick] (LM2.south) -- (S2.north) node [midway,right,align=center] {PuTTY \\ or ssh};
+%      \end{tikzpicture}
+%    \end{center}
+%  \end{figure}
+%\end{frame}
 
 \begin{frame}{Accessing remote machines}
   \begin{block}{Credentials}
