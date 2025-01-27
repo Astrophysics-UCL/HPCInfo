@@ -1,7 +1,5 @@
 # HPCInfo
 
-Astrophysics Group, Department of Physics and Astronomy, University College London
+Lorne Whiteway, Astrophysics Group, Department of Physics and Astronomy, University College London
 
-This repository contains source material for the IT training course given to new PhD students each October.
-
-It is currently being maintained by Lorne Whiteway
+This repository contains source material for IT training courses aimed at new PhD students.
