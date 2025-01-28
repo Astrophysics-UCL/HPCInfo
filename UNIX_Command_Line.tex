@@ -9,10 +9,17 @@
 \usepackage{listings}
 \usepackage{tikz} % Diagrams
 \usepackage{color}
+\usepackage{xcolor}
 \usepackage{textcomp} % See https://tex.stackexchange.com/questions/145416/how-to-have-straight-single-quotes-in-lstlistings
 
 \lstset{language=Python,upquote=true} % Format listings as appropriate for Python. Inexplicably we get problems if the language is set as part of the \begin{lstlisting} command.
 
+% https://tex.stackexchange.com/questions/36030/how-to-make-a-single-word-look-as-some-code
+\definecolor{light-gray}{gray}{0.9}
+%\definecolor{light-green}{RGB}{0,250,0}
+\definecolor{light-green}{cmyk}{0.1,0,0.1,0}
+\newcommand{\command}[1]{\colorbox{light-gray}{\texttt{#1}}}
+\newcommand{\filename}[1]{\colorbox{light-green}{\texttt{#1}}}
 
 
 \usetheme{boxes}
@@ -113,6 +120,24 @@
   \end{block}
 \end{frame}
 
+\begin{frame}{Accessing remote machines}
+  \begin{block}{Credentials}
+    \begin{itemize}
+      \item You will need a \textit{username} and \textit{password} for any machine that you want to access.
+      \item Contact Edd Edmondson (e.edmondson@ucl.ac.uk) or John Deacon (j.deacon@ucl.ac.uk) to get these credentials.
+    \end{itemize}
+  \end{block}
+  \begin{block}{The full names of the servers are:}
+    \begin{itemize}
+      \item \texttt{zuserver1.star.ucl.ac.uk}
+      \item \texttt{zuserver2.star.ucl.ac.uk}
+      \item \texttt{splinter-login.star.ucl.ac.uk}
+      \item \texttt{hypatia-login.hpc.phys.ucl.ac.uk}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+
 \begin{frame}{Remote connections}
   \begin{block}{How to connect to a shared machine}
     \begin{itemize}
@@ -154,22 +179,6 @@
 %  \end{figure}
 %\end{frame}
 
-\begin{frame}{Accessing remote machines}
-  \begin{block}{Credentials}
-    \begin{itemize}
-      \item You will need a \textit{username} and \textit{password} for any machine that you want to access.
-      \item Contact Edd Edmondson (e.edmondson@ucl.ac.uk) or John Deacon (j.deacon@ucl.ac.uk) to get these credentials.
-    \end{itemize}
-  \end{block}
-  \begin{block}{The full names of the servers are:}
-    \begin{itemize}
-      \item \texttt{zuserver1.star.ucl.ac.uk}
-      \item \texttt{zuserver2.star.ucl.ac.uk}
-      \item \texttt{splinter-login.star.ucl.ac.uk}
-      \item \texttt{hypatia-login.hpc.phys.ucl.ac.uk}
-    \end{itemize}
-  \end{block}
-\end{frame}
 
 
 \begin{frame}{Using PuTTY for remote connections from Windows}
@@ -182,7 +191,7 @@
 
 \begin{frame}{Using ssh for remote connections from Mac and Linux}
   \begin{itemize}
-    \item Syntax: \alert{\texttt{ssh -YC username@servername}}
+    \item Syntax: \command{ssh -YC username@servername}
     \item The `Y' option is necessary for handling graphical output.
   \end{itemize}
 \end{frame}
@@ -204,7 +213,7 @@
     \item{In Linux you will use a `command shell'.}
     \item{This is a text-based environment in which you type commands and receive text output.}
     \item{Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.}
-    \item{Various command shell programs are used: \texttt{bash}, \texttt{csh}, \texttt{tcsh}, \texttt{zsh}, etc. To see which one you are using, call \texttt{echo \$0}.}
+    \item{Various command shell programs are used: \command{bash}, \command{csh}, \command{tcsh}, \command{zsh}, etc. To see which one you are using, call \command{echo \$0}.}
    \end{itemize}
 \end{frame}
 
@@ -212,11 +221,20 @@
   \begin{itemize}
     \item{Everything is organised around files (which may be data files or program files i.e. instructions to be executed).}
     \item{Files live in directories. There is a hierarchical tree structure of directories.}
-    \item{Sample file name: \texttt{/share/splinter/ucapwhi/des/foo.txt}}
-    \item{Note use of slash `/', not backslash `\textbackslash' as in Windows.}
+    \item{Sample file name: \texttt{/home/ucapwhi/foo.txt}}
+    \item{Note use of slash `\texttt{/}', not backslash `\texttt{\symbol{92}}' as in Windows.}
     \item{Case sensitivity: `Foo' and `foo' are different strings.}
   \end{itemize}
 \end{frame}
+
+\begin{frame}{Linux: Working directory}
+  \begin{itemize}
+    \item{The shell is always pointed at one particular directory, known as the \textit{working directory}.}
+    \item{Use \command{pwd} (`print working directory') to see the current working directory.}
+    \item{Refer to files in the working directory simply via the file name (\filename{foo.txt}) and refer to files in other directories by directory name plus file name (\filename{/home/ucapwhi/foo.txt}).}
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}{Linux: Special symbols for directories}
   \begin{table}[ht]
