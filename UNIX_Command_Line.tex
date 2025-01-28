@@ -122,7 +122,7 @@
       \item Contact Edd Edmondson (e.edmondson@ucl.ac.uk) or John Deacon (j.deacon@ucl.ac.uk) to get these credentials.
     \end{itemize}
   \end{block}
-  \begin{block}{The full names of the servers are:}
+  \begin{block}{The full names of the Astro servers are:}
     \begin{itemize}
       \item \texttt{zuserver1.star.ucl.ac.uk}
       \item \texttt{zuserver2.star.ucl.ac.uk}
@@ -229,7 +229,7 @@
   \begin{itemize}
     \item{The shell is always pointed at one particular directory, known as the \textit{working directory}.}
     \item{Use \command{pwd} (`print working directory') to see the current working directory.}
-    \item{Refer to files in the working directory simply via the file name (\filename{foo.txt}) and refer to files in other directories by directory name plus file name (\filename{/home/ucapwhi/foo.txt}).}
+    \item{Refer to files in the working directory simply via the file name (example \filename{foo.txt}) and refer to files in other directories by directory name plus file name (example \filename{/home/ucapwhi/foo.txt}).}
   \end{itemize}
 \end{frame}
 
@@ -336,10 +336,11 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Linux: showing file contents}
+\begin{frame}{Linux: file contents}
   \begin{itemize}
   \item Use \command{cat <file>} to show the contents of a file as text and \command{xxd <file>} to show the contents of a file as bytes.
   \item Use \command{head <file>} or \command{tail <file>} to show the first or last few lines in a file - helpful if the file is large!
+  \item Use \command{grep} to search for text with a file or files.
   \end{itemize}
 \end{frame}
 
@@ -349,85 +350,117 @@
   \item Use \command{kill} to stop one of your own processes.
   \item Use \command{watch} to run a command repeatedly.
   \item Use \command{nohup} or \command{screen} to let a command continue to run even after you exit your session.
+  \item Use \command{\&} at the end of a command to have it run in the background; control is then immediately returned to you. Use \command{jobs} to see what is running in the background, and \command{fg} to move a job from background to foreground.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Linux: long command lines}
+  \begin{itemize}
+  \item Concatenate several commands onto one long command using semicolon e.g. \command{cd \textasciitilde;cat .bashrc;cd -}.
+  \item Conversely use \command{\symbol{92}} to split one long command over two lines.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Linux: wildcards}
+  \begin{itemize}
+  \item Some commands take \textit{sets} of filenames as an argument. For example \command{rm <set of filenames>} will remove multiple files.
+  \item Such sets can be given as a space-separated list (example \command{rm foo1.txt foo2.txt}), or else using \textit{wildcards} (example \command{rm foo*.txt}).
+  \item The wildcards are \\ \command{*} (matches zero or more characters) and \\ \command{?} (matches preceisely one character).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Linux: vi}
+  \begin{itemize}
+  \item \command{vi} (or an improved version \command{vim}) is a text editor that is found on almost every UNIX machine.
+  \item Some familiarity with \command{vi} is therefore useful, as it's often the fastest way to make small edits to text files.
+  \item Bad news: the key commands for \command{vi} are \textit{very} different from those that have become standard on personal computers. Good news:  \command{vi} can be useful even if you know only a few commands.
+  \item The minimum you need to know is how to exit \command{vi} if you get into it by accident: \command{esc : q! enter}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Linux: redirection}
+  \begin{itemize}
+  \item Use \command{>} to \textit{redirect} the text output from a program to go to a file instead of the screen. Example: \command{ls >  listing.txt}.
+  \item Converely use \command{<} to allow text input to a program to be taken from a file rather than the keyboard.
   \end{itemize}
 \end{frame}
 
 
 
-\begin{frame}{Linux: Basic commands 1}
-  \begin{columns}
-    \column{.5\textwidth}
-    \begin{block}{navigation and help}
-      \texttt{pwd} \\
-      \texttt{ls -la} \\
-      \texttt{cd dir\_name} \\
-      \texttt{man command\_name} \\
-      \texttt{info command\_name} \\
-      \texttt{exit}
-    \end{block}
-    \begin{block}{copy or move}
-      \texttt{cp src dest} \\
-      \texttt{mv src dest} \\
-      \texttt{scp usr@host:file dest}
-    \end{block}
-
-    \column{.5\textwidth}
-    \begin{block}{create or delete}
-      \texttt{touch file.txt} \\ 
-      \texttt{mkdir dir\_name} \\ 
-      \texttt{rm -i file.txt}
-    \end{block}
-    \begin{block}{find and system info}
-      \texttt{whereis file} \\
-      \texttt{which} \\
-      \texttt{echo \$VAR\_NAME}
-    \end{block}
-    \begin{block}{file contents}
-      \texttt{cat file} \\
-      \texttt{more file} \\
-      \texttt{head file}
-    \end{block}    
-  \end{columns}
-\end{frame}
-
-
-\begin{frame}{Linux: Basic commands 2}
-  \begin{columns}
-    \column{.5\textwidth}
-    \begin{block}{special characters}
-      \texttt{\& (background)} \\
-      \texttt{; (combine)} \\
-      \texttt{\textbackslash$\,$ (next line)} \\
-      \texttt{* (wildcard)} \\
-      \texttt{| (pipe)} \\
-      \texttt{> (output)} \\            
-      \texttt{< (input)}
-    \end{block}
-    \begin{block}{text editors}
-      \texttt{emacs} \\
-      \texttt{vi} \\
-      \texttt{gedit}
-    \end{block}
-
-    \column{.5\textwidth}
-    \begin{block}{process management}
-      \texttt{kill}, \texttt{top}, \texttt{nohup}
-    \end{block}    
-    \begin{block}{compressed files}
-      \texttt{gunzip}, \texttt{tar} 
-    \end{block}
-    \begin{block}{images}
-      \texttt{gthumb} \\
-      \texttt{ds9} \\
-      \texttt{evince} \\
-      \texttt{eog}
-    \end{block}    
-    \begin{block}{publishing}
-      \texttt{latex}, \texttt{bibtex} 
-    \end{block}
-  \end{columns}
-\end{frame}
-
+%\begin{frame}{Linux: Basic commands 1}
+%  \begin{columns}
+%    \column{.5\textwidth}
+%    \begin{block}{navigation and help}
+%      \texttt{pwd} \\
+%      \texttt{ls -la} \\
+%      \texttt{cd dir\_name} \\
+%      \texttt{man command\_name} \\
+%      \texttt{info command\_name} \\
+%      \texttt{exit}
+%    \end{block}
+%    \begin{block}{copy or move}
+%      \texttt{cp src dest} \\
+%      \texttt{mv src dest} \\
+%      \texttt{scp usr@host:file dest}
+%    \end{block}
+%
+%    \column{.5\textwidth}
+%    \begin{block}{create or delete}
+%      \texttt{touch file.txt} \\ 
+%      \texttt{mkdir dir\_name} \\ 
+%      \texttt{rm -i file.txt}
+%    \end{block}
+%    \begin{block}{find and system info}
+%      \texttt{whereis file} \\
+%      \texttt{which} \\
+%      \texttt{echo \$VAR\_NAME}
+%    \end{block}
+%    \begin{block}{file contents}
+%      \texttt{cat file} \\
+%      \texttt{more file} \\
+%      \texttt{head file}
+%    \end{block}    
+%  \end{columns}
+%\end{frame}
+%
+%
+%\begin{frame}{Linux: Basic commands 2}
+%  \begin{columns}
+%    \column{.5\textwidth}
+%    \begin{block}{special characters}
+%      \texttt{\& (background)} \\
+%      \texttt{; (combine)} \\
+%      \texttt{\textbackslash$\,$ (next line)} \\
+%      \texttt{* (wildcard)} \\
+%      \texttt{| (pipe)} \\
+%      \texttt{> (output)} \\            
+%      \texttt{< (input)}
+%    \end{block}
+%    \begin{block}{text editors}
+%      \texttt{emacs} \\
+%      \texttt{vi} \\
+%      \texttt{gedit}
+%    \end{block}
+%
+%    \column{.5\textwidth}
+%    \begin{block}{process management}
+%      \texttt{kill}, \texttt{top}, \texttt{nohup}
+%    \end{block}    
+%    \begin{block}{compressed files}
+%      \texttt{gunzip}, \texttt{tar} 
+%    \end{block}
+%    \begin{block}{images}
+%      \texttt{gthumb} \\
+%      \texttt{ds9} \\
+%      \texttt{evince} \\
+%      \texttt{eog}
+%    \end{block}    
+%    \begin{block}{publishing}
+%      \texttt{latex}, \texttt{bibtex} 
+%    \end{block}
+%  \end{columns}
+%\end{frame}
+%
 
 %  \begin{enumerate}
 %    \item Go to your home directory and create a directory called \texttt{level\_0}.
