@@ -15,9 +15,9 @@
 \lstset{language=Python,upquote=true} % Format listings as appropriate for Python. Inexplicably we get problems if the language is set as part of the \begin{lstlisting} command.
 
 % https://tex.stackexchange.com/questions/36030/how-to-make-a-single-word-look-as-some-code
-\definecolor{light-gray}{gray}{0.9}
+\definecolor{light-gray}{gray}{0.95}
 %\definecolor{light-green}{RGB}{0,250,0}
-\definecolor{light-green}{cmyk}{0.1,0,0.1,0}
+\definecolor{light-green}{cmyk}{0.07,0,0.07,0}
 \newcommand{\command}[1]{\colorbox{light-gray}{\texttt{#1}}}
 \newcommand{\filename}[1]{\colorbox{light-green}{\texttt{#1}}}
 
@@ -28,7 +28,7 @@
 
 \title{Introduction to the UNIX Command Line}
 
-\author{L.~Whiteway \\ lorne.whiteway.13@ucl.ac.uk}
+\author{Lorne~Whiteway \\ lorne.whiteway.13@ucl.ac.uk}
 
 \institute[UCL]
 {
@@ -138,22 +138,23 @@
 \end{frame}
 
 
-\begin{frame}{Remote connections}
+\begin{frame}{Software for connecting}
   \begin{block}{How to connect to a shared machine}
     \begin{itemize}
-      \item Windows PC: use PuTTY (or MobaXterm, which uses PuTTY);
-      \item Mac: go to the Terminal window and use \texttt{ssh};
-      \item Linux machine: go to the Terminal window and use \texttt{ssh}.
+      \item Windows PC: use \command{PuTTY} (or \command{MobaXterm}, which uses \command{PuTTY});
+      \item Mac: go to the Terminal window and use \command{ssh};
+      \item Linux machine: go to the Terminal window and use \command{ssh}.
     \end{itemize}
   \end{block}
 \end{frame}
 
 \begin{frame}{Visibility}
   \begin{block}{}
-      \begin{itemize}
-    \item If you are not on the UCL network then to connect to Astro or UCL HPC servers you will need to set up a Virtual Private Environment. For details see \url{https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn}.
-    \item An alternative is to logon to \texttt{zuserver1} and from there logon to the server.
-      \end{itemize}
+    \begin{itemize}
+    \item \texttt{zuserver1} and \texttt{zuserver2} can be seen from anywhere.
+    \item If you are on the UCL network then you can see any Astro or UCL HPC server.
+    \item If you are not on the UCL network then to connect to Astro or UCL HPC servers (except \texttt{zuserver1} and \texttt{zuserver2}) you must set up a \textit{Virtual Private Environment}. For details see \url{https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn}. An alternative is to logon to \texttt{zuserver1} and from there logon to the server.
+    \end{itemize}
   \end{block}
 \end{frame}
 
@@ -221,7 +222,8 @@
   \begin{itemize}
     \item{Everything is organised around files (which may be data files or program files i.e. instructions to be executed).}
     \item{Files live in directories. There is a hierarchical tree structure of directories.}
-    \item{Sample file name: \texttt{/home/ucapwhi/foo.txt}}
+    \item{The \textit{root} directory (the base of the directory tree) is called \filename{/}}.
+    \item{Sample file name: \filename{/home/ucapwhi/foo.txt}}
     \item{Note use of slash `\texttt{/}', not backslash `\texttt{\symbol{92}}' as in Windows.}
     \item{Case sensitivity: `Foo' and `foo' are different strings.}
   \end{itemize}
@@ -236,21 +238,38 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Special symbols for directories}
-  \begin{table}[ht]
-    \centering
-    \begin{tabular}{c l}
-      \\ [-2ex]
-      Symbol & Meaning \\ [.5ex]
-      \hline \\ [-2ex]
-      / & Top of the directory tree (the root directory) \\
-      . & Current directory \\
-      .. & Parent of the current directory \\
-      \textasciitilde & User's `home' directory \\ \\
-      (TAB) & (Perform autocomplete on directory and file names) \\
-    \end{tabular}
-  \end{table}
+\begin{frame}{Linux: Abbreviations for directories}
+  \begin{itemize}
+    \item{Full stop \filename{.} is an abbreviation for the working directory.}
+    \item{Two full stops \filename{..} is an abbreviation for the parent of the working directory.}
+    \item{Hyphen \filename{-} is an abbreviation of the previous working directory -- useful if you need to flip back and forth between directories!}
+    \item{Tilde \filename{\textasciitilde} is an abbreviation of the user's \textit{home} directory e.g. \filename{/home/ucapwhi/}. Many configuration files are located here by default.}
+  \end{itemize}
 \end{frame}
+
+
+\begin{frame}{Linux: Navigating the directory tree}
+  \begin{itemize}
+    \item{Use \command{cd} to change working directory. Example: \command{cd ../data/des/}.}
+  \end{itemize}
+\end{frame}
+
+
+%\begin{frame}{Linux: Special symbols for directories}
+%  \begin{table}[ht]
+%    \centering
+%    \begin{tabular}{c l}
+%      \\ [-2ex]
+%      Symbol & Meaning \\ [.5ex]
+%      \hline \\ [-2ex]
+%      / & Top of the directory tree (the root directory) \\
+%      . & Current directory \\
+%      .. & Parent of the current directory \\
+%      \textasciitilde & User's `home' directory \\ \\
+%      (TAB) & (Perform autocomplete on directory and file names) \\
+%    \end{tabular}
+%  \end{table}
+%\end{frame}
 
 
 \begin{frame}{Linux: Environment variables (1)}
