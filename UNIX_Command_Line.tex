@@ -28,18 +28,9 @@
 
 
 \title{Introduction to the UNIX Command Line}
-
 \author{Lorne~Whiteway \\ lorne.whiteway.13@ucl.ac.uk}
-
-\institute[UCL]
-{
-  Astrophysics Group\\
-  Department of Physics and Astronomy\\
-  University College London
-}
-\date
-{30 January 2025}
-
+\institute{Astrophysics Group\\  Department of Physics and Astronomy\\  University College London}
+\date{30 January 2025}
 
 \begin{document}
 
@@ -50,11 +41,10 @@
 \end{frame}
 
 
-\begin{frame}{Overall goals of presentation}
+\begin{frame}{Goals of presentation}
   \begin{itemize}
     \item How to access UCL UNIX systems
     \item How to use the UNIX command line
-    \item Pointers to where to get more information (courses, web, etc.)
   \end{itemize}
 \end{frame}
 
@@ -76,7 +66,7 @@
 \begin{frame}{Computing Environment for Astrophysics}
   \begin{itemize}
   \item Large datasets requiring substantial processing followed by sophisticated statistical analysis
-  \item Calculations often done on specialised `high-performance computing' (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be run simultaneously (`in parallel') across many processors.
+  \item Calculations often done on specialised \textit{high-performance computing} (HPC) machines having large filesystems and large RAM; calculations are often broken into pieces that can be run simultaneously (`in parallel') across many processors.
   \item Much useful software is made freely available within the community. Software quality is usually high; documentation quality is more variable.
   \item Many users write their own software.
   \end{itemize}
@@ -183,8 +173,8 @@
 \begin{frame}{Unix}
   \begin{itemize}
     \item Unix and Unix-like computer operating systems have become the industry standard for scientific research.
-    \item Unix was started in 1969 by Ken Thompson, Dennis Ritchie and others.
-    \item Unix is multi-tasking and multi-user, with a modular design: the operating system provides various single-purpose tools that may be linked together for more compilcated tasks.
+    \item Unix was started in 1969 by Ken Thompson, Dennis Ritchie, and others.
+    \item Unix is multi-tasking and multi-user, with a modular design: the operating system provides various single-purpose tools that may be linked together for more complicated tasks.
     \item Unix has a reputation for efficiency, robustness, and security.
    \end{itemize}
 \end{frame}
@@ -236,7 +226,7 @@
   \begin{itemize}
     \item Full stop \filename{.} is an abbreviation for the working directory.
     \item Two full stops \filename{..} is an abbreviation for the parent of the working directory.
-    \item Hyphen \filename{-} is an abbreviation of the previous working directory -- useful if you need to flip back and forth between directories!
+    \item Hyphen \filename{-} is an abbreviation for the most-recent previous working directory -- useful if you need to flip back and forth between directories!
     \item Tilde \filename{\textasciitilde} is an abbreviation of the user's \textit{home} directory e.g. \filename{/home/ucapwhi/}. Many configuration files are located here by default.
   \end{itemize}
 \end{frame}
@@ -436,7 +426,7 @@
 
 \begin{frame}{HPC environments}
 \begin{itemize}
-\item \server{splinter} and \server{hypatia} are \text{high performance computing} (HPC) clusters.
+\item \server{splinter} and \server{hypatia} are \textit{high-performance computing} (HPC) clusters.
 \item Each has many linked computers (called \textit{nodes}). Most nodes are \textit{compute} nodes; these are available for processing. The \textit{login} node (which you login to) is special. Use it for control, for editing and for compiling, but not for heavy processing!
 \item \command{srun --pty bash} will give you a session on one of the compute nodes.
 \item Alternatively you can use \command{sbatch} to launch an unattended job on one or several compute nodes.
