@@ -44,8 +44,6 @@
 
 \frame{\titlepage}
 
-\section{Introduction}
-
 \begin{frame}{Where to find this presentation}
     Find the presentation at \alert{\url{https://tinyurl.com/ytt3kdm3}}.\\
 \end{frame}
@@ -65,18 +63,14 @@
     \url{https://liveuclac.sharepoint.com/sites/PhysAstAstPhysGrp}
     This Wiki is freely viewable and editable by all members of the department. Please use it to record information that you think will be useful to others (including your future self). Be bold!
   \end{block}
-
-
   \begin{block}{UCL Research Computing Platforms}
     \url{https://www.rc.ucl.ac.uk/}
   \end{block}
-
-  
   \begin{block}{Stack Overflow}
     \url{http://stackoverflow.com/}  \ (But will it survive ChatGPT?)
   \end{block}
-  
 \end{frame}
+
 
 \begin{frame}{Computing Environment for Astrophysics}
   \begin{itemize}
@@ -86,6 +80,7 @@
   \item Many users write their own software.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Local Computing Environment}
   \begin{block}{You will have your own local machine, which might be:}
@@ -105,6 +100,7 @@
   \end{block}
 \end{frame}
 
+
 \begin{frame}{Work patterns}
   \begin{block}{Several work patterns are possible:}
     \begin{itemize}
@@ -114,6 +110,7 @@
     \end{itemize}
   \end{block}
 \end{frame}
+
 
 \begin{frame}{Accessing remote machines}
   \begin{block}{Credentials}
@@ -143,6 +140,7 @@
   \end{block}
 \end{frame}
 
+
 \begin{frame}{Visibility}
   \begin{block}{}
     \begin{itemize}
@@ -154,29 +152,6 @@
 \end{frame}
 
 
-
-%\begin{frame}{Two methods for accessing splinter}
-%  \begin{figure}
-%    \begin{center}
-%      \begin{tikzpicture}[font=\ttfamily]
-%        \node at (-2.5, 6) {Option A:};
-%        \node at (2.5, 6) {Option B:};
-%        \node (LM1) at (-2.5,5) [rectangle,draw] {local machine};
-%        \node (Z) at (-2.5,3) [rectangle,draw] {zuserver1};
-%        \node (S1) at (-2.5,1) [rectangle,draw] {splinter};
-%        \node (LM2) at (2.5,5) [rectangle,draw,align=center] {local machine \\ on UCL network};
-%        \node (S2) at (2.5,1) [rectangle,draw] {splinter};
-%        \node at (0,3) {or};
-%        \draw [->,thick] (LM1.south) -- (Z.north) node [midway,left,align=center] {PuTTY \\ or ssh};
-%        \draw [->,thick] (Z.south) -- (S1.north) node [midway,left] {ssh};
-%        \draw [->,thick] (LM2.south) -- (S2.north) node [midway,right,align=center] {PuTTY \\ or ssh};
-%      \end{tikzpicture}
-%    \end{center}
-%  \end{figure}
-%\end{frame}
-
-
-
 \begin{frame}{Using PuTTY for remote connections from Windows}
   \begin{itemize}
     \item If you don't have PuTTY you can download it from \url{http://www.putty.org/}.
@@ -185,12 +160,14 @@
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Using ssh for remote connections from Mac and Linux}
   \begin{itemize}
     \item Syntax: \command{ssh -YC username@servername}
     \item The `Y' option is necessary for handling graphical output.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{X-Windows client}
   \begin{itemize}
@@ -202,94 +179,118 @@
 \end{frame}
 
 
-\section{Linux}
-
-\begin{frame}{Linux: Command shell}
+\begin{frame}{Unix}
   \begin{itemize}
-    \item{In Linux you will use a `command shell'.}
-    \item{This is a text-based environment in which you type commands and receive text output.}
-    \item{Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.}
-    \item{Various command shell programs are used: \command{bash}, \command{csh}, \command{tcsh}, \command{zsh}, etc. To see which one you are using, call \command{echo \$0}.}
-    \item{This presentation assumes \command{bash}! Other shells may use different names for some of the commands discussed.}
+    \item Unix and Unix-like computer operating systems have become the industry standard for scientific research.
+    \item Unix was started in 1969 by Ken Thompson, Dennis Ritchie and others.
+    \item Unix is multi-tasking and multi-user, with a modular design: operating system provides various single-purpose tools that may be linked together for more compilcated tasks.
+    \item Unix has a reputation for efficiency, robustness, and security.
    \end{itemize}
 \end{frame}
 
+
+\begin{frame}{Linux}
+  \begin{itemize}
+    \item Linux is a popular `Unix-like' operating system.
+    \item Linux was created by  Linus Torvalds, and was first released in 1991. His motivation was to avoid restrictive software licenses.
+    \item \texttt{splinter} and texttt{hypatia} use a version of Linux called `CentOS'.
+   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Linux: Command shell}
+  \begin{itemize}
+    \item In Linux you will use a `command shell'.
+    \item This is a text-based environment in which you type commands and receive text output.
+    \item Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.
+    \item Various command shell programs are used: \command{bash}, \command{csh}, \command{tcsh}, \command{zsh}, etc. To see which one you are using, call \command{echo \$0}.
+    \item This presentation assumes \command{bash}! Other shells may use different names for some of the commands discussed.
+   \end{itemize}
+\end{frame}
+
+
 \begin{frame}{Linux: Directory structure}
   \begin{itemize}
-    \item{Everything is organised around files (which may be data files or program files i.e. instructions to be executed).}
-    \item{Files live in directories. There is a hierarchical tree structure of directories.}
-    \item{The \textit{root} directory (the base of the directory tree) is called \filename{/}}.
-    \item{Sample file name: \filename{/home/ucapwhi/foo.txt}}
-    \item{Note use of slash `\texttt{/}', not backslash `\texttt{\symbol{92}}' as in Windows.}
-    \item{Case sensitivity: `Foo' and `foo' are different strings.}
+    \item Everything is organised around files (which may be data files or program files i.e. instructions to be executed).
+    \item Files live in directories. There is a hierarchical tree structure of directories.
+    \item The \textit{root} directory (the base of the directory tree) is called \filename{/}.
+    \item Sample file name: \filename{/home/ucapwhi/foo.txt}
+    \item Note use of slash `\texttt{/}', not backslash `\texttt{\symbol{92}}' as in Windows.
+    \item Case sensitivity: `Foo' and `foo' are different strings.
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Linux: Working directory}
   \begin{itemize}
-    \item{The shell is always pointed at one particular directory, known as the \textit{working directory}.}
-    \item{Use \command{pwd} (`print working directory') to see the current working directory.}
-    \item{Refer to files in the working directory simply via the file name (example \filename{foo.txt}) and refer to files in other directories by directory name plus file name (example \filename{/home/ucapwhi/foo.txt}).}
+    \item The shell is always pointed at one particular directory, known as the \textit{working directory}.
+    \item Use \command{pwd} (`print working directory') to see the current working directory.
+    \item Refer to files in the working directory simply via the file name (example \filename{foo.txt}) and refer to files in other directories by directory name plus file name (example \filename{/home/ucapwhi/foo.txt}).
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Linux: Abbreviations for directories}
   \begin{itemize}
-    \item{Full stop \filename{.} is an abbreviation for the working directory.}
-    \item{Two full stops \filename{..} is an abbreviation for the parent of the working directory.}
-    \item{Hyphen \filename{-} is an abbreviation of the previous working directory -- useful if you need to flip back and forth between directories!}
-    \item{Tilde \filename{\textasciitilde} is an abbreviation of the user's \textit{home} directory e.g. \filename{/home/ucapwhi/}. Many configuration files are located here by default.}
+    \item Full stop \filename{.} is an abbreviation for the working directory.
+    \item Two full stops \filename{..} is an abbreviation for the parent of the working directory.
+    \item Hyphen \filename{-} is an abbreviation of the previous working directory -- useful if you need to flip back and forth between directories!
+    \item Tilde \filename{\textasciitilde} is an abbreviation of the user's \textit{home} directory e.g. \filename{/home/ucapwhi/}. Many configuration files are located here by default.
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Linux: Navigating the directory tree}
   \begin{itemize}
-    \item{Use \command{cd} to change working directory. Example: \command{cd ../data/des/}.}
-    \item{Use \command{ls} to list the files in the current working directory; \\use \command{ls <dir>} to list the files in another directory.}
+    \item Use \command{cd} to change working directory. Example: \command{cd ../data/des/}.
+    \item Use \command{ls} to list the files in the current working directory; \\use \command{ls <dir>} to list the files in another directory.
   \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Linux: Keyboard shortcuts}
+\begin{frame}{Linux: Keyboard speedups}
   \begin{itemize}
-    \item{Linux has several shortcuts that make it efficient to use the keyboard to type commands.}
-    \item{Keyboard interfaces predate more modern graphical interfaces; they are less friendly for new users, but are low-tech, robust, and very efficient for experienced users.}
+    \item Linux has several speedups that make it efficient to use the keyboard to type commands.
+    \item Keyboard interfaces predate more modern graphical interfaces; they are less friendly for new users, but are low-tech, robust, and very efficient for experienced users.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: Keyboard shortcuts: tab}
   \begin{itemize}
-    \item{Use the \command{tab} key to autocomplete commands, directory names and filenames.}
-    \item{If what you have typed so far doesn't have a unique autocompletion, then it will complete up to the first ambiguous character.}
-    \item{This will influence your naming conventions for directories and files!}
+    \item Use the \command{tab} key to autocomplete commands, directory names and filenames.
+    \item If what you have typed so far doesn't have a unique autocompletion, then it will complete up to the first ambiguous character.
+    \item This will influence your naming conventions for directories and files!
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: Keyboard shortcuts: up and down arrows}
   \begin{itemize}
-    \item{Use \command{up arrow} to scroll backwards through previous commands, and then \command{down arrow} to scroll forwards again.}
-    \item{Follow with \command{Enter} to execute an old command that you have scrolled back to, or \command{ctrl+c} to cancel.}
+    \item Use \command{up arrow} to scroll backwards through previous commands, and then \command{down arrow} to scroll forwards again.
+    \item Follow with \command{Enter} to execute an old command that you have scrolled back to, or \command{ctrl+c} to cancel.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: Keyboard shortcuts: ctrl+r}
   \begin{itemize}
-    \item{Use \command{ctrl+r} to search backwards through previous commands (\textit{reverse-i-search}).}
-    \item{Type a substring (not necessarily initial) of the sought-for command.}
-    \item{Example: \command{ctrl+r push} will bring up the most recent command that included the substring \command{push}.}
-    \item{Follow with \command{Enter} to execute, \command{ctrl+c} to cancel, or \command{ctrl+r} to search further back.}
+    \item Use \command{ctrl+r} to search backwards through previous commands (\textit{reverse-i-search}).
+    \item Type a substring (not necessarily initial) of the sought-for command.
+    \item Example: \command{ctrl+r push} will bring up the most recent command that included the substring \command{push}.
+    \item Follow with \command{Enter} to execute, \command{ctrl+c} to cancel, or \command{ctrl+r} to search further back.
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Linux: Keyboard shortcuts: alias}
   \begin{itemize}
-    \item{Use \command{alias} to create your own abbreviations for long commands.}
-    \item{Example: \command{alias s=`cd /share/ucapwhi/almanac\_project/'}}
-    \item{It's boring to retype all your aliases at the start of your session. So instead put them in a batch file that autoexecutes at login - this will be named \filename{\textasciitilde/.bashrc} or something similar. }
+    \item Use \command{alias} to create your own abbreviations for long commands.
+    \item Example: \command{alias s=`cd /share/ucapwhi/almanac\_project/'}
+    \item It's boring to retype all your aliases at the start of your session. So instead put them in a batch file that autoexecutes at login - this will be named \filename{\textasciitilde/.bashrc} or something similar.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: Environment variables (1)}
   \begin{itemize}
@@ -299,6 +300,7 @@
     \item Use \command{export \$FOO=`my\_string'} to set an environment variable \texttt{FOO}.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: Environment variables (2)}
   \begin{itemize}
@@ -327,6 +329,7 @@
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Linux: file management}
   \begin{itemize}
   \item Use \command{mkdir <dir>} to make a new directory
@@ -336,6 +339,7 @@
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Linux: file contents}
   \begin{itemize}
   \item Use \command{cat <file>} to show the contents of a file as text and \command{xxd <file>} to show the contents of a file as bytes.
@@ -343,6 +347,7 @@
   \item Use \command{grep} to search for text with a file or files.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: controlling processes}
   \begin{itemize}
@@ -354,12 +359,14 @@
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Linux: long command lines}
   \begin{itemize}
   \item Concatenate several commands onto one long command using semicolon e.g. \command{cd \textasciitilde;cat .bashrc;cd -}.
   \item Conversely use \command{\symbol{92}} to split one long command over two lines.
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: wildcards}
   \begin{itemize}
@@ -368,6 +375,7 @@
   \item The wildcards are \\ \command{*} (matches zero or more characters) and \\ \command{?} (matches preceisely one character).
   \end{itemize}
 \end{frame}
+
 
 \begin{frame}{Linux: vi}
   \begin{itemize}
@@ -378,112 +386,13 @@
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Linux: redirection}
   \begin{itemize}
   \item Use \command{>} to \textit{redirect} the text output from a program to go to a file instead of the screen. Example: \command{ls >  listing.txt}.
   \item Converely use \command{<} to allow text input to a program to be taken from a file rather than the keyboard.
   \end{itemize}
 \end{frame}
-
-
-
-%\begin{frame}{Linux: Basic commands 1}
-%  \begin{columns}
-%    \column{.5\textwidth}
-%    \begin{block}{navigation and help}
-%      \texttt{pwd} \\
-%      \texttt{ls -la} \\
-%      \texttt{cd dir\_name} \\
-%      \texttt{man command\_name} \\
-%      \texttt{info command\_name} \\
-%      \texttt{exit}
-%    \end{block}
-%    \begin{block}{copy or move}
-%      \texttt{cp src dest} \\
-%      \texttt{mv src dest} \\
-%      \texttt{scp usr@host:file dest}
-%    \end{block}
-%
-%    \column{.5\textwidth}
-%    \begin{block}{create or delete}
-%      \texttt{touch file.txt} \\ 
-%      \texttt{mkdir dir\_name} \\ 
-%      \texttt{rm -i file.txt}
-%    \end{block}
-%    \begin{block}{find and system info}
-%      \texttt{whereis file} \\
-%      \texttt{which} \\
-%      \texttt{echo \$VAR\_NAME}
-%    \end{block}
-%    \begin{block}{file contents}
-%      \texttt{cat file} \\
-%      \texttt{more file} \\
-%      \texttt{head file}
-%    \end{block}    
-%  \end{columns}
-%\end{frame}
-%
-%
-%\begin{frame}{Linux: Basic commands 2}
-%  \begin{columns}
-%    \column{.5\textwidth}
-%    \begin{block}{special characters}
-%      \texttt{\& (background)} \\
-%      \texttt{; (combine)} \\
-%      \texttt{\textbackslash$\,$ (next line)} \\
-%      \texttt{* (wildcard)} \\
-%      \texttt{| (pipe)} \\
-%      \texttt{> (output)} \\            
-%      \texttt{< (input)}
-%    \end{block}
-%    \begin{block}{text editors}
-%      \texttt{emacs} \\
-%      \texttt{vi} \\
-%      \texttt{gedit}
-%    \end{block}
-%
-%    \column{.5\textwidth}
-%    \begin{block}{process management}
-%      \texttt{kill}, \texttt{top}, \texttt{nohup}
-%    \end{block}    
-%    \begin{block}{compressed files}
-%      \texttt{gunzip}, \texttt{tar} 
-%    \end{block}
-%    \begin{block}{images}
-%      \texttt{gthumb} \\
-%      \texttt{ds9} \\
-%      \texttt{evince} \\
-%      \texttt{eog}
-%    \end{block}    
-%    \begin{block}{publishing}
-%      \texttt{latex}, \texttt{bibtex} 
-%    \end{block}
-%  \end{columns}
-%\end{frame}
-%
-
-%  \begin{enumerate}
-%    \item Go to your home directory and create a directory called \texttt{level\_0}.
-%    \item Change directory to \texttt{level\_0}.
-%    \item Find the name of the present working directory.
-%    \item Make a directory \texttt{level\_1}, and move to it.
-%    \item Create a file called \texttt{foo.txt} with contents ``This file contains the word bar''.
-%    \item Add another line in \texttt{foo.txt} with contents ``This is the second line''.
-%    \item Print the contents of \texttt{foo.txt} to the screen.
-%    \item Search for the word \emph{bar} in \texttt{foo.txt}.
-%    \item Go up one level, then remove the directory \texttt{level\_1} (and its contents).
-%    \item Find the location of your python installation.
-%    \item Find the values of the environment variables \texttt{PATH} and \texttt{LD\_LIBRARY\_PATH}.
-%    \item Set the environment variable \texttt{MY\_VAR} to equal the absolute path to \texttt{level\_0}, and test that it has worked OK.
-%    \item Add (i.e append) to the \texttt{PATH} the absolute path to \texttt{level\_0}, and test that it has worked OK.
-%\begin{frame}[allowframebreaks,t]{Linux: Exercises}
-%    \item Use the \texttt{man} command to find the option of \texttt{ls} that shows file sizes in human readable format.
-%    \item Find the hostname, processor type and operating system version and write this info into a text file called \texttt{info.txt}.
-%    \item List the people who are currently logged into the system.
-%    \item Find which process is using the most CPU at the moment.
-%    \item Find the IDs of the processes that you are running.
-%  \end{enumerate}
-%\end{frame}
 
 
 \end{document}
