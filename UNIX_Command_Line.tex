@@ -1,16 +1,16 @@
 % http://www.ctan.org/tex-archive/macros/latex/contrib/beamer/examples
 % http://latex.artikel-namsu.de/english/beamer-examples.html
 
-\documentclass{beamer}
+
+\documentclass[dvipsnames]{beamer}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage{fancybox, graphicx}
 \usepackage{listings}
-\usepackage{tikz} % Diagrams
 \usepackage{color}
-\usepackage{xcolor}
 \usepackage{textcomp} % See https://tex.stackexchange.com/questions/145416/how-to-have-straight-single-quotes-in-lstlistings
+
 
 \lstset{language=Python,upquote=true} % Format listings as appropriate for Python. Inexplicably we get problems if the language is set as part of the \begin{lstlisting} command.
 
@@ -20,6 +20,7 @@
 \definecolor{light-green}{cmyk}{0.07,0,0.07,0}
 \newcommand{\command}[1]{\colorbox{light-gray}{\texttt{#1}}}
 \newcommand{\filename}[1]{\colorbox{light-green}{\texttt{#1}}}
+\newcommand{\server}[1]{\textcolor{BrickRed}{\texttt{#1}}}
 
 
 \usetheme{boxes}
@@ -92,10 +93,10 @@
   \end{block}
   \begin{block}{Also there are shared Linux machines:}
     \begin{itemize}
-      \item General purpose Astrophysics servers available from outside UCL: \alert{\texttt{zuserver1}} and \alert{\texttt{zuserver2}}
-      \item UCL Cosmology HPC clusters: \alert{\texttt{splinter}} and \alert{\texttt{hypatia}}
-      \item Other UCL clusters: \alert{\texttt{Myriad}} and \alert{\texttt{Kathleen}}
-      \item National clusters: \alert{\texttt{DiRAC}} (UK) and \alert{\texttt{NERSC}} (US)
+      \item General purpose Astrophysics servers available from outside UCL: \server{zuserver1} and \server{zuserver2}
+      \item UCL Cosmology HPC clusters: \server{splinter} and \server{hypatia}
+      \item Other UCL clusters: \server{Myriad} and \server{Kathleen}
+      \item National clusters: \server{DiRAC} (UK) and \server{NERSC} (US)
     \end{itemize}
   \end{block}
 \end{frame}
@@ -121,10 +122,10 @@
   \end{block}
   \begin{block}{The full names of the Astro servers are:}
     \begin{itemize}
-      \item \texttt{zuserver1.star.ucl.ac.uk}
-      \item \texttt{zuserver2.star.ucl.ac.uk}
-      \item \texttt{splinter-login.star.ucl.ac.uk}
-      \item \texttt{hypatia-login.hpc.phys.ucl.ac.uk}
+      \item \server{zuserver1.star.ucl.ac.uk}
+      \item \server{zuserver2.star.ucl.ac.uk}
+      \item \server{splinter-login.star.ucl.ac.uk}
+      \item \server{hypatia-login.hpc.phys.ucl.ac.uk}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -144,9 +145,9 @@
 \begin{frame}{Visibility}
   \begin{block}{}
     \begin{itemize}
-    \item \texttt{zuserver1} and \texttt{zuserver2} can be seen from anywhere.
+    \item \server{zuserver*} ($\equiv$ \server{zuserver1} or \server{zuserver2}) can be seen from anywhere.
     \item If you are on the UCL network then you can see any Astro or UCL HPC server.
-    \item If you are not on the UCL network then to connect to Astro or UCL HPC servers (except \texttt{zuserver1} and \texttt{zuserver2}) you must set up a \textit{Virtual Private Environment}. For details see \url{https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn}. An alternative is to logon to \texttt{zuserver1} and from there logon to the server.
+    \item If you are not on the UCL network then to connect to Astro or UCL HPC servers (except \server{zuserver*}) you must set up a \textit{Virtual Private Environment}. For details see \url{https://www.ucl.ac.uk/isd/services/get-connected/ucl-virtual-private-network-vpn}. An alternative is to logon to \server{zuserver*} and from there logon to the server.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -156,7 +157,7 @@
   \begin{itemize}
     \item If you don't have PuTTY you can download it from \url{http://www.putty.org/}.
     \item On the `Connection/SSH/X11' tab, click on `enable X11 forwarding' and set `X display location' to `localhost:0' - this is necessary for handling graphical output.
-    \item On the Session tab, set the Host Name as appropriate e.g. \texttt{zuserver1.star.ucl.ac.uk}.
+    \item On the Session tab, set the Host Name as appropriate e.g. \server{zuserver1.star.ucl.ac.uk}.
   \end{itemize}
 \end{frame}
 
@@ -183,7 +184,7 @@
   \begin{itemize}
     \item Unix and Unix-like computer operating systems have become the industry standard for scientific research.
     \item Unix was started in 1969 by Ken Thompson, Dennis Ritchie and others.
-    \item Unix is multi-tasking and multi-user, with a modular design: operating system provides various single-purpose tools that may be linked together for more compilcated tasks.
+    \item Unix is multi-tasking and multi-user, with a modular design: the operating system provides various single-purpose tools that may be linked together for more compilcated tasks.
     \item Unix has a reputation for efficiency, robustness, and security.
    \end{itemize}
 \end{frame}
@@ -193,12 +194,13 @@
   \begin{itemize}
     \item Linux is a popular `Unix-like' operating system.
     \item Linux was created by  Linus Torvalds, and was first released in 1991. His motivation was to avoid restrictive software licenses.
-    \item \texttt{splinter} and texttt{hypatia} use a version of Linux called `CentOS'.
+    \item \server{splinter} and \server{hypatia} use a version of Linux called `CentOS'.
+    \item Free and open source.
    \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Linux: Command shell}
+\begin{frame}{Command shell}
   \begin{itemize}
     \item In Linux you will use a `command shell'.
     \item This is a text-based environment in which you type commands and receive text output.
@@ -209,7 +211,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Directory structure}
+\begin{frame}{Directory structure}
   \begin{itemize}
     \item Everything is organised around files (which may be data files or program files i.e. instructions to be executed).
     \item Files live in directories. There is a hierarchical tree structure of directories.
@@ -221,7 +223,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Working directory}
+\begin{frame}{Working directory}
   \begin{itemize}
     \item The shell is always pointed at one particular directory, known as the \textit{working directory}.
     \item Use \command{pwd} (`print working directory') to see the current working directory.
@@ -230,7 +232,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Abbreviations for directories}
+\begin{frame}{Abbreviations for directories}
   \begin{itemize}
     \item Full stop \filename{.} is an abbreviation for the working directory.
     \item Two full stops \filename{..} is an abbreviation for the parent of the working directory.
@@ -240,7 +242,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Navigating the directory tree}
+\begin{frame}{Navigating the directory tree}
   \begin{itemize}
     \item Use \command{cd} to change working directory. Example: \command{cd ../data/des/}.
     \item Use \command{ls} to list the files in the current working directory; \\use \command{ls <dir>} to list the files in another directory.
@@ -248,7 +250,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Keyboard speedups}
+\begin{frame}{Keyboard speedups}
   \begin{itemize}
     \item Linux has several speedups that make it efficient to use the keyboard to type commands.
     \item Keyboard interfaces predate more modern graphical interfaces; they are less friendly for new users, but are low-tech, robust, and very efficient for experienced users.
@@ -256,7 +258,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Keyboard shortcuts: tab}
+\begin{frame}{Keyboard shortcuts: tab}
   \begin{itemize}
     \item Use the \command{tab} key to autocomplete commands, directory names and filenames.
     \item If what you have typed so far doesn't have a unique autocompletion, then it will complete up to the first ambiguous character.
@@ -265,7 +267,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Keyboard shortcuts: up and down arrows}
+\begin{frame}{Keyboard shortcuts: up and down arrows}
   \begin{itemize}
     \item Use \command{up arrow} to scroll backwards through previous commands, and then \command{down arrow} to scroll forwards again.
     \item Follow with \command{Enter} to execute an old command that you have scrolled back to, or \command{ctrl+c} to cancel.
@@ -273,7 +275,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Keyboard shortcuts: ctrl+r}
+\begin{frame}{Keyboard shortcuts: ctrl+r}
   \begin{itemize}
     \item Use \command{ctrl+r} to search backwards through previous commands (\textit{reverse-i-search}).
     \item Type a substring (not necessarily initial) of the sought-for command.
@@ -283,7 +285,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Keyboard shortcuts: alias}
+\begin{frame}{Keyboard shortcuts: alias}
   \begin{itemize}
     \item Use \command{alias} to create your own abbreviations for long commands.
     \item Example: \command{alias s=`cd /share/ucapwhi/almanac\_project/'}
@@ -292,7 +294,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Environment variables (1)}
+\begin{frame}{Environment variables (1)}
   \begin{itemize}
     \item The operating system maintains a global namespace of `environment variables' to store configuration information.
     \item Use  \command{set} to see all environment variables;
@@ -302,7 +304,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Environment variables (2)}
+\begin{frame}{Environment variables (2)}
   \begin{itemize}
     \item Variables \texttt{PATH} and \texttt{PYTHONPATH} are used frequently (to maintain lists of directories in which to search for executable programs and Python modules, respectively).
     \item Linux has no equivalent of the Windows Registry; configuration is done via the directory structure and the environment variables.
@@ -310,7 +312,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: Structure of commands}
+\begin{frame}{Structure of commands}
   \begin{block}{Structure}
     \command{[command] -[option(s)] [argument]}
   \end{block}
@@ -322,15 +324,15 @@
 \end{frame}
 
 
-\begin{frame}{Linux: command reference}
+\begin{frame}{Command reference}
   \begin{itemize}
-  \item Use \command{man <command>} for short form info and \command{info <command>} for long form info on commands.
+  \item For help with \command{<command>} (in increasing order of verbosity): \\ \command{<command> -h} or \command{<command> --help} \\ \command{man <command>} \\ \command{info <command>}
   \item \url{http://www.computerhope.com/unix.htm} is a useful reference for Linux commands.
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Linux: file management}
+\begin{frame}{File management}
   \begin{itemize}
   \item Use \command{mkdir <dir>} to make a new directory
   \item Use \command{rm -rf <dir>} to delete a directory and its contents (including subdirectories). This is irreversible!
@@ -340,7 +342,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: file contents}
+\begin{frame}{File contents}
   \begin{itemize}
   \item Use \command{cat <file>} to show the contents of a file as text and \command{xxd <file>} to show the contents of a file as bytes.
   \item Use \command{head <file>} or \command{tail <file>} to show the first or last few lines in a file - helpful if the file is large!
@@ -349,7 +351,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: controlling processes}
+\begin{frame}{Controlling processes}
   \begin{itemize}
   \item Use \command{top} to see all the processes running on a server (not just your own); type \command{q} to exit \command{top}. Helpful if someone seems to be hogging the processor!
   \item Use \command{kill} to stop one of your own processes.
@@ -360,7 +362,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: long command lines}
+\begin{frame}{Long command lines}
   \begin{itemize}
   \item Concatenate several commands onto one long command using semicolon e.g. \command{cd \textasciitilde;cat .bashrc;cd -}.
   \item Conversely use \command{\symbol{92}} to split one long command over two lines.
@@ -368,7 +370,7 @@
 \end{frame}
 
 
-\begin{frame}{Linux: wildcards}
+\begin{frame}{Wildcards}
   \begin{itemize}
   \item Some commands take \textit{sets} of filenames as an argument. For example \command{rm <set of filenames>} will remove multiple files.
   \item Such sets can be given as a space-separated list (example \command{rm foo1.txt foo2.txt}), or else using \textit{wildcards} (example \command{rm foo*.txt}).
@@ -377,21 +379,68 @@
 \end{frame}
 
 
-\begin{frame}{Linux: vi}
+\begin{frame}{vim}
   \begin{itemize}
-  \item \command{vi} (or an improved version \command{vim}) is a text editor that is found on almost every UNIX machine.
-  \item Some familiarity with \command{vi} is therefore useful, as it's often the fastest way to make small edits to text files.
-  \item Bad news: the key commands for \command{vi} are \textit{very} different from those that have become standard on personal computers. Good news:  \command{vi} can be useful even if you know only a few commands.
-  \item The minimum you need to know is how to exit \command{vi} if you get into it by accident: \command{esc : q! enter}.
+  \item \command{vim} (an improved version of \command{vi}) is a text editor that is found on almost every UNIX machine.
+  \item Some familiarity with \command{vim} is therefore useful, as it's often the fastest way to make small edits to text files.
+  \item Bad news: the key commands for \command{vim} are \textit{very} different from those that have become standard on personal computers. Good news:  \command{vim} can be useful even if you know only a few commands.
+  \item The minimum you need to know is how to exit \command{vim} if you get into it by accident: \command{esc : q! enter}.
   \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Linux: redirection}
+\begin{frame}{Redirection}
   \begin{itemize}
   \item Use \command{>} to \textit{redirect} the text output from a program to go to a file instead of the screen. Example: \command{ls >  listing.txt}.
-  \item Converely use \command{<} to allow text input to a program to be taken from a file rather than the keyboard.
+  \item Conversely use \command{<} to allow text input to a program to be taken from a file rather than the keyboard.
+  \item Use the pipe symbol \command{|} to allow output from one program to be used an input for another. Example: \command{ifconfig | grep UP}.
   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{bash scripts}
+  \begin{itemize}
+  \item bash comes with a Turing-complete scripting language in which you can write programs.
+  \item Such scripts are usually used for control of processing (rather than for e.g. actual processing of data).
+  \item The language has some idiosyncrasies (e.g. \command{fi} instead of \command{end\_if}).
+  \item It is common to use the extension \filename{.sh} for such files.
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Example bash script}
+  \includegraphics[scale=0.9]{bash\_script.jpg}
+\end{frame}
+
+
+\begin{frame}{How to run a bash script}
+    \command{bash myscript.sh} \\
+  \vspace{1cm}
+  Alternatively make the script executable:
+  \begin{itemize}
+  \item Add \command{\#!/usr/bin/env bash} at the top of the file
+   \item Then \command{chmod +x myscript.sh}
+     \end{itemize}
+     Then just need to call \command{./myscript.sh}
+\end{frame}
+
+
+\begin{frame}{Scripts and environment variables}
+\begin{itemize}
+\item It's natural to write a script that sets environment variables.
+\item But this doesn't work! The script gets a \textit{copy} of the environment; this copy gets amended by the script, but is then discarded when the script stops.
+\item So instead use \command{source} e.g. \command{source my\_set\_environ\_vars.sh}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{HPC environments}
+\begin{itemize}
+\item \server{splinter} and \server{hypatia} are \text{high performance computing} (HPC) clusters.
+\item Each has many linked computers (called \textit{nodes}). Most nodes are \textit{compute} nodes; these are available for processing. The \textit{login} node (which you login to) is special. Use it for control, for editing and for compiling, but not for heavy processing!
+\item \command{srun --pty bash} will give you a session on one of the compute nodes.
+\item Alternatively you can use \command{sbatch} to launch an unattended job on one or several compute nodes.
+\end{itemize}
 \end{frame}
 
 
