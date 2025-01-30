@@ -192,11 +192,11 @@
 
 \begin{frame}{Command shell}
   \begin{itemize}
-    \item In Linux you will use a `command shell'.
-    \item This is a text-based environment in which you type commands and receive text output.
+    \item In Linux you will use a `command shell'; a text environment in which you type commands and receive text output.
     \item Not GUI! Reflects the hardware limitations current when Unix was created. Low-tech and reliable e.g. for remote access.
-    \item Various command shell programs are used: \command{bash}, \command{csh}, \command{tcsh}, \command{zsh}, etc. To see which one you are using, call \command{echo \$0}.
-    \item This presentation assumes \command{bash}! Other shells may use different names for some of the commands discussed.
+    \item Various command shell programs are used: \command{bash}, \command{csh}, \command{tcsh}, \command{zsh}, etc. Use \command{echo \$0} to see which one is in use.
+    \item This presentation assumes \command{bash}. Other shells may use different names for some of the commands discussed.
+    \item New accounts on UCL Astro servers get given \command{tcsh} as a shell. But if you don't use \texttt{Starlink} software, it's safe to ask to be switched to \command{bash}.
    \end{itemize}
 \end{frame}
 
@@ -287,6 +287,7 @@
 \begin{frame}{Environment variables (1)}
   \begin{itemize}
     \item The operating system maintains a global namespace of `environment variables' to store configuration information.
+    \item The following commands are specific to \command{bash} - other shells use different commands.
     \item Use  \command{set} to see all environment variables;
     \item Use \command{echo \$<variable\_name>} to see the value of one environment variable (e.g. \command{echo \$PATH});
     \item Use \command{export \$FOO=`my\_string'} to set an environment variable \texttt{FOO}.
@@ -327,7 +328,7 @@
   \item Use \command{mkdir <dir>} to make a new directory
   \item Use \command{rm -rf <dir>} to delete a directory and its contents (including subdirectories). This is irreversible!
   \item Use \command{cp <source> <destination>} to copy a file and \command{mv <source> <destination>} to move a file.
-  \item Use \command{scp <source> <destination>} to copy a file between servers. The syntax for the remote server is \filename{<username>@<servername>:<filename>}.
+  \item Use \command{scp <source> <destination>} to copy a file between servers. The syntax for the remote server is \filename{<username>@<servername>:<filename>}. See also \command{rsync}.
   \end{itemize}
 \end{frame}
 
@@ -393,6 +394,7 @@
   \item bash comes with a Turing-complete scripting language in which you can write programs.
   \item Such scripts are usually used for control of processing (rather than for e.g. actual processing of data).
   \item The language has some idiosyncrasies (e.g. \command{fi} instead of \command{end\_if}).
+  \item Every programs return an integer \textit{return code} ($0 = $ success) that can be used in conditional statements.
   \item It is common to use the extension \filename{.sh} for such files.
   \end{itemize}
 \end{frame}
@@ -420,6 +422,16 @@
 \item It's natural to write a script that sets environment variables.
 \item But this doesn't work! The script gets a \textit{copy} of the environment; this copy gets amended by the script, but is then discarded when the script stops.
 \item So instead use \command{source} e.g. \command{source my\_set\_environ\_vars.sh}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Modules}
+\begin{itemize}
+\item Both \server{splinter} and \server{hypatia} use the \command{module} package to give access to software packages (typically by setting appropriate environment variables).
+\item Example: on \server{splinter}, \command{module load dev\_tools/oct2021/hdf5-1.12.1} makes version \texttt{1.12.1} of the \command{hdf5} package available.
+\item Use \command{module avail} to see what you can load and \command{module list} to see what you have loaded.
+\item If desired, you can extend this system to include your own software.
 \end{itemize}
 \end{frame}
 
